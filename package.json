@@ -1,0 +1,30 @@
+{
+  "name": "wps-skills",
+  "version": "1.0.0",
+  "description": "WPS Office AI智能助手 - 通过MCP协议让Claude操控WPS Office",
+  "author": "老王 <laowang@wujindian.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "cd wps-office-mcp && npm run build",
+    "test": "cd wps-office-mcp && npm test",
+    "start": "cd wps-office-mcp && npm start",
+    "install:all": "cd wps-office-mcp && npm install",
+    "clean": "cd wps-office-mcp && rm -rf dist node_modules"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/laowang/wps-skills.git"
+  },
+  "keywords": [
+    "wps",
+    "office",
+    "mcp",
+    "claude",
+    "ai",
+    "automation"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

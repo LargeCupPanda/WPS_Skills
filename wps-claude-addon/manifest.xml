@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    WPS Claude 智能助手 - 加载项清单配置
+
+    艹，这个manifest.xml是WPS加载项的灵魂文件
+    没有它，你的加载项就是个憨批，WPS根本不认识你
+
+    作者：老王
+    日期：2026-01-24
+-->
+<manifest xmlns="http://schemas.wps.cn/oaassist/2019/manifest"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+    <!-- 加载项唯一标识，别TM随便改，改了就找不到了 -->
+    <id>wps-claude-addon</id>
+
+    <!-- 版本号，遵循语义化版本规范 -->
+    <version>1.0.0</version>
+
+    <!-- 加载项名称，显示在WPS界面上的 -->
+    <name>WPS Claude 智能助手</name>
+
+    <!-- 描述信息 -->
+    <description>通过自然语言操控 WPS Office，让你的办公变得更智能。再也不用为公式发愁了，憨批！</description>
+
+    <!-- 作者信息 -->
+    <author>WPS-Claude-Skills Team (老王出品，必属精品)</author>
+
+    <!-- 支持的WPS应用类型 -->
+    <hosts>
+        <!-- WPS 文字 (Word) -->
+        <host name="wps"/>
+        <!-- WPS 表格 (Excel) -->
+        <host name="et"/>
+        <!-- WPS 演示 (PPT) -->
+        <host name="wpp"/>
+    </hosts>
+
+    <!-- 权限声明，需要什么权限就声明什么，别瞎几把乱要 -->
+    <permissions>
+        <!-- 读取文档内容 -->
+        <permission name="document.read"/>
+        <!-- 写入文档内容 -->
+        <permission name="document.write"/>
+        <!-- 读取文件系统 -->
+        <permission name="file.read"/>
+        <!-- 写入文件系统 -->
+        <permission name="file.write"/>
+        <!-- 本地网络访问（HTTP Server需要这个） -->
+        <permission name="network.local"/>
+    </permissions>
+
+    <!-- 功能区配置，引用外部ribbon.xml -->
+    <ribbon src="ribbon.xml"/>
+
+    <!-- 脚本入口 -->
+    <scripts>
+        <!-- 工具模块必须先加载 -->
+        <script src="js/utils/logger.js"/>
+        <script src="js/utils/response.js"/>
+        <!-- 服务器模块 -->
+        <script src="js/server/router.js"/>
+        <script src="js/server/http-server.js"/>
+        <!-- 处理器模块 -->
+        <script src="js/handlers/excel-handler.js"/>
+        <script src="js/handlers/word-handler.js"/>
+        <script src="js/handlers/ppt-handler.js"/>
+        <script src="js/handlers/common-handler.js"/>
+        <!-- 主入口最后加载 -->
+        <script src="js/main.js"/>
+    </scripts>
+
+    <!-- 加载项设置 -->
+    <settings>
+        <!-- HTTP Server 端口配置 -->
+        <setting name="httpPort" value="23333"/>
+        <!-- 日志级别 -->
+        <setting name="logLevel" value="info"/>
+    </settings>
+
+</manifest>

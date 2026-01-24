@@ -1,0 +1,27 @@
+# 源码和测试
+src/
+tests/
+*.test.ts
+*.spec.ts
+
+# 配置文件
+tsconfig.json
+jest.config.js
+.eslintrc*
+.prettierrc*
+
+# 开发依赖
+node_modules/
+
+# 日志和临时文件
+*.log
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Git
+.git/
+.gitignore
