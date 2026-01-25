@@ -14,6 +14,20 @@
 
 ---
 
+## 🚀 一键安装
+
+**只需告诉 Claude Code：**
+
+```
+帮我安装 WPS Skills: https://github.com/LargeCupPanda/WPS_Skills
+```
+
+Claude Code 会自动完成所有安装步骤！
+
+> ⚠️ 前提：请先安装 [WPS Office](https://www.wps.cn/)
+
+---
+
 ## 📖 项目简介
 
 WPS Office 智能助手是一个基于 Claude AI 的自然语言办公自动化工具。通过 MCP (Model Context Protocol) 协议，让您可以用自然语言直接操控 WPS Office，告别繁琐的菜单操作和公式记忆。
@@ -62,93 +76,48 @@ WPS Office 智能助手是一个基于 Claude AI 的自然语言办公自动化�
 
 ---
 
-## 🚀 安装步骤
+<details>
+<summary><b>📦 手动安装（点击展开）</b></summary>
 
-### 第一步：安装 WPS Office
+### 方式一：一键脚本
 
-如果尚未安装 WPS Office，请先安装：
-
-1. 访问 [WPS 官网](https://www.wps.cn/) 下载 WPS Office
-2. 运行安装程序，完成安装
-3. 启动 WPS 确认安装成功
-
-> ⚠️ 需要 WPS 2019 或更高版本
-
-### 第二步：安装 Node.js
-
-如果尚未安装 Node.js，请先安装：
-
-1. 访问 [Node.js 官网](https://nodejs.org/) 下载 LTS 版本（18.x 或更高）
-2. 运行安装程序，一路默认即可
-3. 安装完成后，打开命令行验证：
-
-```bash
-node -v   # 应显示 v18.x.x 或更高
-npm -v    # 应显示 9.x.x 或更高
-```
-
-> ⚠️ 如果提示"不是内部或外部命令"，请重启命令行或重新登录系统
-
-### 第三步：克隆项目
-
-```bash
+```powershell
 git clone https://github.com/LargeCupPanda/WPS_Skills.git
 cd WPS_Skills
+powershell -ExecutionPolicy Bypass -File scripts/auto-install.ps1
 ```
 
-### 第四步：安装依赖并编译
+### 方式二：手动步骤
 
-```bash
-cd wps-office-mcp
-npm install          # 安装所有依赖（包括 TypeScript 编译器）
-npm run build        # 编译 TypeScript 代码
-```
-
-> 💡 `npm install` 会自动安装 TypeScript，无需全局安装
-
-### 第五步：配置 Claude Code
-
-找到 Claude Code 配置文件：
-```
-C:\Users\<用户名>\.claude\settings.json
-```
-
-添加 MCP Server 配置：
-
-```json
-{
-  "mcpServers": {
-    "wps-office": {
-      "command": "node",
-      "args": ["C:\\path\\to\\WPS_Skills\\wps-office-mcp\\dist\\index.js"]
-    }
-  }
-}
-```
-
-> ⚠️ 注意：请将路径替换为您的实际项目路径，Windows 路径使用双反斜杠 `\\`
-
-### 第六步：安装 WPS 加载项
-
-1. 找到 WPS 加载项目录：
-   ```
-   C:\Users\<用户名>\AppData\Roaming\kingsoft\wps\jsaddons\
+1. **安装依赖并编译**
+   ```bash
+   cd wps-office-mcp
+   npm install
+   npm run build
    ```
 
-2. 复制 `wps-claude-addon` 文件夹到该目录，并重命名为 `wps-claude-addon_`（注意末尾下划线）
-
-3. 编辑 `publish.xml` 文件，添加加载项注册：
-   ```xml
-   <jsplugin type="wps,et,wpp" enable="enable_dev" name="wps-claude-addon" url="wps-claude-addon_/"/>
+2. **配置 Claude Code** - 编辑 `~/.claude/settings.json`：
+   ```json
+   {
+     "mcpServers": {
+       "wps-office": {
+         "command": "node",
+         "args": ["C:\\path\\to\\WPS_Skills\\wps-office-mcp\\dist\\index.js"]
+       }
+     }
+   }
    ```
 
-### 第七步：重启并验证
+3. **安装 WPS 加载项**
+   - 复制 `wps-claude-addon` 到 `%APPDATA%\kingsoft\wps\jsaddons\wps-claude-addon_\`
+   - 在 `publish.xml` 中添加：
+     ```xml
+     <jsplugin type="wps,et,wpp" enable="enable_dev" name="wps-claude-addon" url="wps-claude-addon_/"/>
+     ```
 
-1. **重启 Claude Code** - 加载新的 MCP Server 配置
-2. **重启 WPS Office** - 加载新的加载项
-3. **验证安装**：
-   - 在 WPS 中查看是否有 "Claude助手" 选项卡
-   - 点击 "连接状态" 按钮查看状态
+4. **重启 Claude Code 和 WPS Office**
+
+</details>
 
 ---
 

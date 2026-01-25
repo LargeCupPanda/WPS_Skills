@@ -14,6 +14,20 @@
 
 ---
 
+## 🚀 One-Click Install
+
+**Just tell Claude Code:**
+
+```
+Install WPS Skills for me: https://github.com/LargeCupPanda/WPS_Skills
+```
+
+Claude Code will automatically complete all installation steps!
+
+> ⚠️ Prerequisite: Please install [WPS Office](https://www.wps.com/) first
+
+---
+
 ## Overview
 
 WPS Office AI Assistant is a natural language office automation tool powered by Claude AI. Through MCP (Model Context Protocol), you can control WPS Office using natural language - no more memorizing formulas or navigating complex menus.
@@ -62,93 +76,48 @@ User: Add a text box on slide 1
 
 ---
 
-## Installation
+<details>
+<summary><b>📦 Manual Installation (Click to expand)</b></summary>
 
-### Step 1: Install WPS Office
+### Option 1: One-Click Script
 
-If WPS Office is not installed, install it first:
-
-1. Visit [WPS official website](https://www.wps.com/) and download WPS Office
-2. Run the installer and complete installation
-3. Launch WPS to confirm successful installation
-
-> ⚠️ Requires WPS 2019 or later
-
-### Step 2: Install Node.js
-
-If Node.js is not installed, install it first:
-
-1. Visit [Node.js official website](https://nodejs.org/) and download LTS version (18.x or later)
-2. Run the installer with default settings
-3. Verify installation in command line:
-
-```bash
-node -v   # Should show v18.x.x or later
-npm -v    # Should show 9.x.x or later
-```
-
-> ⚠️ If you get "command not found", restart your terminal or re-login
-
-### Step 3: Clone Repository
-
-```bash
+```powershell
 git clone https://github.com/LargeCupPanda/WPS_Skills.git
 cd WPS_Skills
+powershell -ExecutionPolicy Bypass -File scripts/auto-install.ps1
 ```
 
-### Step 4: Install Dependencies and Build
+### Option 2: Manual Steps
 
-```bash
-cd wps-office-mcp
-npm install          # Install all dependencies (including TypeScript compiler)
-npm run build        # Compile TypeScript code
-```
-
-> 💡 `npm install` automatically installs TypeScript - no global installation needed
-
-### Step 5: Configure Claude Code
-
-Find Claude Code config file:
-```
-C:\Users\<username>\.claude\settings.json
-```
-
-Add MCP Server configuration:
-
-```json
-{
-  "mcpServers": {
-    "wps-office": {
-      "command": "node",
-      "args": ["C:\\path\\to\\WPS_Skills\\wps-office-mcp\\dist\\index.js"]
-    }
-  }
-}
-```
-
-> Note: Replace path with your actual project path. Use double backslashes `\\` for Windows paths.
-
-### Step 6: Install WPS Add-in
-
-1. Find WPS add-ins directory:
-   ```
-   C:\Users\<username>\AppData\Roaming\kingsoft\wps\jsaddons\
+1. **Install dependencies and build**
+   ```bash
+   cd wps-office-mcp
+   npm install
+   npm run build
    ```
 
-2. Copy `wps-claude-addon` folder to this directory, rename to `wps-claude-addon_` (note the trailing underscore)
-
-3. Edit `publish.xml`, add:
-   ```xml
-   <jsplugin type="wps,et,wpp" enable="enable_dev" name="wps-claude-addon" url="wps-claude-addon_/"/>
+2. **Configure Claude Code** - Edit `~/.claude/settings.json`:
+   ```json
+   {
+     "mcpServers": {
+       "wps-office": {
+         "command": "node",
+         "args": ["C:\\path\\to\\WPS_Skills\\wps-office-mcp\\dist\\index.js"]
+       }
+     }
+   }
    ```
 
-### Step 7: Restart and Verify
+3. **Install WPS Add-in**
+   - Copy `wps-claude-addon` to `%APPDATA%\kingsoft\wps\jsaddons\wps-claude-addon_\`
+   - Add to `publish.xml`:
+     ```xml
+     <jsplugin type="wps,et,wpp" enable="enable_dev" name="wps-claude-addon" url="wps-claude-addon_/"/>
+     ```
 
-1. **Restart Claude Code** - Load new MCP Server config
-2. **Restart WPS Office** - Load new add-in
-3. **Verify**:
-   - Check for "Claude Assistant" tab in WPS
-   - Click "Connection Status" button
+4. **Restart Claude Code and WPS Office**
+
+</details>
 
 ---
 
