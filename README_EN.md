@@ -64,22 +64,39 @@ User: Add a text box on slide 1
 
 ## Installation
 
-### Step 1: Clone Repository
+### Step 1: Install Node.js
+
+If Node.js is not installed, install it first:
+
+1. Visit [Node.js official website](https://nodejs.org/) and download LTS version (18.x or later)
+2. Run the installer with default settings
+3. Verify installation in command line:
+
+```bash
+node -v   # Should show v18.x.x or later
+npm -v    # Should show 9.x.x or later
+```
+
+> ⚠️ If you get "command not found", restart your terminal or re-login
+
+### Step 2: Clone Repository
 
 ```bash
 git clone https://github.com/LargeCupPanda/WPS_Skills.git
 cd WPS_Skills
 ```
 
-### Step 2: Install MCP Server Dependencies
+### Step 3: Install Dependencies and Build
 
 ```bash
 cd wps-office-mcp
-npm install
-npm run build
+npm install          # Install all dependencies (including TypeScript compiler)
+npm run build        # Compile TypeScript code
 ```
 
-### Step 3: Configure Claude Code
+> 💡 `npm install` automatically installs TypeScript - no global installation needed
+
+### Step 4: Configure Claude Code
 
 Find Claude Code config file:
 ```
@@ -101,7 +118,7 @@ Add MCP Server configuration:
 
 > Note: Replace path with your actual project path. Use double backslashes `\\` for Windows paths.
 
-### Step 4: Install WPS Add-in
+### Step 5: Install WPS Add-in
 
 1. Find WPS add-ins directory:
    ```
@@ -115,7 +132,7 @@ Add MCP Server configuration:
    <jsplugin type="wps,et,wpp" enable="enable_dev" name="wps-claude-addon" url="wps-claude-addon_/"/>
    ```
 
-### Step 5: Restart and Verify
+### Step 6: Restart and Verify
 
 1. **Restart Claude Code** - Load new MCP Server config
 2. **Restart WPS Office** - Load new add-in
