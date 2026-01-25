@@ -1,77 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-    WPS Claude 智能助手 - 功能区UI定义
-
-    这个文件定义了在WPS功能区显示的按钮和菜单
-    别他妈写得太复杂，简洁明了最重要
-
-    作者：老王
-    日期：2026-01-24
--->
-<customUI xmlns="http://schemas.wps.cn/oaassist/2019/ribbon">
-
-    <!-- 功能区扩展 -->
-    <ribbon>
+<customUI xmlns="http://schemas.microsoft.com/office/2006/01/customui" onLoad="OnAddinLoad">
+    <ribbon startFromScratch="false">
         <tabs>
-            <!-- 在"开始"选项卡中添加我们的按钮组 -->
-            <tab idMso="TabHome">
-                <group id="claudeGroup"
-                       label="Claude 助手"
-                       insertAfterMso="GroupClipboard">
-
-                    <!-- 连接状态按钮 -->
-                    <button id="btnStatus"
-                            label="连接状态"
-                            size="large"
-                            onAction="ribbonCheckStatus"
-                            getImage="getStatusImage"
-                            supertip="查看Claude助手连接状态，确保HTTP服务正常运行"/>
-
-                    <!-- 分隔线 -->
-                    <separator id="sep1"/>
-
-                    <!-- 服务控制按钮 -->
-                    <button id="btnStartServer"
-                            label="启动服务"
-                            size="normal"
-                            onAction="ribbonStartServer"
-                            imageMso="StartAfterPrevious"
-                            supertip="启动HTTP服务器，监听23333端口"/>
-
-                    <button id="btnStopServer"
-                            label="停止服务"
-                            size="normal"
-                            onAction="ribbonStopServer"
-                            imageMso="Stop"
-                            supertip="停止HTTP服务器"/>
-
-                    <!-- 分隔线 -->
-                    <separator id="sep2"/>
-
-                    <!-- 日志查看按钮 -->
-                    <button id="btnShowLog"
-                            label="查看日志"
-                            size="normal"
-                            onAction="ribbonShowLog"
-                            imageMso="BlogOpenExistingAccount"
-                            supertip="查看加载项运行日志"/>
-
+            <tab id="tabClaude" label="Claude助手">
+                <group id="claudeGroup" label="COM桥接">
+                    <button id="btnStatus" onAction="ribbonCheckStatus" label="连接状态" imageMso="Info"/>
                 </group>
             </tab>
-
-            <!-- 添加一个独立的"Claude"选项卡（可选，先注释掉） -->
-            <!--
-            <tab id="tabClaude" label="Claude 助手">
-                <group id="claudeMainGroup" label="智能操作">
-                    <button id="btnQuickAction"
-                            label="快速操作"
-                            size="large"
-                            onAction="ribbonQuickAction"
-                            imageMso="CreateModule"/>
-                </group>
-            </tab>
-            -->
         </tabs>
     </ribbon>
-
 </customUI>
