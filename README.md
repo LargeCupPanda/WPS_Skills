@@ -19,10 +19,10 @@
 **只需告诉 Claude Code：**
 
 ```
-帮我安装 WPS Skills: https://github.com/LargeCupPanda/WPS_Skills
+帮我安装 WPS Skills，安装指南在这里：https://github.com/LargeCupPanda/WPS_Skills/blob/main/INSTALL.md
 ```
 
-Claude Code 会自动完成所有安装步骤！
+Claude Code 会自动读取安装指南并完成所有步骤！
 
 > ⚠️ 前提：请先安装 [WPS Office](https://www.wps.cn/)
 
