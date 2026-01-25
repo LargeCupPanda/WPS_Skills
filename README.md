@@ -20,21 +20,28 @@ WPS Office 智能助手是一个基于 Claude AI 的自然语言办公自动化�
 ### ✨ 核心特性
 
 - **自然语言操作** - 用中文描述需求，AI 自动执行
-- **实时数据读写** - 读取、修改 Excel 单元格数据
+- **全套办公支持** - Excel、Word、PPT 三大组件全覆盖
 - **公式智能生成** - 描述计算需求，自动生成公式
 - **稳定 COM 桥接** - 通过 PowerShell COM 接口，稳定可靠
 
 ### 🎯 使用示例
 
 ```
+# Excel 操作
 用户: 帮我读取当前Excel的A1到C5的数据
-AI: [自动读取并展示数据]
-
 用户: 把B3单元格的值改成4.8
-AI: [自动修改单元格]
+用户: 创建一个柱状图展示销售数据
+用户: 按B列降序排序
 
-用户: 在D列添加一个公式计算平均分
-AI: [自动插入公式]
+# Word 操作
+用户: 在文档末尾插入一段文字
+用户: 把所有的"旧公司"替换成"新公司"
+用户: 插入一个3行4列的表格
+
+# PPT 操作
+用户: 新增一页幻灯片，标题是"项目总结"
+用户: 统一全文字体为微软雅黑
+用户: 用商务风格美化当前页面
 ```
 
 ## 📋 系统要求
@@ -124,11 +131,15 @@ npm run build
 
 ### 支持的功能
 
-| 功能类别 | 支持操作 |
-|----------|----------|
-| Excel 读取 | 单元格值、范围数据、工作簿信息 |
-| Excel 写入 | 单元格值、范围数据、公式 |
-| 文件操作 | 保存文件 |
+| 应用 | 功能类别 | 支持操作 |
+|------|----------|----------|
+| **Excel** | 数据读写 | 单元格值、范围数据、工作簿信息、上下文获取 |
+| **Excel** | 数据处理 | 公式设置、排序、筛选、去重、创建图表 |
+| **Word** | 文档操作 | 获取文档信息、读取文本、插入文本 |
+| **Word** | 格式编辑 | 字体设置、查找替换、插入表格、应用样式 |
+| **PPT** | 幻灯片 | 获取演示文稿信息、新增幻灯片、设置标题 |
+| **PPT** | 美化功能 | 添加文本框、统一字体、配色美化 |
+| **通用** | 文件操作 | 保存文件 |
 
 ## ❓ 常见问题
 
@@ -197,21 +208,28 @@ WPS Office AI Assistant is a natural language office automation tool powered by 
 ### ✨ Key Features
 
 - **Natural Language Control** - Describe your needs in plain language, AI executes automatically
-- **Real-time Data Access** - Read and modify Excel cell data
+- **Full Office Suite Support** - Excel, Word, and PPT all covered
 - **Smart Formula Generation** - Describe calculations, get formulas automatically
 - **Stable COM Bridge** - Reliable PowerShell COM interface
 
 ### 🎯 Usage Examples
 
 ```
+# Excel Operations
 User: Read data from A1 to C5 in the current Excel
-AI: [Automatically reads and displays data]
-
 User: Change the value of cell B3 to 4.8
-AI: [Automatically modifies cell]
+User: Create a bar chart for the sales data
+User: Sort by column B in descending order
 
-User: Add a formula in column D to calculate the average
-AI: [Automatically inserts formula]
+# Word Operations
+User: Insert text at the end of the document
+User: Replace all "old company" with "new company"
+User: Insert a 3x4 table
+
+# PPT Operations
+User: Add a new slide with title "Project Summary"
+User: Unify all fonts to Microsoft YaHei
+User: Beautify current slide with business style
 ```
 
 ## 📋 System Requirements
@@ -301,11 +319,15 @@ What file is currently open? How many sheets?
 
 ### Supported Features
 
-| Category | Operations |
-|----------|------------|
-| Excel Read | Cell values, range data, workbook info |
-| Excel Write | Cell values, range data, formulas |
-| File Operations | Save file |
+| App | Category | Operations |
+|-----|----------|------------|
+| **Excel** | Data R/W | Cell values, range data, workbook info, context |
+| **Excel** | Processing | Formulas, sort, filter, remove duplicates, charts |
+| **Word** | Document | Get document info, read text, insert text |
+| **Word** | Formatting | Font settings, find/replace, insert table, styles |
+| **PPT** | Slides | Get presentation info, add slides, set title |
+| **PPT** | Beautify | Add textbox, unify fonts, color schemes |
+| **Common** | File | Save file |
 
 ## ❓ FAQ
 
