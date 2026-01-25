@@ -1,17 +1,18 @@
-# WPS Office 智能助手 | WPS Office AI Assistant
+# WPS Office 智能助手
 
 <p align="center">
   <img src="https://img.shields.io/badge/WPS-Office-blue?style=flat-square" alt="WPS Office">
   <img src="https://img.shields.io/badge/Claude-AI-orange?style=flat-square" alt="Claude AI">
   <img src="https://img.shields.io/badge/MCP-Protocol-green?style=flat-square" alt="MCP Protocol">
   <img src="https://img.shields.io/badge/Platform-Windows-lightgrey?style=flat-square" alt="Windows">
+  <img src="https://img.shields.io/badge/License-MIT-yellow?style=flat-square" alt="MIT License">
 </p>
 
-> 🇨🇳 [中文](#中文文档) | 🇺🇸 [English](#english-documentation)
+<p align="center">
+  <a href="./README_EN.md">English</a> | 中文
+</p>
 
 ---
-
-# 中文文档
 
 ## 📖 项目简介
 
@@ -19,30 +20,36 @@ WPS Office 智能助手是一个基于 Claude AI 的自然语言办公自动化�
 
 ### ✨ 核心特性
 
-- **自然语言操作** - 用中文描述需求，AI 自动执行
-- **全套办公支持** - Excel、Word、PPT 三大组件全覆盖
-- **公式智能生成** - 描述计算需求，自动生成公式
-- **稳定 COM 桥接** - 通过 PowerShell COM 接口，稳定可靠
+- 🗣️ **自然语言操作** - 用中文描述需求，AI 自动执行
+- 📊 **全套办公支持** - Excel、Word、PPT 三大组件全覆盖
+- 🔢 **公式智能生成** - 描述计算需求，自动生成公式
+- 🎨 **一键美化** - PPT配色、字体统一，专业设计
+- 🔗 **稳定 COM 桥接** - 通过 PowerShell COM 接口，稳定可靠
 
 ### 🎯 使用示例
 
-```
+```bash
 # Excel 操作
 用户: 帮我读取当前Excel的A1到C5的数据
 用户: 把B3单元格的值改成4.8
 用户: 创建一个柱状图展示销售数据
 用户: 按B列降序排序
+用户: 计算B列的平均值、最大值、最小值
 
 # Word 操作
 用户: 在文档末尾插入一段文字
 用户: 把所有的"旧公司"替换成"新公司"
 用户: 插入一个3行4列的表格
+用户: 把全文字体改成宋体12号
 
 # PPT 操作
 用户: 新增一页幻灯片，标题是"项目总结"
 用户: 统一全文字体为微软雅黑
 用户: 用商务风格美化当前页面
+用户: 在第一页添加一个文本框
 ```
+
+---
 
 ## 📋 系统要求
 
@@ -52,6 +59,8 @@ WPS Office 智能助手是一个基于 Claude AI 的自然语言办公自动化�
 | WPS Office | 2019 或更高版本 |
 | Node.js | 18.0.0 或更高版本 |
 | Claude Code | 最新版本 |
+
+---
 
 ## 🚀 安装步骤
 
@@ -73,7 +82,9 @@ npm run build
 ### 第三步：配置 Claude Code
 
 找到 Claude Code 配置文件：
-- 路径：`C:\Users\<用户名>\.claude\settings.json`
+```
+C:\Users\<用户名>\.claude\settings.json
+```
 
 添加 MCP Server 配置：
 
@@ -112,34 +123,97 @@ npm run build
    - 在 WPS 中查看是否有 "Claude助手" 选项卡
    - 点击 "连接状态" 按钮查看状态
 
-## 📖 使用方法
+---
 
-### 基本操作
+## 📖 功能列表
 
-在 Claude Code 中直接用自然语言描述需求：
+### Excel 功能
+
+| 功能 | 说明 | 状态 |
+|------|------|------|
+| 获取工作簿信息 | 名称、路径、工作表列表 | ✅ |
+| 获取上下文 | 表头、选中单元格、使用范围 | ✅ |
+| 读取单元格 | 单个或范围读取 | ✅ |
+| 写入单元格 | 单个或范围写入 | ✅ |
+| 设置公式 | 写入Excel公式 | ✅ |
+| 排序 | 按指定列排序 | ✅ |
+| 筛选 | 自动筛选 | ✅ |
+| 去重 | 删除重复行 | ✅ |
+| 创建图表 | 柱状图、折线图、饼图等 | ✅ |
+| 公式诊断 | 分析公式错误原因 | 🚧 |
+| 数据透视表 | 创建透视表 | 🚧 |
+| 条件格式 | 设置条件格式 | 🚧 |
+
+### Word 功能
+
+| 功能 | 说明 | 状态 |
+|------|------|------|
+| 获取文档信息 | 名称、段落数、字数 | ✅ |
+| 读取文本 | 获取文档内容 | ✅ |
+| 插入文本 | 开头/末尾/光标处插入 | ✅ |
+| 设置字体 | 字体、字号、粗体等 | ✅ |
+| 查找替换 | 批量替换文本 | ✅ |
+| 插入表格 | 创建表格并填充数据 | ✅ |
+| 应用样式 | 应用Word样式 | ✅ |
+| 生成目录 | 自动生成目录 | 🚧 |
+| 插入图片 | 插入并调整图片 | 🚧 |
+
+### PPT 功能
+
+| 功能 | 说明 | 状态 |
+|------|------|------|
+| 获取演示文稿信息 | 名称、页数、形状列表 | ✅ |
+| 新增幻灯片 | 多种布局可选 | ✅ |
+| 设置标题 | 修改幻灯片标题 | ✅ |
+| 添加文本框 | 自定义位置和样式 | ✅ |
+| 统一字体 | 全文字体统一 | ✅ |
+| 美化幻灯片 | 商务/科技/创意/简约风格 | ✅ |
+| 添加形状 | 插入各种形状 | 🚧 |
+| 添加动画 | 进入/退出动画 | 🚧 |
+| 设置主题 | 应用PPT主题 | 🚧 |
+
+### 通用功能
+
+| 功能 | 说明 | 状态 |
+|------|------|------|
+| 保存文件 | 保存当前文档 | ✅ |
+| 格式转换 | Word/Excel/PPT互转 | 🚧 |
+
+> ✅ 已完成 | 🚧 开发中
+
+---
+
+## 🔧 技术架构
 
 ```
-# 读取数据
-帮我读取当前Excel的A1到D10的数据
-
-# 修改单元格
-把C2单元格的值改成"测试数据"
-
-# 获取工作簿信息
-当前打开的是什么文件？有几个工作表？
+Claude Code → MCP Server (Node.js) → PowerShell COM → WPS Office
 ```
 
-### 支持的功能
+- **MCP Server**: 29 个工具，处理 AI 请求
+- **COM 桥接**: 通过 PowerShell 调用 WPS COM 接口（Ket/Kwps/Kwpp）
+- **WPS 加载项**: 显示连接状态
 
-| 应用 | 功能类别 | 支持操作 |
-|------|----------|----------|
-| **Excel** | 数据读写 | 单元格值、范围数据、工作簿信息、上下文获取 |
-| **Excel** | 数据处理 | 公式设置、排序、筛选、去重、创建图表 |
-| **Word** | 文档操作 | 获取文档信息、读取文本、插入文本 |
-| **Word** | 格式编辑 | 字体设置、查找替换、插入表格、应用样式 |
-| **PPT** | 幻灯片 | 获取演示文稿信息、新增幻灯片、设置标题 |
-| **PPT** | 美化功能 | 添加文本框、统一字体、配色美化 |
-| **通用** | 文件操作 | 保存文件 |
+---
+
+## 📁 项目结构
+
+```
+WPS_Skills/
+├── wps-office-mcp/          # MCP Server (核心服务)
+│   ├── src/                 # TypeScript 源码
+│   ├── dist/                # 编译输出
+│   ├── scripts/             # PowerShell COM 桥接脚本
+│   │   └── wps-com.ps1      # COM操作脚本
+│   └── package.json
+├── wps-claude-addon/        # WPS 加载项
+│   ├── ribbon.xml           # 功能区配置
+│   └── js/main.js           # 加载项逻辑
+├── skills/                  # Claude Skills 定义
+├── docs/                    # 设计文档（私有）
+└── README.md
+```
+
+---
 
 ## ❓ 常见问题
 
@@ -161,33 +235,43 @@ npm run build
 
 **A:** 确保：
 1. WPS Office 已启动并打开了文档
-2. 加载项已正确加载（查看Claude助手选项卡）
+2. 对应的应用已打开（操作Excel需打开Excel，操作Word需打开Word）
 
-## 📁 项目结构
+---
 
-```
-WPS_Skills/
-├── wps-office-mcp/          # MCP Server (核心服务)
-│   ├── src/                 # TypeScript 源码
-│   ├── dist/                # 编译输出
-│   ├── scripts/             # PowerShell COM 桥接脚本
-│   └── package.json
-├── wps-claude-addon/        # WPS 加载项
-│   ├── ribbon.xml           # 功能区配置
-│   └── js/main.js           # 加载项逻辑
-├── skills/                  # Claude Skills 定义
-└── README.md
-```
+## 📋 TODO
 
-## 🔧 技术架构
+### 近期计划 (v1.1)
 
-```
-Claude Code → MCP Server (Node.js) → PowerShell COM → WPS Office
-```
+- [ ] **macOS 兼容** - 支持 macOS 平台
+- [ ] **Excel 公式诊断** - 分析公式错误，提供修复建议
+- [ ] **Excel 数据透视表** - 创建和操作透视表
+- [ ] **Excel 条件格式** - 设置条件格式规则
+- [ ] **Word 生成目录** - 自动生成文档目录
+- [ ] **Word 插入图片** - 插入并调整图片位置
+- [ ] **PPT 添加动画** - 进入、退出、强调动画
+- [ ] **PPT 设置主题** - 应用内置主题
 
-- **MCP Server**: 29 个工具，处理 AI 请求
-- **COM 桥接**: 通过 PowerShell 调用 WPS COM 接口
-- **WPS 加载项**: 显示连接状态
+### 中期计划 (v1.2)
+
+- [ ] **跨应用格式转换** - Word/Excel/PPT 互转
+- [ ] **Word 转 PPT** - 根据Word大纲生成PPT
+- [ ] **批量格式转换** - 批量转换文件格式
+- [ ] **批量添加水印** - 批量添加文字/图片水印
+- [ ] **邮件合并** - Word邮件合并功能
+- [ ] **高级公式** - 数组公式支持
+
+### 长期计划 (v2.0)
+
+- [ ] **PDF 支持** - 支持 WPS PDF 操作
+- [ ] **脑图支持** - 支持 WPS 脑图
+- [ ] **AI 内容生成** - 智能生成文档内容
+- [ ] **多文档协同** - 跨文档操作
+- [ ] **自动化工作流** - 定义和执行工作流
+- [ ] **云端协作** - 支持 WPS 云文档
+- [ ] **企业级部署** - 企业部署方案
+
+---
 
 ## 📄 许可证
 
@@ -196,194 +280,6 @@ MIT License
 ## 👨‍💻 开发者
 
 **熊猫大侠** - [GitHub](https://github.com/LargeCupPanda)
-
----
-
-# English Documentation
-
-## 📖 Introduction
-
-WPS Office AI Assistant is a natural language office automation tool powered by Claude AI. Through the MCP (Model Context Protocol), you can control WPS Office using natural language, eliminating the need for complex menu navigation and formula memorization.
-
-### ✨ Key Features
-
-- **Natural Language Control** - Describe your needs in plain language, AI executes automatically
-- **Full Office Suite Support** - Excel, Word, and PPT all covered
-- **Smart Formula Generation** - Describe calculations, get formulas automatically
-- **Stable COM Bridge** - Reliable PowerShell COM interface
-
-### 🎯 Usage Examples
-
-```
-# Excel Operations
-User: Read data from A1 to C5 in the current Excel
-User: Change the value of cell B3 to 4.8
-User: Create a bar chart for the sales data
-User: Sort by column B in descending order
-
-# Word Operations
-User: Insert text at the end of the document
-User: Replace all "old company" with "new company"
-User: Insert a 3x4 table
-
-# PPT Operations
-User: Add a new slide with title "Project Summary"
-User: Unify all fonts to Microsoft YaHei
-User: Beautify current slide with business style
-```
-
-## 📋 System Requirements
-
-| Item | Requirement |
-|------|-------------|
-| OS | Windows 10/11 |
-| WPS Office | 2019 or later |
-| Node.js | 18.0.0 or later |
-| Claude Code | Latest version |
-
-## 🚀 Installation
-
-### Step 1: Clone the Repository
-
-```bash
-git clone https://github.com/LargeCupPanda/WPS_Skills.git
-cd WPS_Skills
-```
-
-### Step 2: Install MCP Server Dependencies
-
-```bash
-cd wps-office-mcp
-npm install
-npm run build
-```
-
-### Step 3: Configure Claude Code
-
-Locate the Claude Code configuration file:
-- Path: `C:\Users\<username>\.claude\settings.json`
-
-Add MCP Server configuration:
-
-```json
-{
-  "mcpServers": {
-    "wps-office": {
-      "command": "node",
-      "args": ["C:\\path\\to\\WPS_Skills\\wps-office-mcp\\dist\\index.js"]
-    }
-  }
-}
-```
-
-> ⚠️ Note: Replace the path with your actual project path. Use double backslashes `\\` for Windows paths.
-
-### Step 4: Install WPS Add-in
-
-1. Locate the WPS add-ins directory:
-   ```
-   C:\Users\<username>\AppData\Roaming\kingsoft\wps\jsaddons\
-   ```
-
-2. Copy the `wps-claude-addon` folder to this directory and rename it to `wps-claude-addon_` (note the trailing underscore)
-
-3. Edit the `publish.xml` file to register the add-in:
-   ```xml
-   <jsplugin type="wps,et,wpp" enable="enable_dev" name="wps-claude-addon" url="wps-claude-addon_/"/>
-   ```
-
-### Step 5: Restart and Verify
-
-1. **Restart Claude Code** - Load the new MCP Server configuration
-2. **Restart WPS Office** - Load the new add-in
-3. **Verify Installation**:
-   - Check for the "Claude助手" tab in WPS
-   - Click "连接状态" button to view status
-
-## 📖 Usage
-
-### Basic Operations
-
-Use natural language in Claude Code:
-
-```
-# Read data
-Read data from A1 to D10 in the current Excel
-
-# Modify cells
-Change the value of C2 to "Test Data"
-
-# Get workbook info
-What file is currently open? How many sheets?
-```
-
-### Supported Features
-
-| App | Category | Operations |
-|-----|----------|------------|
-| **Excel** | Data R/W | Cell values, range data, workbook info, context |
-| **Excel** | Processing | Formulas, sort, filter, remove duplicates, charts |
-| **Word** | Document | Get document info, read text, insert text |
-| **Word** | Formatting | Font settings, find/replace, insert table, styles |
-| **PPT** | Slides | Get presentation info, add slides, set title |
-| **PPT** | Beautify | Add textbox, unify fonts, color schemes |
-| **Common** | File | Save file |
-
-## ❓ FAQ
-
-### Q: The Claude Assistant tab doesn't appear?
-
-**A:** Check the following:
-1. Confirm the add-in folder name ends with `_`
-2. Confirm `publish.xml` is correctly configured
-3. Restart WPS Office
-
-### Q: MCP Server connection failed?
-
-**A:** Troubleshooting steps:
-1. Verify the path in `settings.json` is correct
-2. Confirm `npm run build` was executed
-3. Restart Claude Code
-
-### Q: Connection error when operating WPS?
-
-**A:** Ensure:
-1. WPS Office is running with a document open
-2. The add-in is properly loaded (check for Claude Assistant tab)
-
-## 📁 Project Structure
-
-```
-WPS_Skills/
-├── wps-office-mcp/          # MCP Server (Core Service)
-│   ├── src/                 # TypeScript source
-│   ├── dist/                # Build output
-│   ├── scripts/             # PowerShell COM bridge scripts
-│   └── package.json
-├── wps-claude-addon/        # WPS Add-in
-│   ├── ribbon.xml           # Ribbon configuration
-│   └── js/main.js           # Add-in logic
-├── skills/                  # Claude Skills definitions
-└── README.md
-```
-
-## 🔧 Architecture
-
-```
-Claude Code → MCP Server (Node.js) → PowerShell COM → WPS Office
-```
-
-- **MCP Server**: 29 tools for handling AI requests
-- **COM Bridge**: PowerShell calls to WPS COM interface
-- **WPS Add-in**: Connection status display
-
-## 📄 License
-
-MIT License
-
-## 👨‍💻 Developer
-
-**熊猫大侠 (LargeCupPanda)** - [GitHub](https://github.com/LargeCupPanda)
 
 ---
 
