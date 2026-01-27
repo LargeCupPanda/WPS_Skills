@@ -252,11 +252,11 @@ WPS_Skills/
 ### Near-term (v1.1)
 
 - [x] **macOS Support** - Cross-platform compatibility ✅ Completed
-- [ ] **Excel Formula Diagnosis** - Analyze errors, suggest fixes
-- [ ] **Excel Pivot Tables** - Create and manipulate pivot tables
+- [x] **Excel Formula Diagnosis** - Analyze errors, suggest fixes ✅ Completed
+- [x] **Excel Pivot Tables** - Create and manipulate pivot tables ✅ Completed
 - [ ] **Excel Conditional Formatting** - Set format rules
-- [ ] **Word TOC Generation** - Auto generate table of contents
-- [ ] **Word Insert Image** - Insert and position images
+- [x] **Word TOC Generation** - Auto generate table of contents ✅ Completed
+- [x] **Word Insert Image** - Insert and position images ✅ Completed
 - [ ] **PPT Animations** - Enter, exit, emphasis animations
 - [ ] **PPT Themes** - Apply built-in themes
 
