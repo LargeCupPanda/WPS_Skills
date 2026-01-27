@@ -85,7 +85,7 @@ export const insertTextHandler: ToolHandler = async (
       position: string;
       textLength: number;
     }>(
-      'document.insertText',
+      'insertText',
       {
         text: finalText,
         position: position || 'cursor',
@@ -205,7 +205,7 @@ export const findReplaceHandler: ToolHandler = async (
       replaceText: string;
       count: number;
     }>(
-      'document.findReplace',
+      'findReplace',
       {
         findText: find_text,
         replaceText: isReplaceMode ? replace_text : '',

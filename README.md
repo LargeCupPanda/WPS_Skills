@@ -4,7 +4,7 @@
   <img src="https://img.shields.io/badge/WPS-Office-blue?style=flat-square" alt="WPS Office">
   <img src="https://img.shields.io/badge/Claude-AI-orange?style=flat-square" alt="Claude AI">
   <img src="https://img.shields.io/badge/MCP-Protocol-green?style=flat-square" alt="MCP Protocol">
-  <img src="https://img.shields.io/badge/Platform-Windows-lightgrey?style=flat-square" alt="Windows">
+  <img src="https://img.shields.io/badge/Platform-Windows%20%7C%20macOS-lightgrey?style=flat-square" alt="Windows | macOS">
   <img src="https://img.shields.io/badge/License-MIT-yellow?style=flat-square" alt="MIT License">
 </p>
 
@@ -67,12 +67,12 @@ WPS Office 智能助手是一个基于 Claude AI 的自然语言办公自动化�
 
 ## 📋 系统要求
 
-| 项目 | 要求 |
-|------|------|
-| 操作系统 | Windows 10/11 |
-| WPS Office | 2019 或更高版本 |
-| Node.js | 18.0.0 或更高版本 |
-| Claude Code | 最新版本 |
+| 项目 | Windows | macOS |
+|------|---------|-------|
+| 操作系统 | Windows 10/11 | macOS 12+ |
+| WPS Office | 2019 或更高版本 | Mac 版最新版 |
+| Node.js | 18.0.0 或更高版本 | 18.0.0 或更高版本 |
+| Claude Code | 最新版本 | 最新版本 |
 
 ---
 
@@ -182,12 +182,17 @@ powershell -ExecutionPolicy Bypass -File scripts/auto-install.ps1
 ## 🔧 技术架构
 
 ```
+Windows:
 Claude Code → MCP Server (Node.js) → PowerShell COM → WPS Office
+
+macOS:
+Claude Code → MCP Server (Node.js) → HTTP → WPS 加载项 (JS API) → WPS Office
 ```
 
 - **MCP Server**: 29 个工具，处理 AI 请求
-- **COM 桥接**: 通过 PowerShell 调用 WPS COM 接口（Ket/Kwps/Kwpp）
-- **WPS 加载项**: 显示连接状态
+- **Windows COM 桥接**: 通过 PowerShell 调用 WPS COM 接口（Ket/Kwps/Kwpp）
+- **macOS HTTP 桥接**: 通过 HTTP 调用 WPS 加载项内置服务（端口 58891）
+- **WPS 加载项**: 显示连接状态，Mac 上提供 HTTP API
 
 ---
 
@@ -198,12 +203,19 @@ WPS_Skills/
 ├── wps-office-mcp/          # MCP Server (核心服务)
 │   ├── src/                 # TypeScript 源码
 │   ├── dist/                # 编译输出
-│   ├── scripts/             # PowerShell COM 桥接脚本
+│   ├── scripts/             # PowerShell COM 桥接脚本 (Windows)
 │   │   └── wps-com.ps1      # COM操作脚本
 │   └── package.json
-├── wps-claude-addon/        # WPS 加载项
+├── wps-claude-addon/        # WPS 加载项 (Windows)
 │   ├── ribbon.xml           # 功能区配置
 │   └── js/main.js           # 加载项逻辑
+├── wps-claude-assistant/    # WPS 加载项 (macOS)
+│   ├── main.js              # HTTP 轮询 + 所有 Handler
+│   ├── manifest.xml         # 加载项清单
+│   └── ribbon.xml           # 功能区配置
+├── scripts/
+│   ├── auto-install.ps1     # Windows 一键安装
+│   └── auto-install-mac.sh  # macOS 一键安装
 ├── skills/                  # Claude Skills 定义
 ├── docs/                    # 设计文档（私有）
 └── README.md
@@ -239,7 +251,7 @@ WPS_Skills/
 
 ### 近期计划 (v1.1)
 
-- [ ] **macOS 兼容** - 支持 macOS 平台
+- [x] **macOS 兼容** - 支持 macOS 平台 ✅ 已完成
 - [ ] **Excel 公式诊断** - 分析公式错误，提供修复建议
 - [ ] **Excel 数据透视表** - 创建和操作透视表
 - [ ] **Excel 条件格式** - 设置条件格式规则

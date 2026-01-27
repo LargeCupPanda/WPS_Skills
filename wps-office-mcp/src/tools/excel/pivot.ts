@@ -221,7 +221,7 @@ export const createPivotTableHandler: ToolHandler = async (
       rowCount: number;
       columnCount: number;
     }>(
-      'excel.createPivotTable',
+      'createPivotTable',
       {
         sourceRange: config.sourceRange.trim(),
         destinationCell: config.destinationCell.trim(),
@@ -501,7 +501,7 @@ export const updatePivotTableHandler: ToolHandler = async (
         message: string;
       }>;
     }>(
-      'excel.updatePivotTable',
+      'updatePivotTable',
       {
         pivotTableName: pivotTableName?.trim(),
         pivotTableCell: pivotTableCell?.trim(),

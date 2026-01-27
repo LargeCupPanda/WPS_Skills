@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<customUI xmlns="http://schemas.microsoft.com/office/2006/01/customui" onLoad="OnAddinLoad">
+  <ribbon startFromScratch="false">
+    <tabs>
+      <tab id="claudeAssistantTab" label="Claude助手" insertAfterMso="TabView">
+        <group id="claudeStatus" label="状态">
+          <button id="btnStatus"
+                  label="服务状态"
+                  size="large"
+                  onAction="OnStatusClick"
+                  imageMso="Info"
+                  supertip="查看Claude助手服务状态"/>
+        </group>
+      </tab>
+    </tabs>
+  </ribbon>
+</customUI>

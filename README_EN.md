@@ -4,7 +4,7 @@
   <img src="https://img.shields.io/badge/WPS-Office-blue?style=flat-square" alt="WPS Office">
   <img src="https://img.shields.io/badge/Claude-AI-orange?style=flat-square" alt="Claude AI">
   <img src="https://img.shields.io/badge/MCP-Protocol-green?style=flat-square" alt="MCP Protocol">
-  <img src="https://img.shields.io/badge/Platform-Windows-lightgrey?style=flat-square" alt="Windows">
+  <img src="https://img.shields.io/badge/Platform-Windows%20%7C%20macOS-lightgrey?style=flat-square" alt="Windows | macOS">
   <img src="https://img.shields.io/badge/License-MIT-yellow?style=flat-square" alt="MIT License">
 </p>
 
@@ -67,12 +67,12 @@ User: Add a text box on slide 1
 
 ## Requirements
 
-| Item | Requirement |
-|------|-------------|
-| OS | Windows 10/11 |
-| WPS Office | 2019 or later |
-| Node.js | 18.0.0 or later |
-| Claude Code | Latest version |
+| Item | Windows | macOS |
+|------|---------|-------|
+| OS | Windows 10/11 | macOS 12+ |
+| WPS Office | 2019 or later | Mac version latest |
+| Node.js | 18.0.0 or later | 18.0.0 or later |
+| Claude Code | Latest version | Latest version |
 
 ---
 
@@ -182,12 +182,17 @@ powershell -ExecutionPolicy Bypass -File scripts/auto-install.ps1
 ## Architecture
 
 ```
+Windows:
 Claude Code → MCP Server (Node.js) → PowerShell COM → WPS Office
+
+macOS:
+Claude Code → MCP Server (Node.js) → HTTP → WPS Add-in (JS API) → WPS Office
 ```
 
 - **MCP Server**: 29 tools handling AI requests
-- **COM Bridge**: PowerShell calls WPS COM interfaces (Ket/Kwps/Kwpp)
-- **WPS Add-in**: Shows connection status
+- **Windows COM Bridge**: PowerShell calls WPS COM interfaces (Ket/Kwps/Kwpp)
+- **macOS HTTP Bridge**: HTTP calls to WPS Add-in built-in service (port 58891)
+- **WPS Add-in**: Shows connection status, provides HTTP API on Mac
 
 ---
 
@@ -198,12 +203,19 @@ WPS_Skills/
 ├── wps-office-mcp/          # MCP Server (Core)
 │   ├── src/                 # TypeScript source
 │   ├── dist/                # Compiled output
-│   ├── scripts/             # PowerShell COM bridge
+│   ├── scripts/             # PowerShell COM bridge (Windows)
 │   │   └── wps-com.ps1      # COM operations script
 │   └── package.json
-├── wps-claude-addon/        # WPS Add-in
+├── wps-claude-addon/        # WPS Add-in (Windows)
 │   ├── ribbon.xml           # Ribbon config
 │   └── js/main.js           # Add-in logic
+├── wps-claude-assistant/    # WPS Add-in (macOS)
+│   ├── main.js              # HTTP Server + All Handlers
+│   ├── manifest.xml         # Add-in manifest
+│   └── ribbon.xml           # Ribbon config
+├── scripts/
+│   ├── auto-install.ps1     # Windows one-click install
+│   └── auto-install-mac.sh  # macOS one-click install
 ├── skills/                  # Claude Skills definitions
 ├── docs/                    # Design docs (private)
 └── README.md
@@ -239,7 +251,7 @@ WPS_Skills/
 
 ### Near-term (v1.1)
 
-- [ ] **macOS Support** - Cross-platform compatibility
+- [x] **macOS Support** - Cross-platform compatibility ✅ Completed
 - [ ] **Excel Formula Diagnosis** - Analyze errors, suggest fixes
 - [ ] **Excel Pivot Tables** - Create and manipulate pivot tables
 - [ ] **Excel Conditional Formatting** - Set format rules

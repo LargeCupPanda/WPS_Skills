@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest xmlns="http://schemas.wps.cn/oaassist/2019/manifest">
+    <id>claude-assistant</id>
+    <version>1.0.0</version>
+    <name>Claude助手</name>
+    <description>Claude AI 与 WPS Office 的桥接加载项</description>
+    <hosts>
+        <host name="wps"/>
+        <host name="et"/>
+        <host name="wpp"/>
+    </hosts>
+</manifest>

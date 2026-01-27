@@ -77,7 +77,7 @@ export const applyStyleHandler: ToolHandler = async (
       message: string;
       affectedText: string;
     }>(
-      'document.applyStyle',
+      'applyStyle',
       { styleName: style_name, range },
       WpsAppType.WRITER
     );
@@ -192,7 +192,7 @@ export const setFontHandler: ToolHandler = async (
       message: string;
       settings: Record<string, unknown>;
     }>(
-      'document.setFont',
+      'setFont',
       {
         fontName: font_name,
         fontSize: font_size,
@@ -293,7 +293,7 @@ export const generateTocHandler: ToolHandler = async (
       message: string;
       levels: number;
     }>(
-      'document.generateTOC',
+      'generateTOC',
       {
         position: position || 'start',
         levels: levels || 3,

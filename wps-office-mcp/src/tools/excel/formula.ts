@@ -68,7 +68,7 @@ export const setFormulaHandler: ToolHandler = async (
 
   try {
     const response = await wpsClient.executeMethod(
-      'excel.setFormula',
+      'setFormula',
       { range, formula, sheet },
       WpsAppType.SPREADSHEET
     );
@@ -153,7 +153,7 @@ export const generateFormulaHandler: ToolHandler = async (
       selectedCell: string;
       headers: Array<{ column: string; value: string }>;
       usedRangeAddress: string;
-    }>('excel.getContext', {}, WpsAppType.SPREADSHEET);
+    }>('getContext', {}, WpsAppType.SPREADSHEET);
 
     if (!contextResponse.success || !contextResponse.data) {
       return {
@@ -253,7 +253,7 @@ export const diagnoseFormulaHandler: ToolHandler = async (
       diagnosis: string;
       suggestion: string;
       precedents: string[];
-    }>('excel.diagnoseFormula', { cell }, WpsAppType.SPREADSHEET);
+    }>('diagnoseFormula', { cell }, WpsAppType.SPREADSHEET);
 
     if (!response.success || !response.data) {
       return {

@@ -174,7 +174,7 @@ export const convertToPdfHandler: ToolHandler = async (
       appType: string;
       pageCount?: number;
     }>(
-      'common.convertToPdf',
+      'convertToPDF',
       {
         outputPath: outputPath || '',
         openAfterExport: openAfterExport || false,
@@ -285,7 +285,7 @@ export const convertFormatHandler: ToolHandler = async (
       outputPath: string;
       appType: string;
     }>(
-      'common.convertFormat',
+      'convertFormat',
       {
         targetFormat: targetFormat.toLowerCase().replace(/^\./, ''), // 去掉开头的点
         outputPath: outputPath || '',

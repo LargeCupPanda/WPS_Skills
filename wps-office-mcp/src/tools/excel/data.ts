@@ -272,7 +272,7 @@ export const cleanDataHandler: ToolHandler = async (
       }>;
       message: string;
     }>(
-      'excel.cleanData',
+      'cleanData',
       { range, operations, sheet },
       WpsAppType.SPREADSHEET
     );
@@ -361,7 +361,7 @@ export const removeDuplicatesHandler: ToolHandler = async (
       removedCount: number;
       remainingCount: number;
     }>(
-      'excel.removeDuplicates',
+      'removeDuplicates',
       {
         range,
         columns: columns || [],

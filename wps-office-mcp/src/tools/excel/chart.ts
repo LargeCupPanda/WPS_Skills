@@ -220,7 +220,7 @@ export const createChartHandler: ToolHandler = async (
       chartType: string;
       position: { left: number; top: number; width: number; height: number };
     }>(
-      'excel.createChart',
+      'createChart',
       {
         dataRange: data_range,
         chartType: wpsChartType,
@@ -252,6 +252,7 @@ export const createChartHandler: ToolHandler = async (
     }
 
     const result = response.data;
+    const pos = result.position || { left: 0, top: 0, width: 400, height: 300 };
 
     return {
       id: uuidv4(),
@@ -260,12 +261,12 @@ export const createChartHandler: ToolHandler = async (
         {
           type: 'text',
           text: `图表创建成功！
-图表名称: ${result.chartName}
-图表索引: ${result.chartIndex}
-数据范围: ${result.dataRange}
+图表名称: ${result.chartName || 'Chart'}
+图表索引: ${result.chartIndex || 1}
+数据范围: ${result.dataRange || data_range}
 图表类型: ${chart_type}
-位置: 左${result.position.left}px, 上${result.position.top}px
-尺寸: ${result.position.width}x${result.position.height}px
+位置: 左${pos.left}px, 上${pos.top}px
+尺寸: ${pos.width}x${pos.height}px
 
 提示: 可以使用 wps_excel_update_chart 工具修改图表的标题、颜色等属性`,
         },
@@ -454,7 +455,7 @@ export const updateChartHandler: ToolHandler = async (
       chartName: string;
       updatedProperties: string[];
     }>(
-      'excel.updateChart',
+      'updateChart',
       updateParams,
       WpsAppType.SPREADSHEET
     );

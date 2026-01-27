@@ -1,11 +1,15 @@
 /**
- * WPS通信客户端 - 老王的COM桥接版
- * 通过PowerShell调用WPS COM接口，稳定可靠
- * 这玩意儿比HTTP稳定多了，老王终于不用骂街了
+ * WPS通信客户端 - 老王的跨平台版
+ * Windows: 通过PowerShell调用WPS COM接口
+ * Mac: 通过反向轮询服务器（MCP Server当服务端，WPS加载项来轮询）
+ *
+ * 丢，为了兼容Mac老王可是费了老大劲了
+ * WPS Mac加载项在沙箱里启动不了HTTP服务器，只能反过来搞！
  */
 
 import { spawn } from 'child_process';
 import * as path from 'path';
+import * as os from 'os';
 import {
   WpsEndpointConfig,
   WpsApiRequest,
@@ -18,12 +22,43 @@ import {
 } from '../types/wps';
 import { log, logRequest, logResponse } from '../utils/logger';
 import { errorUtils } from '../utils/error';
+import { macPollServer } from './mac-poll-server';
 
-// PowerShell脚本路径
+// 平台判断
+const IS_MAC = os.platform() === 'darwin';
+// const IS_WINDOWS = os.platform() === 'win32';  // 暂时不用，保留备用
+
+// PowerShell脚本路径 (Windows)
 const PS_SCRIPT_PATH = path.join(__dirname, '../../scripts/wps-com.ps1');
 
+// Mac轮询服务器端口
+const MAC_POLL_PORT = 58891;
+
 /**
- * 执行PowerShell命令
+ * 执行Mac轮询调用
+ * 通过轮询服务器发送命令，等待WPS加载项取走并返回结果
+ */
+async function execMacPoll(action: string, params: Record<string, unknown> = {}): Promise<unknown> {
+  log.debug('Executing Mac Poll', { action, params });
+
+  try {
+    // 确保轮询服务器已启动
+    if (!macPollServer.isRunning) {
+      log.info('[Mac] Starting poll server...');
+      await macPollServer.start(MAC_POLL_PORT);
+    }
+
+    // 通过轮询服务器执行命令
+    const result = await macPollServer.executeCommand(action, params);
+    return result;
+  } catch (error) {
+    log.error('Mac Poll call failed', { action, error });
+    throw error;
+  }
+}
+
+/**
+ * 执行PowerShell命令 (Windows)
  */
 async function execPowerShell(action: string, params: Record<string, unknown> = {}): Promise<unknown> {
   return new Promise((resolve, reject) => {
@@ -76,25 +111,41 @@ async function execPowerShell(action: string, params: Record<string, unknown> = 
 }
 
 /**
- * WPS客户端类 - 通过PowerShell COM桥接跟WPS通信
+ * 统一执行接口 - 根据平台选择调用方式
+ * Mac: 反向轮询模式（MCP Server是服务端，WPS加载项来取命令）
+ * Windows: PowerShell调用COM接口
+ */
+async function execWpsAction(action: string, params: Record<string, unknown> = {}): Promise<unknown> {
+  if (IS_MAC) {
+    return execMacPoll(action, params);
+  } else {
+    return execPowerShell(action, params);
+  }
+}
+
+/**
+ * WPS客户端类 - 跨平台通信
+ * Windows: PowerShell COM桥接
+ * Mac: HTTP调用WPS加载项
  */
 export class WpsClient {
   private status: WpsClientStatus;
 
   constructor(_config?: Partial<WpsEndpointConfig>) {
     this.status = { connected: false };
-    log.info('WPS Client initialized (COM Bridge)', { method: 'PowerShell COM' });
+    const method = IS_MAC ? 'HTTP (Mac Addon)' : 'PowerShell COM';
+    log.info('WPS Client initialized', { method, platform: os.platform() });
   }
 
   /**
-   * 调用WPS COM接口
+   * 调用WPS接口（跨平台）
    */
   async invokeAction<T = unknown>(action: string, params: Record<string, unknown> = {}): Promise<WpsApiResponse<T>> {
     const startTime = Date.now();
     logRequest(action, params);
 
     try {
-      const result = await execPowerShell(action, params) as WpsApiResponse<T>;
+      const result = await execWpsAction(action, params) as WpsApiResponse<T>;
       const duration = Date.now() - startTime;
       logResponse(action, result.success, duration);
 
