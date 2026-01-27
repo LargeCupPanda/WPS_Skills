@@ -123,59 +123,78 @@ powershell -ExecutionPolicy Bypass -File scripts/auto-install.ps1
 
 ## Features
 
-### Excel Features
+### Excel Features (13 implemented, target 50+)
 
-| Feature | Description | Status |
-|---------|-------------|--------|
-| Get Workbook Info | Name, path, sheet list | ✅ |
-| Get Context | Headers, selection, used range | ✅ |
-| Read Cells | Single or range | ✅ |
-| Write Cells | Single or range | ✅ |
-| Set Formula | Write Excel formulas | ✅ |
-| Sort | Sort by column | ✅ |
-| Filter | Auto filter | ✅ |
-| Remove Duplicates | Delete duplicate rows | ✅ |
-| Create Chart | Bar, line, pie, etc. | ✅ |
-| Formula Diagnosis | Analyze formula errors | 🚧 |
-| Pivot Table | Create pivot tables | 🚧 |
-| Conditional Formatting | Set format rules | 🚧 |
+| Feature | Description | Windows | macOS |
+|---------|-------------|---------|-------|
+| Get Workbook Info | Name, path, sheet list | ✅ | ✅ |
+| Get Context | Headers, selection, used range | ✅ | ✅ |
+| Read Cells | Single or range | ✅ | ✅ |
+| Write Cells | Single or range | ✅ | ✅ |
+| Set Formula | Write Excel formulas | ✅ | ✅ |
+| Formula Diagnosis | Analyze formula errors | ✅ | ✅ |
+| Sort | Sort by column | ✅ | 🔧 |
+| Filter | Auto filter | ✅ | 🔧 |
+| Remove Duplicates | Delete duplicate rows | ✅ | ⚠️ Mac API issue |
+| Data Cleaning | Trim spaces, etc. | ✅ | ✅ |
+| Create Chart | Bar, line, pie, etc. | ✅ | ✅ |
+| Update Chart | Modify title, type, etc. | ✅ | ✅ |
+| Create Pivot Table | Create pivot tables | ✅ | ✅ |
+| Update Pivot Table | Refresh, add fields | ✅ | ✅ |
+| Conditional Formatting | Set format rules | 🚧 | 🚧 |
 
-### Word Features
+> 📌 Excel features expanding, targeting 95% daily scenarios (50+ tools)
 
-| Feature | Description | Status |
-|---------|-------------|--------|
-| Get Document Info | Name, paragraphs, word count | ✅ |
-| Read Text | Get document content | ✅ |
-| Insert Text | At start/end/cursor | ✅ |
-| Set Font | Font, size, bold, etc. | ✅ |
-| Find & Replace | Batch replace text | ✅ |
-| Insert Table | Create and fill tables | ✅ |
-| Apply Style | Apply Word styles | ✅ |
-| Generate TOC | Auto generate TOC | 🚧 |
-| Insert Image | Insert and resize images | 🚧 |
+### Word Features (22 implemented)
+
+| Feature | Description | Windows | macOS |
+|---------|-------------|---------|-------|
+| Get Document Info | Name, paragraphs, word count | ✅ | ✅ |
+| Get Document Stats | Pages, characters, lines | ✅ | ✅ |
+| Read Text | Get document content | ✅ | ✅ |
+| Insert Text | At start/end/cursor | ✅ | ✅ |
+| Set Font | Font, size, bold, etc. | ✅ | ✅ |
+| Find & Replace | Batch replace text | ✅ | ✅ |
+| Insert Table | Create and fill tables | ✅ | ✅ |
+| Apply Style | Apply Word styles | ✅ | ✅ |
+| Paragraph Format | Alignment, indent, spacing | ✅ | ✅ |
+| Page Setup | Margins, paper, orientation | ✅ | ✅ |
+| Generate TOC | Auto generate TOC | ✅ | ✅ |
+| Insert Image | Insert and resize images | ✅ | ✅ |
+| Insert Header | Add header text | ✅ | ✅ |
+| Insert Footer | Add footer and page number | ✅ | ✅ |
+| Insert Page Break | Page/section breaks | ✅ | ✅ |
+| Insert Hyperlink | Add hyperlinks | ✅ | ✅ |
+| Insert Bookmark | Add bookmarks | ✅ | ✅ |
+| Get Bookmarks | Get bookmark list | ✅ | ✅ |
+| Add Comment | Add document comments | ✅ | ✅ |
+| Get Comments | Get comment list | ✅ | ✅ |
+| Save Document | Save current document | ✅ | ✅ |
+| Export PDF | Convert to PDF format | ✅ | ✅ |
 
 ### PPT Features
 
-| Feature | Description | Status |
-|---------|-------------|--------|
-| Get Presentation Info | Name, slide count, shapes | ✅ |
-| Add Slide | Multiple layouts | ✅ |
-| Set Title | Modify slide title | ✅ |
-| Add Text Box | Custom position and style | ✅ |
-| Unify Font | Consistent fonts | ✅ |
-| Beautify Slide | Business/Tech/Creative/Minimal | ✅ |
-| Add Shape | Insert shapes | 🚧 |
-| Add Animation | Enter/exit animations | 🚧 |
-| Set Theme | Apply PPT themes | 🚧 |
+| Feature | Description | Windows | macOS |
+|---------|-------------|---------|-------|
+| Get Presentation Info | Name, slide count, shapes | ✅ | 🔧 |
+| Add Slide | Multiple layouts | ✅ | 🔧 |
+| Set Title | Modify slide title | ✅ | 🔧 |
+| Add Text Box | Custom position and style | ✅ | 🔧 |
+| Unify Font | Consistent fonts | ✅ | 🔧 |
+| Beautify Slide | Business/Tech/Creative/Minimal | ✅ | 🔧 |
+| Add Shape | Insert shapes | 🚧 | 🚧 |
+| Add Animation | Enter/exit animations | 🚧 | 🚧 |
+| Set Theme | Apply PPT themes | 🚧 | 🚧 |
+
+> Legend: ✅ Tested | 🔧 Pending test | 🚧 In development | ⚠️ Known issue
 
 ### Common Features
 
-| Feature | Description | Status |
-|---------|-------------|--------|
-| Save File | Save current document | ✅ |
-| Format Conversion | Word/Excel/PPT conversion | 🚧 |
-
-> ✅ Completed | 🚧 In Development
+| Feature | Description | Windows | macOS |
+|---------|-------------|---------|-------|
+| Save File | Save current document | ✅ | ✅ |
+| Export PDF | Convert to PDF | ✅ | ✅ |
+| Format Conversion | Word/Excel/PPT conversion | 🚧 | 🚧 |
 
 ---
 
