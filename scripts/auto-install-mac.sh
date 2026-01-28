@@ -38,7 +38,7 @@ echo ""
 
 # ========== 前置条件检查 ==========
 check_prerequisites() {
-    echo "========== [1/6] 前置条件检查 =========="
+    echo "========== [1/5] 前置条件检查 =========="
 
     # 检查操作系统
     if [[ "$(uname)" != "Darwin" ]]; then
@@ -68,31 +68,12 @@ check_prerequisites() {
     fi
     echo -e "${GREEN}✓ Node.js $(node -v)${NC}"
 
-    # 检查 python3
-    if ! command -v python3 &> /dev/null; then
-        echo -e "${RED}❌ 错误: 未找到 Python3${NC}"
-        exit 1
-    fi
-    echo -e "${GREEN}✓ Python3 $(python3 --version | cut -d' ' -f2)${NC}"
-
-    # 检查 python-pptx (用于PPT自动化)
-    if ! python3 -c "import pptx" 2>/dev/null; then
-        echo -e "${YELLOW}⚠ python-pptx 未安装，正在安装...${NC}"
-        pip3 install python-pptx --quiet || {
-            echo -e "${YELLOW}⚠ pip3 安装失败，尝试 pip...${NC}"
-            pip install python-pptx --quiet || {
-                echo -e "${RED}❌ 无法安装 python-pptx，PPT自动切换功能可能受影响${NC}"
-            }
-        }
-    fi
-    echo -e "${GREEN}✓ python-pptx 已安装${NC}"
-
     echo ""
 }
 
 # ========== 检查加载项目录 ==========
 check_addon_dir() {
-    echo "========== [2/6] 检查加载项目录 =========="
+    echo "========== [2/5] 检查加载项目录 =========="
 
     if [ -d "$WPS_ADDON_DIR" ]; then
         echo -e "${GREEN}✓ 加载项目录存在${NC}"
@@ -106,7 +87,7 @@ check_addon_dir() {
 
 # ========== 安装加载项 ==========
 install_addon() {
-    echo "========== [3/6] 安装 WPS Claude助手 加载项 =========="
+    echo "========== [3/5] 安装 WPS Claude助手 加载项 =========="
 
     # 检查源目录
     if [ ! -d "$ADDON_SOURCE" ]; then
@@ -132,7 +113,7 @@ install_addon() {
 
 # ========== 更新 publish.xml ==========
 update_publish_xml() {
-    echo "========== [4/6] 更新加载项配置 =========="
+    echo "========== [4/5] 更新加载项配置 =========="
 
     PUBLISH_XML="$WPS_ADDON_DIR/publish.xml"
 
@@ -150,7 +131,7 @@ EOF
 
 # ========== 构建 MCP Server ==========
 build_mcp_server() {
-    echo "========== [5/6] 构建 MCP Server =========="
+    echo "========== [5/5] 构建 MCP Server =========="
 
     MCP_DIR="$PROJECT_DIR/wps-office-mcp"
 
@@ -181,7 +162,7 @@ build_mcp_server() {
 
 # ========== 配置 Claude Code ==========
 configure_claude_code() {
-    echo "========== [6/6] 配置 Claude Code MCP 设置 =========="
+    echo "========== [+] 配置 Claude Code MCP 设置 =========="
 
     MCP_INDEX_PATH="$PROJECT_DIR/wps-office-mcp/dist/index.js"
 

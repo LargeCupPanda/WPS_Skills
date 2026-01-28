@@ -188,6 +188,15 @@ function handleCommand(cmd) {
             case 'getActiveDocument':
                 result = handleGetActiveDocument();
                 break;
+            case 'getOpenDocuments':
+                result = handleGetOpenDocuments(cmd.params);
+                break;
+            case 'switchDocument':
+                result = handleSwitchDocument(cmd.params);
+                break;
+            case 'openDocument':
+                result = handleOpenDocument(cmd.params);
+                break;
             case 'getDocumentText':
                 result = handleGetDocumentText();
                 break;
@@ -207,6 +216,350 @@ function handleCommand(cmd) {
                 break;
             case 'beautifySlide':
                 result = handleBeautifySlide(cmd.params);
+                break;
+
+            // PPT 演示文稿操作
+            case 'createPresentation':
+                result = handleCreatePresentation(cmd.params);
+                break;
+            case 'openPresentation':
+                result = handleOpenPresentation(cmd.params);
+                break;
+            case 'closePresentation':
+                result = handleClosePresentation(cmd.params);
+                break;
+            case 'getOpenPresentations':
+                result = handleGetOpenPresentations(cmd.params);
+                break;
+            case 'switchPresentation':
+                result = handleSwitchPresentation(cmd.params);
+                break;
+
+            // PPT 幻灯片操作
+            case 'deleteSlide':
+                result = handleDeleteSlide(cmd.params);
+                break;
+            case 'duplicateSlide':
+                result = handleDuplicateSlide(cmd.params);
+                break;
+            case 'moveSlide':
+                result = handleMoveSlide(cmd.params);
+                break;
+            case 'getSlideCount':
+                result = handleGetSlideCount(cmd.params);
+                break;
+            case 'getSlideInfo':
+                result = handleGetSlideInfo(cmd.params);
+                break;
+            case 'switchSlide':
+                result = handleSwitchSlide(cmd.params);
+                break;
+            case 'setSlideLayout':
+                result = handleSetSlideLayout(cmd.params);
+                break;
+            case 'getSlideNotes':
+                result = handleGetSlideNotes(cmd.params);
+                break;
+            case 'setSlideNotes':
+                result = handleSetSlideNotes(cmd.params);
+                break;
+
+            // PPT 文本框操作
+            case 'addTextBox':
+                result = handleAddTextBox(cmd.params);
+                break;
+            case 'deleteTextBox':
+                result = handleDeleteTextBox(cmd.params);
+                break;
+            case 'getTextBoxes':
+                result = handleGetTextBoxes(cmd.params);
+                break;
+            case 'setTextBoxText':
+                result = handleSetTextBoxText(cmd.params);
+                break;
+            case 'setTextBoxStyle':
+                result = handleSetTextBoxStyle(cmd.params);
+                break;
+
+            // PPT 标题操作
+            case 'setSlideTitle':
+                result = handleSetSlideTitle(cmd.params);
+                break;
+            case 'getSlideTitle':
+                result = handleGetSlideTitle(cmd.params);
+                break;
+            case 'setSlideSubtitle':
+                result = handleSetSlideSubtitle(cmd.params);
+                break;
+            case 'setSlideContent':
+                result = handleSetSlideContent(cmd.params);
+                break;
+
+            // PPT 形状操作
+            case 'addShape':
+                result = handleAddShape(cmd.params);
+                break;
+            case 'deleteShape':
+                result = handleDeleteShape(cmd.params);
+                break;
+            case 'getShapes':
+                result = handleGetShapes(cmd.params);
+                break;
+            case 'setShapeStyle':
+                result = handleSetShapeStyle(cmd.params);
+                break;
+            case 'setShapeText':
+                result = handleSetShapeText(cmd.params);
+                break;
+            case 'setShapePosition':
+                result = handleSetShapePosition(cmd.params);
+                break;
+
+            // PPT 图片操作
+            case 'insertPptImage':
+                result = handleInsertPptImage(cmd.params);
+                break;
+            case 'deletePptImage':
+                result = handleDeletePptImage(cmd.params);
+                break;
+            case 'setImageStyle':
+                result = handleSetImageStyle(cmd.params);
+                break;
+
+            // PPT 表格操作
+            case 'insertPptTable':
+                result = handleInsertPptTable(cmd.params);
+                break;
+            case 'setPptTableCell':
+                result = handleSetPptTableCell(cmd.params);
+                break;
+            case 'getPptTableCell':
+                result = handleGetPptTableCell(cmd.params);
+                break;
+            case 'setPptTableStyle':
+                result = handleSetPptTableStyle(cmd.params);
+                break;
+            case 'setPptTableCellStyle':
+                result = handleSetPptTableCellStyle(cmd.params);
+                break;
+            case 'setPptTableRowStyle':
+                result = handleSetPptTableRowStyle(cmd.params);
+                break;
+            case 'setShapeShadow':
+                result = handleSetShapeShadow(cmd.params);
+                break;
+            case 'setBackgroundGradient':
+                result = handleSetBackgroundGradient(cmd.params);
+                break;
+            case 'setShapeGradient':
+                result = handleSetShapeGradient(cmd.params);
+                break;
+            case 'setShapeBorder':
+                result = handleSetShapeBorder(cmd.params);
+                break;
+            case 'setShapeTransparency':
+                result = handleSetShapeTransparency(cmd.params);
+                break;
+            case 'setShapeRoundness':
+                result = handleSetShapeRoundness(cmd.params);
+                break;
+            case 'setShapeFullStyle':
+                result = handleSetShapeFullStyle(cmd.params);
+                break;
+            case 'alignShapes':
+                result = handleAlignShapes(cmd.params);
+                break;
+            case 'distributeShapes':
+                result = handleDistributeShapes(cmd.params);
+                break;
+            case 'groupShapes':
+                result = handleGroupShapes(cmd.params);
+                break;
+            case 'duplicateShape':
+                result = handleDuplicateShape(cmd.params);
+                break;
+            case 'setShapeZOrder':
+                result = handleSetShapeZOrder(cmd.params);
+                break;
+            case 'addConnector':
+                result = handleAddConnector(cmd.params);
+                break;
+            case 'addArrow':
+                result = handleAddArrow(cmd.params);
+                break;
+
+            // PPT 专业美化工具
+            case 'applyColorScheme':
+                result = handleApplyColorScheme(cmd.params);
+                break;
+            case 'autoBeautifySlide':
+                result = handleAutoBeautifySlide(cmd.params);
+                break;
+            case 'createKpiCards':
+                result = handleCreateKpiCards(cmd.params);
+                break;
+            case 'createStyledTable':
+                result = handleCreateStyledTable(cmd.params);
+                break;
+            case 'addTitleDecoration':
+                result = handleAddTitleDecoration(cmd.params);
+                break;
+            case 'addPageIndicator':
+                result = handleAddPageIndicator(cmd.params);
+                break;
+            case 'beautifyAllSlides':
+                result = handleBeautifyAllSlides(cmd.params);
+                break;
+
+            // PPT 高端能力 - 数据可视化组件
+            case 'createProgressBar':
+                result = handleCreateProgressBar(cmd.params);
+                break;
+            case 'createGauge':
+                result = handleCreateGauge(cmd.params);
+                break;
+            case 'createMiniCharts':
+                result = handleCreateMiniCharts(cmd.params);
+                break;
+            case 'createDonutChart':
+                result = handleCreateDonutChart(cmd.params);
+                break;
+
+            // PPT 高端能力 - 智能布局工具
+            case 'autoLayout':
+                result = handleAutoLayout(cmd.params);
+                break;
+            case 'smartDistribute':
+                result = handleSmartDistribute(cmd.params);
+                break;
+            case 'createGrid':
+                result = handleCreateGrid(cmd.params);
+                break;
+
+            // PPT 高端能力 - 高级动画组合
+            case 'addAnimationPreset':
+                result = handleAddAnimationPreset(cmd.params);
+                break;
+            case 'addEmphasisAnimation':
+                result = handleAddEmphasisAnimation(cmd.params);
+                break;
+
+            // PPT 高端能力 - 流程图/组织架构图
+            case 'createFlowChart':
+                result = handleCreateFlowChart(cmd.params);
+                break;
+            case 'createOrgChart':
+                result = handleCreateOrgChart(cmd.params);
+                break;
+            case 'createTimeline':
+                result = handleCreateTimeline(cmd.params);
+                break;
+
+            // PPT 高端能力 - 母版操作
+            case 'getSlideMaster':
+                result = handleGetSlideMaster(cmd.params);
+                break;
+            case 'setMasterBackground':
+                result = handleSetMasterBackground(cmd.params);
+                break;
+            case 'addMasterElement':
+                result = handleAddMasterElement(cmd.params);
+                break;
+
+            // PPT 高端能力 - 3D效果
+            case 'set3DRotation':
+                result = handleSet3DRotation(cmd.params);
+                break;
+            case 'set3DDepth':
+                result = handleSet3DDepth(cmd.params);
+                break;
+            case 'set3DMaterial':
+                result = handleSet3DMaterial(cmd.params);
+                break;
+            case 'create3DText':
+                result = handleCreate3DText(cmd.params);
+                break;
+
+            // PPT 图表操作
+            case 'insertPptChart':
+                result = handleInsertPptChart(cmd.params);
+                break;
+            case 'setPptChartData':
+                result = handleSetPptChartData(cmd.params);
+                break;
+            case 'setPptChartStyle':
+                result = handleSetPptChartStyle(cmd.params);
+                break;
+
+            // PPT 动画效果
+            case 'addAnimation':
+                result = handleAddAnimation(cmd.params);
+                break;
+            case 'removeAnimation':
+                result = handleRemoveAnimation(cmd.params);
+                break;
+            case 'getAnimations':
+                result = handleGetAnimations(cmd.params);
+                break;
+            case 'setAnimationOrder':
+                result = handleSetAnimationOrder(cmd.params);
+                break;
+
+            // PPT 切换效果
+            case 'setSlideTransition':
+                result = handleSetSlideTransition(cmd.params);
+                break;
+            case 'removeSlideTransition':
+                result = handleRemoveSlideTransition(cmd.params);
+                break;
+            case 'applyTransitionToAll':
+                result = handleApplyTransitionToAll(cmd.params);
+                break;
+
+            // PPT 主题/背景
+            case 'setSlideBackground':
+                result = handleSetSlideBackground(cmd.params);
+                break;
+            case 'setBackgroundColor':
+                result = handleSetBackgroundColor(cmd.params);
+                break;
+            case 'setBackgroundImage':
+                result = handleSetBackgroundImage(cmd.params);
+                break;
+
+            // PPT 超链接
+            case 'addPptHyperlink':
+                result = handleAddPptHyperlink(cmd.params);
+                break;
+            case 'removePptHyperlink':
+                result = handleRemovePptHyperlink(cmd.params);
+                break;
+
+            // PPT 页眉页脚
+            case 'setSlideNumber':
+                result = handleSetSlideNumber(cmd.params);
+                break;
+            case 'setPptFooter':
+                result = handleSetPptFooter(cmd.params);
+                break;
+            case 'setPptDateTime':
+                result = handleSetPptDateTime(cmd.params);
+                break;
+
+            // PPT 查找替换
+            case 'findPptText':
+                result = handleFindPptText(cmd.params);
+                break;
+            case 'replacePptText':
+                result = handleReplacePptText(cmd.params);
+                break;
+
+            // PPT 放映
+            case 'startSlideShow':
+                result = handleStartSlideShow(cmd.params);
+                break;
+            case 'endSlideShow':
+                result = handleEndSlideShow(cmd.params);
                 break;
 
             // Word 高级功能
@@ -781,6 +1134,47 @@ function handleSetFormula(params) {
 
 // ==================== Word Handlers ====================
 
+// 获取所有打开的Word文档
+function handleGetOpenDocuments(params) {
+    try {
+        var documents = [];
+        for (var i = 1; i <= Application.Documents.Count; i++) {
+            var doc = Application.Documents.Item(i);
+            documents.push({
+                name: doc.Name,
+                path: doc.FullName,
+                paragraphs: doc.Paragraphs.Count,
+                active: doc.Name === Application.ActiveDocument.Name
+            });
+        }
+        return { success: true, data: { documents: documents, count: documents.length } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 切换活动Word文档
+function handleSwitchDocument(params) {
+    try {
+        var doc = Application.Documents.Item(params.name || params.index);
+        doc.Activate();
+        return { success: true, data: { name: doc.Name, path: doc.FullName } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 打开Word文档
+function handleOpenDocument(params) {
+    try {
+        if (!params.path) return { success: false, error: '请提供文档路径' };
+        var doc = Application.Documents.Open(params.path);
+        return { success: true, data: { name: doc.Name, path: doc.FullName, paragraphs: doc.Paragraphs.Count } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
 function handleGetActiveDocument() {
     try {
         var doc = Application.ActiveDocument;
@@ -864,12 +1258,48 @@ function handleAddSlide(params) {
         var ppt = Application.ActivePresentation;
         if (!ppt) return { success: false, error: '没有打开的演示文稿' };
 
-        var index = params.index || ppt.Slides.Count + 1;
-        var layout = params.layout || 1; // ppLayoutTitle
+        // WPS PPT布局常量映射
+        var layoutMap = {
+            'title': 1,           // ppLayoutTitle
+            'title_content': 2,   // ppLayoutText
+            'blank': 12,          // ppLayoutBlank
+            'two_column': 3,      // ppLayoutTwoColumnText
+            'comparison': 4       // ppLayoutComparison
+        };
+
+        var index = params.index || params.position || ppt.Slides.Count + 1;
+        var layoutInput = params.layout || 'title_content';
+        var layout = typeof layoutInput === 'string' ? (layoutMap[layoutInput] || 2) : layoutInput;
         var slide = ppt.Slides.Add(index, layout);
 
-        if (params.title && slide.Shapes.HasTitle) {
-            slide.Shapes.Title.TextFrame.TextRange.Text = params.title;
+        // 设置标题（带防护）
+        if (params.title && slide && slide.Shapes) {
+            try {
+                if (slide.Shapes.HasTitle && slide.Shapes.Title) {
+                    slide.Shapes.Title.TextFrame.TextRange.Text = params.title;
+                }
+            } catch (titleErr) {
+                // 标题设置失败不影响整体
+            }
+        }
+
+        // 设置内容（带防护）
+        if (params.content && slide && slide.Shapes) {
+            try {
+                // 遍历找到内容占位符
+                for (var i = 1; i <= slide.Shapes.Count; i++) {
+                    var shape = slide.Shapes.Item(i);
+                    if (shape.Type === 14 && shape.PlaceholderFormat) { // msoPlaceholder
+                        var phType = shape.PlaceholderFormat.Type;
+                        if (phType === 2 || phType === 15) { // ppPlaceholderBody or ppPlaceholderObject
+                            shape.TextFrame.TextRange.Text = params.content;
+                            break;
+                        }
+                    }
+                }
+            } catch (contentErr) {
+                // 内容设置失败不影响整体
+            }
         }
 
         return { success: true, data: { slideIndex: slide.SlideIndex } };
@@ -940,6 +1370,1968 @@ function handleBeautifySlide(params) {
         }
 
         return { success: true, data: { style: params.style || 'business', count: count } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// ==================== PPT 演示文稿操作 Handlers ====================
+
+// 创建新演示文稿
+function handleCreatePresentation(params) {
+    try {
+        var ppt = Application.Presentations.Add();
+        return { success: true, data: { name: ppt.Name, slideCount: ppt.Slides.Count } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 打开演示文稿
+function handleOpenPresentation(params) {
+    try {
+        var ppt = Application.Presentations.Open(params.path);
+        return { success: true, data: { name: ppt.Name, path: ppt.FullName, slideCount: ppt.Slides.Count } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 关闭演示文稿
+function handleClosePresentation(params) {
+    try {
+        var ppt = params.name ? Application.Presentations.Item(params.name) : Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有找到演示文稿' };
+        var name = ppt.Name;
+        ppt.Close();
+        return { success: true, data: { closed: name } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 获取所有打开的演示文稿
+function handleGetOpenPresentations(params) {
+    try {
+        var presentations = [];
+        for (var i = 1; i <= Application.Presentations.Count; i++) {
+            var ppt = Application.Presentations.Item(i);
+            presentations.push({ name: ppt.Name, path: ppt.FullName, slideCount: ppt.Slides.Count });
+        }
+        return { success: true, data: { presentations: presentations, count: presentations.length } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 切换演示文稿
+function handleSwitchPresentation(params) {
+    try {
+        var ppt = Application.Presentations.Item(params.name || params.index);
+        ppt.Windows.Item(1).Activate();
+        return { success: true, data: { name: ppt.Name } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// ==================== PPT 幻灯片操作 Handlers ====================
+
+// 删除幻灯片
+function handleDeleteSlide(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var index = params.index || params.slideIndex;
+        ppt.Slides.Item(index).Delete();
+        return { success: true, data: { deleted: index } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 复制幻灯片
+function handleDuplicateSlide(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var index = params.index || params.slideIndex || 1;
+        var slide = ppt.Slides.Item(index);
+        var newSlide = slide.Duplicate();
+        return { success: true, data: { sourceIndex: index, newIndex: newSlide.Item(1).SlideIndex } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 移动幻灯片
+function handleMoveSlide(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var fromIndex = params.from || params.fromIndex;
+        var toIndex = params.to || params.toIndex;
+        ppt.Slides.Item(fromIndex).MoveTo(toIndex);
+        return { success: true, data: { from: fromIndex, to: toIndex } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 获取幻灯片数量
+function handleGetSlideCount(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        return { success: true, data: { count: ppt.Slides.Count } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 获取幻灯片信息
+function handleGetSlideInfo(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var index = params.index || params.slideIndex || 1;
+        var slide = ppt.Slides.Item(index);
+        var shapes = [];
+        for (var i = 1; i <= slide.Shapes.Count; i++) {
+            var shape = slide.Shapes.Item(i);
+            shapes.push({ name: shape.Name, type: shape.Type, hasText: shape.HasTextFrame ? true : false });
+        }
+        return { success: true, data: { index: index, shapeCount: slide.Shapes.Count, shapes: shapes, layout: slide.Layout } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 切换到指定幻灯片
+function handleSwitchSlide(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var index = params.index || params.slideIndex;
+        Application.ActiveWindow.View.GotoSlide(index);
+        return { success: true, data: { currentSlide: index } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 设置幻灯片布局
+function handleSetSlideLayout(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var index = params.index || params.slideIndex || 1;
+        var layoutMap = { 'title': 1, 'titleContent': 2, 'blank': 12, 'twoColumn': 4, 'comparison': 5, 'titleOnly': 11 };
+        var layout = layoutMap[params.layout] || params.layout || 2;
+        ppt.Slides.Item(index).Layout = layout;
+        return { success: true, data: { slideIndex: index, layout: layout } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 获取幻灯片备注
+function handleGetSlideNotes(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var index = params.index || params.slideIndex || 1;
+        var slide = ppt.Slides.Item(index);
+        var notes = '';
+        try {
+            notes = slide.NotesPage.Shapes.Item(2).TextFrame.TextRange.Text;
+        } catch (e) { notes = ''; }
+        return { success: true, data: { slideIndex: index, notes: notes } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 设置幻灯片备注
+function handleSetSlideNotes(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var index = params.index || params.slideIndex || 1;
+        var slide = ppt.Slides.Item(index);
+        slide.NotesPage.Shapes.Item(2).TextFrame.TextRange.Text = params.notes || '';
+        return { success: true, data: { slideIndex: index } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// ==================== PPT 文本框操作 Handlers ====================
+
+// 添加文本框
+function handleAddTextBox(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var index = params.slideIndex || 1;
+        var slide = ppt.Slides.Item(index);
+        var left = params.left || 100;
+        var top = params.top || 100;
+        var width = params.width || 200;
+        var height = params.height || 50;
+        var textBox = slide.Shapes.AddTextbox(1, left, top, width, height);
+        if (params.text) {
+            textBox.TextFrame.TextRange.Text = params.text;
+        }
+        if (params.fontSize) {
+            textBox.TextFrame.TextRange.Font.Size = params.fontSize;
+        }
+        if (params.fontName) {
+            textBox.TextFrame.TextRange.Font.Name = params.fontName;
+        }
+        return { success: true, data: { name: textBox.Name, slideIndex: index } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 删除文本框
+function handleDeleteTextBox(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var index = params.slideIndex || 1;
+        var slide = ppt.Slides.Item(index);
+        var shape = slide.Shapes.Item(params.name || params.shapeIndex);
+        shape.Delete();
+        return { success: true, data: { deleted: params.name || params.shapeIndex } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 获取所有文本框
+function handleGetTextBoxes(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var index = params.slideIndex || 1;
+        var slide = ppt.Slides.Item(index);
+        var textBoxes = [];
+        for (var i = 1; i <= slide.Shapes.Count; i++) {
+            var shape = slide.Shapes.Item(i);
+            if (shape.HasTextFrame) {
+                var text = '';
+                try { text = shape.TextFrame.TextRange.Text; } catch (e) {}
+                textBoxes.push({ name: shape.Name, index: i, text: text, left: shape.Left, top: shape.Top, width: shape.Width, height: shape.Height });
+            }
+        }
+        return { success: true, data: { slideIndex: index, textBoxes: textBoxes, count: textBoxes.length } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 设置文本框内容
+function handleSetTextBoxText(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var index = params.slideIndex || 1;
+        var slide = ppt.Slides.Item(index);
+        var shape = slide.Shapes.Item(params.name || params.shapeIndex);
+        shape.TextFrame.TextRange.Text = params.text || '';
+        return { success: true, data: { name: shape.Name, text: params.text } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 设置文本框样式
+function handleSetTextBoxStyle(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var index = params.slideIndex || 1;
+        var slide = ppt.Slides.Item(index);
+        var shape = slide.Shapes.Item(params.name || params.shapeIndex);
+        var tr = shape.TextFrame.TextRange;
+        if (params.fontSize) tr.Font.Size = params.fontSize;
+        if (params.fontName) tr.Font.Name = params.fontName;
+        if (params.bold !== undefined) tr.Font.Bold = params.bold;
+        if (params.italic !== undefined) tr.Font.Italic = params.italic;
+        if (params.color) {
+            var c = params.color.replace('#', '');
+            tr.Font.Color.RGB = parseInt(c.substr(0, 2), 16) + parseInt(c.substr(2, 2), 16) * 256 + parseInt(c.substr(4, 2), 16) * 65536;
+        }
+        if (params.alignment) {
+            var alignMap = { 'left': 1, 'center': 2, 'right': 3 };
+            tr.ParagraphFormat.Alignment = alignMap[params.alignment] || 1;
+        }
+        return { success: true, data: { name: shape.Name } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// ==================== PPT 标题操作 Handlers ====================
+
+// 设置幻灯片标题
+function handleSetSlideTitle(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var index = params.slideIndex || 1;
+        var slide = ppt.Slides.Item(index);
+        if (slide.Shapes.HasTitle) {
+            slide.Shapes.Title.TextFrame.TextRange.Text = params.title || '';
+        }
+        return { success: true, data: { slideIndex: index, title: params.title } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 获取幻灯片标题
+function handleGetSlideTitle(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var index = params.slideIndex || 1;
+        var slide = ppt.Slides.Item(index);
+        var title = '';
+        if (slide.Shapes.HasTitle) {
+            title = slide.Shapes.Title.TextFrame.TextRange.Text;
+        }
+        return { success: true, data: { slideIndex: index, title: title } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 设置幻灯片副标题
+function handleSetSlideSubtitle(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var index = params.slideIndex || 1;
+        var slide = ppt.Slides.Item(index);
+        for (var i = 1; i <= slide.Shapes.Count; i++) {
+            var shape = slide.Shapes.Item(i);
+            if (shape.PlaceholderFormat && shape.PlaceholderFormat.Type === 2) {
+                shape.TextFrame.TextRange.Text = params.subtitle || '';
+                return { success: true, data: { slideIndex: index, subtitle: params.subtitle } };
+            }
+        }
+        return { success: false, error: '未找到副标题占位符' };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 设置幻灯片内容
+function handleSetSlideContent(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var index = params.slideIndex || 1;
+        var slide = ppt.Slides.Item(index);
+        for (var i = 1; i <= slide.Shapes.Count; i++) {
+            var shape = slide.Shapes.Item(i);
+            if (shape.PlaceholderFormat && shape.PlaceholderFormat.Type === 7) {
+                shape.TextFrame.TextRange.Text = params.content || '';
+                return { success: true, data: { slideIndex: index } };
+            }
+        }
+        return { success: false, error: '未找到内容占位符' };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// ==================== PPT 形状操作 Handlers ====================
+
+// 添加形状
+function handleAddShape(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var index = params.slideIndex || 1;
+        var slide = ppt.Slides.Item(index);
+        var shapeTypeMap = { 'rectangle': 1, 'oval': 9, 'triangle': 7, 'diamond': 4, 'pentagon': 51, 'hexagon': 52, 'arrow': 13, 'star': 12, 'heart': 21, 'cloud': 179 };
+        var shapeType = shapeTypeMap[params.type] || params.type || 1;
+        var left = params.left || 100;
+        var top = params.top || 100;
+        var width = params.width || 100;
+        var height = params.height || 100;
+        var shape = slide.Shapes.AddShape(shapeType, left, top, width, height);
+        if (params.text) {
+            shape.TextFrame.TextRange.Text = params.text;
+        }
+        if (params.fillColor) {
+            var c = params.fillColor.replace('#', '');
+            shape.Fill.ForeColor.RGB = parseInt(c.substr(0, 2), 16) + parseInt(c.substr(2, 2), 16) * 256 + parseInt(c.substr(4, 2), 16) * 65536;
+        }
+        return { success: true, data: { name: shape.Name, slideIndex: index } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 删除形状
+function handleDeleteShape(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var index = params.slideIndex || 1;
+        var slide = ppt.Slides.Item(index);
+        var shape = slide.Shapes.Item(params.name || params.shapeIndex);
+        shape.Delete();
+        return { success: true, data: { deleted: params.name || params.shapeIndex } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 获取所有形状
+function handleGetShapes(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var index = params.slideIndex || 1;
+        var slide = ppt.Slides.Item(index);
+        var shapes = [];
+        for (var i = 1; i <= slide.Shapes.Count; i++) {
+            var shape = slide.Shapes.Item(i);
+            shapes.push({ name: shape.Name, index: i, type: shape.Type, left: shape.Left, top: shape.Top, width: shape.Width, height: shape.Height });
+        }
+        return { success: true, data: { slideIndex: index, shapes: shapes, count: shapes.length } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 设置形状样式
+function handleSetShapeStyle(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var index = params.slideIndex || 1;
+        var slide = ppt.Slides.Item(index);
+        var shape = slide.Shapes.Item(params.name || params.shapeIndex);
+        if (params.fillColor) {
+            var c = params.fillColor.replace('#', '');
+            shape.Fill.ForeColor.RGB = parseInt(c.substr(0, 2), 16) + parseInt(c.substr(2, 2), 16) * 256 + parseInt(c.substr(4, 2), 16) * 65536;
+        }
+        if (params.lineColor) {
+            var lc = params.lineColor.replace('#', '');
+            shape.Line.ForeColor.RGB = parseInt(lc.substr(0, 2), 16) + parseInt(lc.substr(2, 2), 16) * 256 + parseInt(lc.substr(4, 2), 16) * 65536;
+        }
+        if (params.lineWidth) {
+            shape.Line.Weight = params.lineWidth;
+        }
+        return { success: true, data: { name: shape.Name } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 设置形状文本
+function handleSetShapeText(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var index = params.slideIndex || 1;
+        var slide = ppt.Slides.Item(index);
+        var shape = slide.Shapes.Item(params.name || params.shapeIndex);
+        shape.TextFrame.TextRange.Text = params.text || '';
+        return { success: true, data: { name: shape.Name, text: params.text } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 设置形状位置
+function handleSetShapePosition(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var index = params.slideIndex || 1;
+        var slide = ppt.Slides.Item(index);
+        var shape = slide.Shapes.Item(params.name || params.shapeIndex);
+        if (params.left !== undefined) shape.Left = params.left;
+        if (params.top !== undefined) shape.Top = params.top;
+        if (params.width !== undefined) shape.Width = params.width;
+        if (params.height !== undefined) shape.Height = params.height;
+        return { success: true, data: { name: shape.Name, left: shape.Left, top: shape.Top, width: shape.Width, height: shape.Height } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// ==================== PPT 图片操作 Handlers ====================
+
+// 插入图片
+function handleInsertPptImage(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var index = params.slideIndex || 1;
+        var slide = ppt.Slides.Item(index);
+        var left = params.left || 100;
+        var top = params.top || 100;
+        var width = params.width || -1;
+        var height = params.height || -1;
+        var pic = slide.Shapes.AddPicture(params.path, false, true, left, top, width, height);
+        return { success: true, data: { name: pic.Name, path: params.path } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 删除图片
+function handleDeletePptImage(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var index = params.slideIndex || 1;
+        var slide = ppt.Slides.Item(index);
+        var shape = slide.Shapes.Item(params.name || params.shapeIndex);
+        shape.Delete();
+        return { success: true, data: { deleted: params.name || params.shapeIndex } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 设置图片样式
+function handleSetImageStyle(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var index = params.slideIndex || 1;
+        var slide = ppt.Slides.Item(index);
+        var shape = slide.Shapes.Item(params.name || params.shapeIndex);
+        if (params.left !== undefined) shape.Left = params.left;
+        if (params.top !== undefined) shape.Top = params.top;
+        if (params.width !== undefined) shape.Width = params.width;
+        if (params.height !== undefined) shape.Height = params.height;
+        if (params.rotation !== undefined) shape.Rotation = params.rotation;
+        return { success: true, data: { name: shape.Name } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// ==================== PPT 表格操作 Handlers ====================
+
+// 插入表格
+function handleInsertPptTable(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var index = params.slideIndex || 1;
+        var slide = ppt.Slides.Item(index);
+        var rows = params.rows || 3;
+        var cols = params.cols || 3;
+        var left = params.left || 100;
+        var top = params.top || 100;
+        var width = params.width || 400;
+        var height = params.height || 200;
+        var table = slide.Shapes.AddTable(rows, cols, left, top, width, height);
+        return { success: true, data: { name: table.Name, rows: rows, cols: cols } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 设置表格单元格
+function handleSetPptTableCell(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var index = params.slideIndex || 1;
+        var slide = ppt.Slides.Item(index);
+
+        // 修复：遍历所有shapes找到表格，而不是直接用tableIndex
+        var shape = null;
+        var tableCount = 0;
+        var targetTableIndex = params.tableIndex || 1;
+
+        if (params.tableName) {
+            // 用名称查找
+            shape = slide.Shapes.Item(params.tableName);
+        } else {
+            // 遍历找第N个表格
+            for (var i = 1; i <= slide.Shapes.Count; i++) {
+                var s = slide.Shapes.Item(i);
+                if (s.HasTable) {
+                    tableCount++;
+                    if (tableCount === targetTableIndex) {
+                        shape = s;
+                        break;
+                    }
+                }
+            }
+        }
+
+        if (!shape || !shape.HasTable) {
+            return { success: false, error: '找不到表格，slideIndex=' + index + ', tableIndex=' + targetTableIndex + ', 共找到' + tableCount + '个表格' };
+        }
+
+        var cell = shape.Table.Cell(params.row, params.col);
+        // 兼容 text 和 value 两种参数名
+        var textValue = params.text || params.value || '';
+        cell.Shape.TextFrame.TextRange.Text = textValue;
+        return { success: true, data: { row: params.row, col: params.col, text: textValue } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 获取表格单元格
+function handleGetPptTableCell(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var index = params.slideIndex || 1;
+        var slide = ppt.Slides.Item(index);
+        var shape = slide.Shapes.Item(params.tableName || params.tableIndex);
+        var cell = shape.Table.Cell(params.row, params.col);
+        var value = cell.Shape.TextFrame.TextRange.Text;
+        return { success: true, data: { row: params.row, col: params.col, value: value } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 设置表格样式
+function handleSetPptTableStyle(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var index = params.slideIndex || 1;
+        var slide = ppt.Slides.Item(index);
+        var shape = slide.Shapes.Item(params.tableName || params.tableIndex);
+        if (params.left !== undefined) shape.Left = params.left;
+        if (params.top !== undefined) shape.Top = params.top;
+        if (params.width !== undefined) shape.Width = params.width;
+        if (params.height !== undefined) shape.Height = params.height;
+        return { success: true, data: { name: shape.Name } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 设置表格单元格样式（P0核心功能）
+function handleSetPptTableCellStyle(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var index = params.slideIndex || 1;
+        var slide = ppt.Slides.Item(index);
+
+        // 遍历找表格
+        var shape = null;
+        var tableCount = 0;
+        var targetTableIndex = params.tableIndex || 1;
+
+        if (params.tableName) {
+            shape = slide.Shapes.Item(params.tableName);
+        } else {
+            for (var i = 1; i <= slide.Shapes.Count; i++) {
+                var s = slide.Shapes.Item(i);
+                if (s.HasTable) {
+                    tableCount++;
+                    if (tableCount === targetTableIndex) {
+                        shape = s;
+                        break;
+                    }
+                }
+            }
+        }
+
+        if (!shape || !shape.HasTable) {
+            return { success: false, error: '找不到表格' };
+        }
+
+        var cell = shape.Table.Cell(params.row, params.col);
+        var cellShape = cell.Shape;
+
+        // 背景色
+        if (params.backgroundColor) {
+            var bgColor = params.backgroundColor.replace('#', '');
+            var r = parseInt(bgColor.substr(0, 2), 16);
+            var g = parseInt(bgColor.substr(2, 2), 16);
+            var b = parseInt(bgColor.substr(4, 2), 16);
+            cellShape.Fill.Visible = true;
+            cellShape.Fill.Solid();
+            cellShape.Fill.ForeColor.RGB = r + g * 256 + b * 65536;
+        }
+
+        // 字体颜色
+        if (params.fontColor) {
+            var fc = params.fontColor.replace('#', '');
+            var fr = parseInt(fc.substr(0, 2), 16);
+            var fg = parseInt(fc.substr(2, 2), 16);
+            var fb = parseInt(fc.substr(4, 2), 16);
+            cellShape.TextFrame.TextRange.Font.Color.RGB = fr + fg * 256 + fb * 65536;
+        }
+
+        // 字号
+        if (params.fontSize) {
+            cellShape.TextFrame.TextRange.Font.Size = params.fontSize;
+        }
+
+        // 加粗
+        if (params.bold !== undefined) {
+            cellShape.TextFrame.TextRange.Font.Bold = params.bold;
+        }
+
+        // 对齐
+        if (params.alignment) {
+            var alignMap = { 'left': 1, 'center': 2, 'right': 3 };
+            cellShape.TextFrame.TextRange.ParagraphFormat.Alignment = alignMap[params.alignment] || 2;
+        }
+
+        return { success: true, data: { row: params.row, col: params.col } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 批量设置表格行样式（P0核心功能 - 美化表头）
+function handleSetPptTableRowStyle(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var index = params.slideIndex || 1;
+        var slide = ppt.Slides.Item(index);
+
+        // 遍历找表格
+        var shape = null;
+        var tableCount = 0;
+        var targetTableIndex = params.tableIndex || 1;
+
+        for (var i = 1; i <= slide.Shapes.Count; i++) {
+            var s = slide.Shapes.Item(i);
+            if (s.HasTable) {
+                tableCount++;
+                if (tableCount === targetTableIndex) {
+                    shape = s;
+                    break;
+                }
+            }
+        }
+
+        if (!shape || !shape.HasTable) {
+            return { success: false, error: '找不到表格' };
+        }
+
+        var table = shape.Table;
+        var row = params.row || 1;
+        var colCount = table.Columns.Count;
+
+        // 解析颜色
+        var bgColor = null;
+        if (params.backgroundColor) {
+            var bg = params.backgroundColor.replace('#', '');
+            var r = parseInt(bg.substr(0, 2), 16);
+            var g = parseInt(bg.substr(2, 2), 16);
+            var b = parseInt(bg.substr(4, 2), 16);
+            bgColor = r + g * 256 + b * 65536;
+        }
+
+        var fontColor = null;
+        if (params.fontColor) {
+            var fc = params.fontColor.replace('#', '');
+            var fr = parseInt(fc.substr(0, 2), 16);
+            var fg = parseInt(fc.substr(2, 2), 16);
+            var fb = parseInt(fc.substr(4, 2), 16);
+            fontColor = fr + fg * 256 + fb * 65536;
+        }
+
+        // 遍历行中的所有单元格
+        for (var col = 1; col <= colCount; col++) {
+            var cell = table.Cell(row, col);
+            var cellShape = cell.Shape;
+
+            if (bgColor !== null) {
+                cellShape.Fill.Visible = true;
+                cellShape.Fill.Solid();
+                cellShape.Fill.ForeColor.RGB = bgColor;
+            }
+
+            if (fontColor !== null) {
+                cellShape.TextFrame.TextRange.Font.Color.RGB = fontColor;
+            }
+
+            if (params.fontSize) {
+                cellShape.TextFrame.TextRange.Font.Size = params.fontSize;
+            }
+
+            if (params.bold !== undefined) {
+                cellShape.TextFrame.TextRange.Font.Bold = params.bold;
+            }
+
+            if (params.alignment) {
+                var alignMap = { 'left': 1, 'center': 2, 'right': 3 };
+                cellShape.TextFrame.TextRange.ParagraphFormat.Alignment = alignMap[params.alignment] || 2;
+            }
+        }
+
+        return { success: true, data: { row: row, cols: colCount } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// ==================== PPT 高级美化 Handlers ====================
+
+// 设置形状阴影效果
+function handleSetShapeShadow(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var slide = ppt.Slides.Item(params.slideIndex || 1);
+        var shape = slide.Shapes.Item(params.shapeIndex || params.shapeName);
+
+        var shadow = shape.Shadow;
+        shadow.Visible = true;
+        shadow.Type = params.type || 2; // msoShadow21 (外阴影)
+        shadow.Blur = params.blur || 10;
+        shadow.OffsetX = params.offsetX || 3;
+        shadow.OffsetY = params.offsetY || 3;
+        shadow.Transparency = params.transparency || 0.5;
+
+        if (params.color) {
+            var c = params.color.replace('#', '');
+            var r = parseInt(c.substr(0, 2), 16);
+            var g = parseInt(c.substr(2, 2), 16);
+            var b = parseInt(c.substr(4, 2), 16);
+            shadow.ForeColor.RGB = r + g * 256 + b * 65536;
+        }
+
+        return { success: true, data: { name: shape.Name, shadow: true } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 设置渐变背景
+function handleSetBackgroundGradient(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var slide = ppt.Slides.Item(params.slideIndex || 1);
+
+        var fill = slide.Background.Fill;
+        fill.TwoColorGradient(params.direction || 1, 1); // 1=msoGradientHorizontal
+
+        // 起始颜色
+        if (params.color1) {
+            var c1 = params.color1.replace('#', '');
+            var r1 = parseInt(c1.substr(0, 2), 16);
+            var g1 = parseInt(c1.substr(2, 2), 16);
+            var b1 = parseInt(c1.substr(4, 2), 16);
+            fill.ForeColor.RGB = r1 + g1 * 256 + b1 * 65536;
+        }
+
+        // 结束颜色
+        if (params.color2) {
+            var c2 = params.color2.replace('#', '');
+            var r2 = parseInt(c2.substr(0, 2), 16);
+            var g2 = parseInt(c2.substr(2, 2), 16);
+            var b2 = parseInt(c2.substr(4, 2), 16);
+            fill.BackColor.RGB = r2 + g2 * 256 + b2 * 65536;
+        }
+
+        return { success: true, data: { slideIndex: params.slideIndex || 1, gradient: true } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 设置形状渐变填充
+function handleSetShapeGradient(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var slide = ppt.Slides.Item(params.slideIndex || 1);
+        var shape = slide.Shapes.Item(params.shapeIndex || params.shapeName);
+
+        var fill = shape.Fill;
+        fill.TwoColorGradient(params.direction || 1, 1);
+
+        if (params.color1) {
+            var c1 = params.color1.replace('#', '');
+            var r1 = parseInt(c1.substr(0, 2), 16);
+            var g1 = parseInt(c1.substr(2, 2), 16);
+            var b1 = parseInt(c1.substr(4, 2), 16);
+            fill.ForeColor.RGB = r1 + g1 * 256 + b1 * 65536;
+        }
+
+        if (params.color2) {
+            var c2 = params.color2.replace('#', '');
+            var r2 = parseInt(c2.substr(0, 2), 16);
+            var g2 = parseInt(c2.substr(2, 2), 16);
+            var b2 = parseInt(c2.substr(4, 2), 16);
+            fill.BackColor.RGB = r2 + g2 * 256 + b2 * 65536;
+        }
+
+        return { success: true, data: { name: shape.Name, gradient: true } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 设置形状边框
+function handleSetShapeBorder(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var slide = ppt.Slides.Item(params.slideIndex || 1);
+        var shape = slide.Shapes.Item(params.shapeIndex || params.shapeName);
+
+        var line = shape.Line;
+
+        if (params.visible === false) {
+            line.Visible = false;
+        } else {
+            line.Visible = true;
+            if (params.weight) line.Weight = params.weight;
+            if (params.color) {
+                var c = params.color.replace('#', '');
+                var r = parseInt(c.substr(0, 2), 16);
+                var g = parseInt(c.substr(2, 2), 16);
+                var b = parseInt(c.substr(4, 2), 16);
+                line.ForeColor.RGB = r + g * 256 + b * 65536;
+            }
+            if (params.dashStyle) {
+                var dashMap = { 'solid': 1, 'dash': 4, 'dot': 2, 'dashDot': 5 };
+                line.DashStyle = dashMap[params.dashStyle] || 1;
+            }
+        }
+
+        return { success: true, data: { name: shape.Name } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 设置形状透明度
+function handleSetShapeTransparency(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var slide = ppt.Slides.Item(params.slideIndex || 1);
+        var shape = slide.Shapes.Item(params.shapeIndex || params.shapeName);
+
+        shape.Fill.Transparency = params.transparency || 0;
+
+        return { success: true, data: { name: shape.Name, transparency: params.transparency } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 设置形状圆角
+function handleSetShapeRoundness(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var slide = ppt.Slides.Item(params.slideIndex || 1);
+        var shape = slide.Shapes.Item(params.shapeIndex || params.shapeName);
+
+        // 圆角调整 (0-1之间) - 修复赋值语法
+        if (shape.Adjustments && shape.Adjustments.Count > 0) {
+            var adj = shape.Adjustments;
+            adj(1) = params.roundness || 0.2;
+        }
+
+        return { success: true, data: { name: shape.Name, roundness: params.roundness } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 批量设置形状样式（一次性设置多个属性）
+function handleSetShapeFullStyle(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var slide = ppt.Slides.Item(params.slideIndex || 1);
+        var shape = slide.Shapes.Item(params.shapeIndex || params.shapeName);
+
+        // 填充色
+        if (params.fillColor) {
+            var fc = params.fillColor.replace('#', '');
+            var fr = parseInt(fc.substr(0, 2), 16);
+            var fg = parseInt(fc.substr(2, 2), 16);
+            var fb = parseInt(fc.substr(4, 2), 16);
+            shape.Fill.Visible = true;
+            shape.Fill.Solid();
+            shape.Fill.ForeColor.RGB = fr + fg * 256 + fb * 65536;
+        }
+
+        // 透明度
+        if (params.transparency !== undefined) {
+            shape.Fill.Transparency = params.transparency;
+        }
+
+        // 边框
+        if (params.borderColor) {
+            var bc = params.borderColor.replace('#', '');
+            var br = parseInt(bc.substr(0, 2), 16);
+            var bg = parseInt(bc.substr(2, 2), 16);
+            var bb = parseInt(bc.substr(4, 2), 16);
+            shape.Line.Visible = true;
+            shape.Line.ForeColor.RGB = br + bg * 256 + bb * 65536;
+        }
+        if (params.borderWeight) {
+            shape.Line.Weight = params.borderWeight;
+        }
+        if (params.noBorder) {
+            shape.Line.Visible = false;
+        }
+
+        // 阴影
+        if (params.shadow) {
+            shape.Shadow.Visible = true;
+            shape.Shadow.Blur = params.shadowBlur || 8;
+            shape.Shadow.OffsetX = params.shadowX || 3;
+            shape.Shadow.OffsetY = params.shadowY || 3;
+            shape.Shadow.Transparency = params.shadowTransparency || 0.6;
+        }
+
+        // 文字样式
+        if (shape.HasTextFrame && shape.TextFrame.HasText) {
+            var textRange = shape.TextFrame.TextRange;
+            if (params.fontColor) {
+                var tc = params.fontColor.replace('#', '');
+                var tr = parseInt(tc.substr(0, 2), 16);
+                var tg = parseInt(tc.substr(2, 2), 16);
+                var tb = parseInt(tc.substr(4, 2), 16);
+                textRange.Font.Color.RGB = tr + tg * 256 + tb * 65536;
+            }
+            if (params.fontSize) textRange.Font.Size = params.fontSize;
+            if (params.bold !== undefined) textRange.Font.Bold = params.bold;
+            if (params.fontName) textRange.Font.Name = params.fontName;
+        }
+
+        return { success: true, data: { name: shape.Name } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 对齐多个形状
+function handleAlignShapes(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var slide = ppt.Slides.Item(params.slideIndex || 1);
+
+        var alignMap = {
+            'left': 0, 'center': 1, 'right': 2,
+            'top': 3, 'middle': 4, 'bottom': 5
+        };
+        var alignType = alignMap[params.alignment] || 1;
+
+        // 选择指定的形状
+        var shapeIndices = params.shapeIndices || [];
+        if (shapeIndices.length >= 2) {
+            var range = slide.Shapes.Range(shapeIndices);
+            range.Align(alignType, false);
+        }
+
+        return { success: true, data: { aligned: shapeIndices.length } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 分布形状（等间距）
+function handleDistributeShapes(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var slide = ppt.Slides.Item(params.slideIndex || 1);
+
+        var distributeType = params.direction === 'vertical' ? 1 : 0;
+
+        var shapeIndices = params.shapeIndices || [];
+        if (shapeIndices.length >= 3) {
+            var range = slide.Shapes.Range(shapeIndices);
+            range.Distribute(distributeType, false);
+        }
+
+        return { success: true, data: { distributed: shapeIndices.length } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 组合形状
+function handleGroupShapes(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var slide = ppt.Slides.Item(params.slideIndex || 1);
+
+        var shapeIndices = params.shapeIndices || [];
+        if (shapeIndices.length >= 2) {
+            var range = slide.Shapes.Range(shapeIndices);
+            var group = range.Group();
+            return { success: true, data: { name: group.Name } };
+        }
+
+        return { success: false, error: '至少需要2个形状' };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 复制形状
+function handleDuplicateShape(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var slide = ppt.Slides.Item(params.slideIndex || 1);
+        var shape = slide.Shapes.Item(params.shapeIndex || params.shapeName);
+
+        var duplicate = shape.Duplicate();
+        duplicate.Left = params.left || (shape.Left + 20);
+        duplicate.Top = params.top || (shape.Top + 20);
+
+        return { success: true, data: { name: duplicate.Name, original: shape.Name } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 设置形状层级
+function handleSetShapeZOrder(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var slide = ppt.Slides.Item(params.slideIndex || 1);
+        var shape = slide.Shapes.Item(params.shapeIndex || params.shapeName);
+
+        var orderMap = {
+            'front': 0, 'back': 1, 'forward': 2, 'backward': 3
+        };
+        var order = orderMap[params.order] || 0;
+        shape.ZOrder(order);
+
+        return { success: true, data: { name: shape.Name, order: params.order } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 添加连接线
+function handleAddConnector(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var slide = ppt.Slides.Item(params.slideIndex || 1);
+
+        var connectorType = params.type === 'curved' ? 2 : 1; // 1=直线, 2=曲线
+        var connector = slide.Shapes.AddConnector(connectorType,
+            params.startX || 0, params.startY || 0,
+            params.endX || 100, params.endY || 100);
+
+        if (params.color) {
+            var c = params.color.replace('#', '');
+            var r = parseInt(c.substr(0, 2), 16);
+            var g = parseInt(c.substr(2, 2), 16);
+            var b = parseInt(c.substr(4, 2), 16);
+            connector.Line.ForeColor.RGB = r + g * 256 + b * 65536;
+        }
+        if (params.weight) connector.Line.Weight = params.weight;
+
+        return { success: true, data: { name: connector.Name } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 添加箭头
+function handleAddArrow(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var slide = ppt.Slides.Item(params.slideIndex || 1);
+
+        var line = slide.Shapes.AddLine(
+            params.startX || 0, params.startY || 0,
+            params.endX || 100, params.endY || 100);
+
+        line.Line.EndArrowheadStyle = 2; // 箭头
+        line.Line.EndArrowheadLength = 2;
+        line.Line.EndArrowheadWidth = 2;
+
+        if (params.color) {
+            var c = params.color.replace('#', '');
+            var r = parseInt(c.substr(0, 2), 16);
+            var g = parseInt(c.substr(2, 2), 16);
+            var b = parseInt(c.substr(4, 2), 16);
+            line.Line.ForeColor.RGB = r + g * 256 + b * 65536;
+        }
+        if (params.weight) line.Line.Weight = params.weight || 2;
+
+        return { success: true, data: { name: line.Name } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// ==================== PPT 图表操作 Handlers ====================
+
+// 插入图表
+function handleInsertPptChart(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var index = params.slideIndex || 1;
+        var slide = ppt.Slides.Item(index);
+        var chartTypeMap = { 'column': 51, 'bar': 57, 'line': 4, 'pie': 5, 'area': 1, 'scatter': -4169, 'doughnut': -4120 };
+        var chartType = chartTypeMap[params.type] || params.type || 51;
+        var left = params.left || 100;
+        var top = params.top || 100;
+        var width = params.width || 400;
+        var height = params.height || 300;
+        var chart = slide.Shapes.AddChart(chartType, left, top, width, height);
+        return { success: true, data: { name: chart.Name, type: params.type } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 设置图表数据
+function handleSetPptChartData(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var index = params.slideIndex || 1;
+        var slide = ppt.Slides.Item(index);
+        var shape = slide.Shapes.Item(params.chartName || params.chartIndex);
+        var chart = shape.Chart;
+        var dataSheet = chart.ChartData.Workbook.Worksheets.Item(1);
+        if (params.data) {
+            for (var r = 0; r < params.data.length; r++) {
+                for (var c = 0; c < params.data[r].length; c++) {
+                    dataSheet.Cells.Item(r + 1, c + 1).Value2 = params.data[r][c];
+                }
+            }
+        }
+        return { success: true, data: { chartName: shape.Name } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 设置图表样式
+function handleSetPptChartStyle(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var index = params.slideIndex || 1;
+        var slide = ppt.Slides.Item(index);
+        var shape = slide.Shapes.Item(params.chartName || params.chartIndex);
+        var chart = shape.Chart;
+        if (params.title) {
+            chart.HasTitle = true;
+            chart.ChartTitle.Text = params.title;
+        }
+        if (params.hasLegend !== undefined) {
+            chart.HasLegend = params.hasLegend;
+        }
+        return { success: true, data: { chartName: shape.Name } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// ==================== PPT 专业美化 Handlers ====================
+
+// 应用专业配色方案到幻灯片所有形状
+function handleApplyColorScheme(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var slide = ppt.Slides.Item(params.slideIndex || 1);
+
+        var schemes = {
+            'business': { primary: '#1a365d', secondary: '#2d5a87', accent: '#ffc107', text: '#ffffff' },
+            'tech': { primary: '#0d47a1', secondary: '#1976d2', accent: '#00bcd4', text: '#ffffff' },
+            'nature': { primary: '#1b5e20', secondary: '#388e3c', accent: '#8bc34a', text: '#ffffff' },
+            'elegant': { primary: '#37474f', secondary: '#546e7a', accent: '#ffab00', text: '#ffffff' },
+            'vibrant': { primary: '#6a1b9a', secondary: '#9c27b0', accent: '#e91e63', text: '#ffffff' },
+            'corporate': { primary: '#263238', secondary: '#455a64', accent: '#ff5722', text: '#ffffff' },
+            'finance': { primary: '#0d47a1', secondary: '#1565c0', accent: '#4caf50', text: '#ffffff' }
+        };
+        var scheme = schemes[params.scheme] || schemes['business'];
+
+        function hexToRgb(hex) {
+            var c = hex.replace('#', '');
+            return parseInt(c.substr(0, 2), 16) + parseInt(c.substr(2, 2), 16) * 256 + parseInt(c.substr(4, 2), 16) * 65536;
+        }
+
+        var count = 0;
+        // 遍历所有形状应用配色
+        for (var i = 1; i <= slide.Shapes.Count; i++) {
+            var shape = slide.Shapes.Item(i);
+            try {
+                // 根据形状类型应用不同颜色
+                if (shape.HasTextFrame && shape.TextFrame.HasText) {
+                    shape.TextFrame.TextRange.Font.Color.RGB = hexToRgb(scheme.text);
+                }
+                if (shape.Type === 1 || shape.Type === 6 || shape.Type === 13) { // AutoShape/FreeForm/Callout
+                    shape.Fill.Solid();
+                    shape.Fill.ForeColor.RGB = hexToRgb(count % 2 === 0 ? scheme.primary : scheme.secondary);
+                    count++;
+                }
+            } catch (e) { /* 跳过不支持的形状 */ }
+        }
+
+        // 设置背景
+        try {
+            slide.Background.Fill.Solid();
+            slide.Background.Fill.ForeColor.RGB = hexToRgb(scheme.primary);
+        } catch (e) {}
+
+        return { success: true, data: { scheme: params.scheme, shapesProcessed: count } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 一键美化幻灯片
+function handleAutoBeautifySlide(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var slide = ppt.Slides.Item(params.slideIndex || 1);
+
+        var style = params.style || 'business';
+        var schemes = {
+            'business': { bg1: '#1a365d', bg2: '#2d5a87', accent: '#ffc107' },
+            'tech': { bg1: '#0d47a1', bg2: '#1976d2', accent: '#00bcd4' },
+            'elegant': { bg1: '#37474f', bg2: '#546e7a', accent: '#ffab00' }
+        };
+        var scheme = schemes[style] || schemes['business'];
+
+        // 设置渐变背景
+        var fill = slide.Background.Fill;
+        fill.TwoColorGradient(1, 1);
+        var c1 = scheme.bg1.replace('#', '');
+        var r1 = parseInt(c1.substr(0, 2), 16);
+        var g1 = parseInt(c1.substr(2, 2), 16);
+        var b1 = parseInt(c1.substr(4, 2), 16);
+        fill.ForeColor.RGB = r1 + g1 * 256 + b1 * 65536;
+
+        var c2 = scheme.bg2.replace('#', '');
+        var r2 = parseInt(c2.substr(0, 2), 16);
+        var g2 = parseInt(c2.substr(2, 2), 16);
+        var b2 = parseInt(c2.substr(4, 2), 16);
+        fill.BackColor.RGB = r2 + g2 * 256 + b2 * 65536;
+
+        // 添加装饰条
+        var accentBar = slide.Shapes.AddShape(1, 50, slide.Master.Height - 80, slide.Master.Width - 100, 6);
+        var ca = scheme.accent.replace('#', '');
+        var ra = parseInt(ca.substr(0, 2), 16);
+        var ga = parseInt(ca.substr(2, 2), 16);
+        var ba = parseInt(ca.substr(4, 2), 16);
+        accentBar.Fill.Solid();
+        accentBar.Fill.ForeColor.RGB = ra + ga * 256 + ba * 65536;
+        accentBar.Line.Visible = false;
+
+        return { success: true, data: { style: style, beautified: true } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 创建KPI卡片组
+function handleCreateKpiCards(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var slide = ppt.Slides.Item(params.slideIndex || 1);
+
+        var cards = params.cards || [];
+        var startX = params.startX || 50;
+        var startY = params.startY || 350;
+        var cardWidth = params.cardWidth || 150;
+        var cardHeight = params.cardHeight || 80;
+        var gap = params.gap || 20;
+
+        var colors = ['#28a745', '#17a2b8', '#ffc107', '#dc3545', '#6f42c1', '#fd7e14'];
+        var createdCards = [];
+
+        for (var i = 0; i < cards.length; i++) {
+            var card = cards[i];
+            var x = startX + i * (cardWidth + gap);
+            var colorIdx = i % colors.length;
+            var color = card.color || colors[colorIdx];
+
+            // 创建卡片形状
+            var shape = slide.Shapes.AddShape(5, x, startY, cardWidth, cardHeight); // 5 = 圆角矩形
+
+            // 设置渐变填充
+            var c = color.replace('#', '');
+            var r = parseInt(c.substr(0, 2), 16);
+            var g = parseInt(c.substr(2, 2), 16);
+            var b = parseInt(c.substr(4, 2), 16);
+            shape.Fill.Solid();
+            shape.Fill.ForeColor.RGB = r + g * 256 + b * 65536;
+
+            // 去除边框
+            shape.Line.Visible = false;
+
+            // 添加阴影
+            shape.Shadow.Visible = true;
+            shape.Shadow.Blur = 10;
+            shape.Shadow.OffsetX = 3;
+            shape.Shadow.OffsetY = 3;
+            shape.Shadow.Transparency = 0.6;
+
+            // 设置文本
+            shape.TextFrame.TextRange.Text = (card.title || '') + '\n' + (card.value || '');
+            shape.TextFrame.TextRange.Font.Color.RGB = 16777215; // 白色
+            shape.TextFrame.TextRange.Font.Size = 14;
+            shape.TextFrame.TextRange.Font.Bold = true;
+            shape.TextFrame.TextRange.ParagraphFormat.Alignment = 2; // 居中
+
+            createdCards.push(shape.Name);
+        }
+
+        return { success: true, data: { count: createdCards.length, cards: createdCards } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 创建专业表格（带样式）
+function handleCreateStyledTable(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var slide = ppt.Slides.Item(params.slideIndex || 1);
+
+        var rows = params.rows || 5;
+        var cols = params.cols || 4;
+        var left = params.left || 50;
+        var top = params.top || 150;
+        var width = params.width || 620;
+        var height = params.height || 200;
+
+        // 创建表格
+        var table = slide.Shapes.AddTable(rows, cols, left, top, width, height);
+        var tbl = table.Table;
+
+        // 样式配置
+        var style = params.style || 'business';
+        var styles = {
+            'business': { header: '#1a365d', headerText: '#ffffff', oddRow: '#f8f9fa', evenRow: '#ffffff' },
+            'tech': { header: '#0d47a1', headerText: '#ffffff', oddRow: '#e3f2fd', evenRow: '#ffffff' },
+            'elegant': { header: '#37474f', headerText: '#ffffff', oddRow: '#eceff1', evenRow: '#ffffff' }
+        };
+        var s = styles[style] || styles['business'];
+
+        // 设置表头样式
+        for (var c = 1; c <= cols; c++) {
+            var headerCell = tbl.Cell(1, c);
+            var hc = s.header.replace('#', '');
+            var hr = parseInt(hc.substr(0, 2), 16);
+            var hg = parseInt(hc.substr(2, 2), 16);
+            var hb = parseInt(hc.substr(4, 2), 16);
+            headerCell.Shape.Fill.Solid();
+            headerCell.Shape.Fill.ForeColor.RGB = hr + hg * 256 + hb * 65536;
+            headerCell.Shape.TextFrame.TextRange.Font.Color.RGB = 16777215;
+            headerCell.Shape.TextFrame.TextRange.Font.Bold = true;
+            headerCell.Shape.TextFrame.TextRange.Font.Size = 12;
+        }
+
+        // 设置数据行斑马纹
+        for (var r = 2; r <= rows; r++) {
+            var rowColor = (r % 2 === 0) ? s.evenRow : s.oddRow;
+            var rc = rowColor.replace('#', '');
+            var rr = parseInt(rc.substr(0, 2), 16);
+            var rg = parseInt(rc.substr(2, 2), 16);
+            var rb = parseInt(rc.substr(4, 2), 16);
+            var rgb = rr + rg * 256 + rb * 65536;
+
+            for (var c = 1; c <= cols; c++) {
+                var cell = tbl.Cell(r, c);
+                cell.Shape.Fill.Solid();
+                cell.Shape.Fill.ForeColor.RGB = rgb;
+                cell.Shape.TextFrame.TextRange.Font.Size = 11;
+            }
+        }
+
+        // 填充数据
+        if (params.data) {
+            for (var r = 0; r < params.data.length && r < rows; r++) {
+                for (var c = 0; c < params.data[r].length && c < cols; c++) {
+                    tbl.Cell(r + 1, c + 1).Shape.TextFrame.TextRange.Text = String(params.data[r][c]);
+                }
+            }
+        }
+
+        return { success: true, data: { name: table.Name, rows: rows, cols: cols } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 添加标题装饰条
+function handleAddTitleDecoration(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var slide = ppt.Slides.Item(params.slideIndex || 1);
+
+        var left = params.left || 50;
+        var top = params.top || 130;
+        var width = params.width || 200;
+        var height = params.height || 5;
+        var color = params.color || '#1a365d';
+
+        var bar = slide.Shapes.AddShape(1, left, top, width, height);
+        var c = color.replace('#', '');
+        var r = parseInt(c.substr(0, 2), 16);
+        var g = parseInt(c.substr(2, 2), 16);
+        var b = parseInt(c.substr(4, 2), 16);
+        bar.Fill.Solid();
+        bar.Fill.ForeColor.RGB = r + g * 256 + b * 65536;
+        bar.Line.Visible = false;
+
+        return { success: true, data: { name: bar.Name } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 添加页码指示器
+function handleAddPageIndicator(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var slide = ppt.Slides.Item(params.slideIndex || 1);
+
+        var total = ppt.Slides.Count;
+        var current = params.slideIndex || 1;
+        var text = current + ' / ' + total;
+
+        var left = params.left || 880;
+        var top = params.top || 500;
+        var box = slide.Shapes.AddTextbox(1, left, top, 80, 30);
+        box.TextFrame.TextRange.Text = text;
+        box.TextFrame.TextRange.Font.Size = 12;
+        box.TextFrame.TextRange.Font.Color.RGB = params.dark ? 0 : 16777215;
+        box.TextFrame.TextRange.ParagraphFormat.Alignment = 3; // 右对齐
+
+        return { success: true, data: { name: box.Name, page: text } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 批量美化所有幻灯片
+function handleBeautifyAllSlides(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+
+        var style = params.style || 'business';
+        var schemes = {
+            'business': { bg1: '#1a365d', bg2: '#2d5a87', accent: '#ffc107', light: '#f8f9fa' },
+            'tech': { bg1: '#0d47a1', bg2: '#1976d2', accent: '#00bcd4', light: '#e3f2fd' },
+            'elegant': { bg1: '#37474f', bg2: '#546e7a', accent: '#ffab00', light: '#eceff1' }
+        };
+        var scheme = schemes[style] || schemes['business'];
+
+        var count = ppt.Slides.Count;
+        for (var i = 1; i <= count; i++) {
+            var slide = ppt.Slides.Item(i);
+            var fill = slide.Background.Fill;
+
+            // 首页和末页用深色渐变，中间页用浅色
+            if (i === 1 || i === count) {
+                fill.TwoColorGradient(1, 1);
+                var c1 = scheme.bg1.replace('#', '');
+                fill.ForeColor.RGB = parseInt(c1.substr(0, 2), 16) + parseInt(c1.substr(2, 2), 16) * 256 + parseInt(c1.substr(4, 2), 16) * 65536;
+                var c2 = scheme.bg2.replace('#', '');
+                fill.BackColor.RGB = parseInt(c2.substr(0, 2), 16) + parseInt(c2.substr(2, 2), 16) * 256 + parseInt(c2.substr(4, 2), 16) * 65536;
+            } else {
+                fill.Solid();
+                var cl = scheme.light.replace('#', '');
+                fill.ForeColor.RGB = parseInt(cl.substr(0, 2), 16) + parseInt(cl.substr(2, 2), 16) * 256 + parseInt(cl.substr(4, 2), 16) * 65536;
+            }
+        }
+
+        return { success: true, data: { style: style, slidesBeautified: count } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// ==================== PPT 动画效果 Handlers ====================
+
+// 添加动画
+function handleAddAnimation(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var index = params.slideIndex || 1;
+        var slide = ppt.Slides.Item(index);
+        var shape = slide.Shapes.Item(params.shapeName || params.shapeIndex);
+        var effectTypeMap = { 'appear': 1, 'fade': 10, 'fly': 2, 'float': 14, 'split': 13, 'wipe': 22, 'zoom': 23, 'swivel': 15, 'bounce': 26, 'spin': 49 };
+        var effectType = effectTypeMap[params.effect] || params.effect || 10;
+        var effect = slide.TimeLine.MainSequence.AddEffect(shape, effectType, 0, 1);
+        if (params.duration) effect.Timing.Duration = params.duration;
+        if (params.delay) effect.Timing.TriggerDelayTime = params.delay;
+        return { success: true, data: { shapeName: shape.Name, effect: params.effect } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 删除动画
+function handleRemoveAnimation(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var index = params.slideIndex || 1;
+        var slide = ppt.Slides.Item(index);
+        var seq = slide.TimeLine.MainSequence;
+        if (params.index) {
+            seq.Item(params.index).Delete();
+        } else {
+            while (seq.Count > 0) {
+                seq.Item(1).Delete();
+            }
+        }
+        return { success: true, data: { slideIndex: index } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 获取动画列表
+function handleGetAnimations(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var index = params.slideIndex || 1;
+        var slide = ppt.Slides.Item(index);
+        var animations = [];
+        var seq = slide.TimeLine.MainSequence;
+        for (var i = 1; i <= seq.Count; i++) {
+            var effect = seq.Item(i);
+            animations.push({ index: i, shapeName: effect.Shape.Name, effectType: effect.EffectType, duration: effect.Timing.Duration });
+        }
+        return { success: true, data: { slideIndex: index, animations: animations, count: animations.length } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 设置动画顺序
+function handleSetAnimationOrder(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var index = params.slideIndex || 1;
+        var slide = ppt.Slides.Item(index);
+        var seq = slide.TimeLine.MainSequence;
+        var effect = seq.Item(params.from);
+        effect.MoveTo(params.to);
+        return { success: true, data: { from: params.from, to: params.to } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// ==================== PPT 切换效果 Handlers ====================
+
+// 设置幻灯片切换效果
+function handleSetSlideTransition(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var index = params.slideIndex || 1;
+        var slide = ppt.Slides.Item(index);
+        var transitionMap = { 'none': 0, 'fade': 1, 'push': 2, 'wipe': 3, 'split': 4, 'reveal': 5, 'random': 6, 'cover': 7, 'uncover': 8, 'flash': 9 };
+        var transition = transitionMap[params.transition] || params.transition || 1;
+        slide.SlideShowTransition.EntryEffect = transition;
+        if (params.duration) slide.SlideShowTransition.Duration = params.duration;
+        if (params.advanceOnClick !== undefined) slide.SlideShowTransition.AdvanceOnClick = params.advanceOnClick;
+        if (params.advanceTime) {
+            slide.SlideShowTransition.AdvanceOnTime = true;
+            slide.SlideShowTransition.AdvanceTime = params.advanceTime;
+        }
+        return { success: true, data: { slideIndex: index, transition: params.transition } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 移除幻灯片切换效果
+function handleRemoveSlideTransition(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var index = params.slideIndex || 1;
+        var slide = ppt.Slides.Item(index);
+        slide.SlideShowTransition.EntryEffect = 0;
+        return { success: true, data: { slideIndex: index } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 应用切换效果到所有幻灯片
+function handleApplyTransitionToAll(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var transitionMap = { 'none': 0, 'fade': 1, 'push': 2, 'wipe': 3, 'split': 4, 'reveal': 5, 'random': 6 };
+        var transition = transitionMap[params.transition] || params.transition || 1;
+        for (var i = 1; i <= ppt.Slides.Count; i++) {
+            ppt.Slides.Item(i).SlideShowTransition.EntryEffect = transition;
+            if (params.duration) ppt.Slides.Item(i).SlideShowTransition.Duration = params.duration;
+        }
+        return { success: true, data: { transition: params.transition, appliedTo: ppt.Slides.Count } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// ==================== PPT 主题/背景 Handlers ====================
+
+// 设置幻灯片背景
+function handleSetSlideBackground(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var index = params.slideIndex || 1;
+        var slide = ppt.Slides.Item(index);
+        if (params.color) {
+            var c = params.color.replace('#', '');
+            slide.FollowMasterBackground = false;
+            slide.Background.Fill.Solid();
+            slide.Background.Fill.ForeColor.RGB = parseInt(c.substr(0, 2), 16) + parseInt(c.substr(2, 2), 16) * 256 + parseInt(c.substr(4, 2), 16) * 65536;
+        }
+        return { success: true, data: { slideIndex: index } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 设置背景颜色
+function handleSetBackgroundColor(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var c = params.color.replace('#', '');
+        var rgb = parseInt(c.substr(0, 2), 16) + parseInt(c.substr(2, 2), 16) * 256 + parseInt(c.substr(4, 2), 16) * 65536;
+        if (params.applyToAll) {
+            for (var i = 1; i <= ppt.Slides.Count; i++) {
+                var slide = ppt.Slides.Item(i);
+                slide.FollowMasterBackground = false;
+                slide.Background.Fill.Solid();
+                slide.Background.Fill.ForeColor.RGB = rgb;
+            }
+            return { success: true, data: { color: params.color, appliedTo: ppt.Slides.Count } };
+        } else {
+            var index = params.slideIndex || 1;
+            var slide = ppt.Slides.Item(index);
+            slide.FollowMasterBackground = false;
+            slide.Background.Fill.Solid();
+            slide.Background.Fill.ForeColor.RGB = rgb;
+            return { success: true, data: { slideIndex: index, color: params.color } };
+        }
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 设置背景图片
+function handleSetBackgroundImage(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var index = params.slideIndex || 1;
+        var slide = ppt.Slides.Item(index);
+        slide.FollowMasterBackground = false;
+        slide.Background.Fill.UserPicture(params.path);
+        return { success: true, data: { slideIndex: index, path: params.path } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// ==================== PPT 超链接 Handlers ====================
+
+// 添加超链接
+function handleAddPptHyperlink(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var index = params.slideIndex || 1;
+        var slide = ppt.Slides.Item(index);
+        var shape = slide.Shapes.Item(params.shapeName || params.shapeIndex);
+        var actionSettings = shape.ActionSettings.Item(1);
+        actionSettings.Hyperlink.Address = params.address || '';
+        if (params.subAddress) actionSettings.Hyperlink.SubAddress = params.subAddress;
+        return { success: true, data: { shapeName: shape.Name, address: params.address } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 移除超链接
+function handleRemovePptHyperlink(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var index = params.slideIndex || 1;
+        var slide = ppt.Slides.Item(index);
+        var shape = slide.Shapes.Item(params.shapeName || params.shapeIndex);
+        shape.ActionSettings.Item(1).Hyperlink.Address = '';
+        return { success: true, data: { shapeName: shape.Name } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// ==================== PPT 页眉页脚 Handlers ====================
+
+// 设置幻灯片编号
+function handleSetSlideNumber(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        if (params.visible !== undefined) {
+            ppt.SlideMaster.HeadersFooters.SlideNumber.Visible = params.visible;
+        }
+        return { success: true, data: { visible: params.visible } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 设置页脚
+function handleSetPptFooter(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        ppt.SlideMaster.HeadersFooters.Footer.Visible = true;
+        ppt.SlideMaster.HeadersFooters.Footer.Text = params.text || '';
+        return { success: true, data: { text: params.text } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 设置日期时间
+function handleSetPptDateTime(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        ppt.SlideMaster.HeadersFooters.DateAndTime.Visible = params.visible !== false;
+        if (params.useFixed) {
+            ppt.SlideMaster.HeadersFooters.DateAndTime.UseFormat = false;
+            ppt.SlideMaster.HeadersFooters.DateAndTime.Text = params.text || '';
+        }
+        return { success: true, data: { visible: params.visible !== false } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// ==================== PPT 查找替换 Handlers ====================
+
+// 查找文本
+function handleFindPptText(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var results = [];
+        for (var i = 1; i <= ppt.Slides.Count; i++) {
+            var slide = ppt.Slides.Item(i);
+            for (var j = 1; j <= slide.Shapes.Count; j++) {
+                var shape = slide.Shapes.Item(j);
+                try {
+                    if (shape.HasTextFrame && shape.TextFrame.HasText) {
+                        var text = shape.TextFrame.TextRange.Text;
+                        if (text.indexOf(params.text) !== -1) {
+                            results.push({ slideIndex: i, shapeName: shape.Name, text: text });
+                        }
+                    }
+                } catch (e) {}
+            }
+        }
+        return { success: true, data: { searchText: params.text, results: results, count: results.length } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 替换文本
+function handleReplacePptText(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var count = 0;
+        for (var i = 1; i <= ppt.Slides.Count; i++) {
+            var slide = ppt.Slides.Item(i);
+            for (var j = 1; j <= slide.Shapes.Count; j++) {
+                var shape = slide.Shapes.Item(j);
+                try {
+                    if (shape.HasTextFrame && shape.TextFrame.HasText) {
+                        var text = shape.TextFrame.TextRange.Text;
+                        if (text.indexOf(params.findText) !== -1) {
+                            shape.TextFrame.TextRange.Text = text.split(params.findText).join(params.replaceText || '');
+                            count++;
+                        }
+                    }
+                } catch (e) {}
+            }
+        }
+        return { success: true, data: { findText: params.findText, replaceText: params.replaceText, count: count } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// ==================== PPT 放映 Handlers ====================
+
+// 开始放映
+function handleStartSlideShow(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var startSlide = params.startSlide || 1;
+        ppt.SlideShowSettings.StartingSlide = startSlide;
+        ppt.SlideShowSettings.Run();
+        return { success: true, data: { startSlide: startSlide } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 结束放映
+function handleEndSlideShow(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        ppt.SlideShowWindow.View.Exit();
+        return { success: true, data: { ended: true } };
     } catch (e) {
         return { success: false, error: e.message };
     }
@@ -3141,6 +5533,940 @@ function handleSaveAs(params) {
         }
 
         return { success: true, data: { filePath: outputPath } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// ==================== PPT 高端能力 - 6大类 ====================
+
+// ========== 1. 数据可视化组件 ==========
+
+// 创建进度条
+function handleCreateProgressBar(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var slide = ppt.Slides.Item(params.slideIndex || 1);
+
+        var left = params.left || 100;
+        var top = params.top || 300;
+        var width = params.width || 400;
+        var height = params.height || 30;
+        var progress = Math.min(Math.max(params.progress || 0.5, 0), 1);
+        var label = params.label || '';
+
+        function hexToRgb(hex) {
+            var c = (hex || '#1a365d').replace('#', '');
+            return parseInt(c.substr(0, 2), 16) + parseInt(c.substr(2, 2), 16) * 256 + parseInt(c.substr(4, 2), 16) * 65536;
+        }
+
+        // 背景条
+        var bgBar = slide.Shapes.AddShape(5, left, top, width, height);
+        bgBar.Fill.Solid();
+        bgBar.Fill.ForeColor.RGB = hexToRgb(params.bgColor || '#e0e0e0');
+        bgBar.Line.Visible = false;
+
+        // 进度条
+        var progressWidth = width * progress;
+        var progressBar = slide.Shapes.AddShape(5, left, top, progressWidth, height);
+        progressBar.Fill.Solid();
+        progressBar.Fill.ForeColor.RGB = hexToRgb(params.color || '#28a745');
+        progressBar.Line.Visible = false;
+
+        // 百分比文本
+        var percentText = slide.Shapes.AddTextbox(1, left + width + 10, top, 60, height);
+        percentText.TextFrame.TextRange.Text = Math.round(progress * 100) + '%';
+        percentText.TextFrame.TextRange.Font.Size = 14;
+        percentText.TextFrame.TextRange.Font.Bold = true;
+
+        // 标签
+        if (label) {
+            var labelBox = slide.Shapes.AddTextbox(1, left, top - 25, width, 20);
+            labelBox.TextFrame.TextRange.Text = label;
+            labelBox.TextFrame.TextRange.Font.Size = 12;
+        }
+
+        return { success: true, data: { bgBar: bgBar.Name, progressBar: progressBar.Name, progress: progress } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 创建仪表盘
+function handleCreateGauge(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var slide = ppt.Slides.Item(params.slideIndex || 1);
+
+        var centerX = params.centerX || 360;
+        var centerY = params.centerY || 300;
+        var radius = params.radius || 100;
+        var value = Math.min(Math.max(params.value || 0.5, 0), 1);
+        var title = params.title || '';
+
+        function hexToRgb(hex) {
+            var c = (hex || '#1a365d').replace('#', '');
+            return parseInt(c.substr(0, 2), 16) + parseInt(c.substr(2, 2), 16) * 256 + parseInt(c.substr(4, 2), 16) * 65536;
+        }
+
+        // 外圆环背景
+        var outerCircle = slide.Shapes.AddShape(9, centerX - radius, centerY - radius, radius * 2, radius * 2);
+        outerCircle.Fill.Solid();
+        outerCircle.Fill.ForeColor.RGB = hexToRgb('#e0e0e0');
+        outerCircle.Line.Visible = false;
+
+        // 内圆（白色遮挡）
+        var innerRadius = radius * 0.7;
+        var innerCircle = slide.Shapes.AddShape(9, centerX - innerRadius, centerY - innerRadius, innerRadius * 2, innerRadius * 2);
+        innerCircle.Fill.Solid();
+        innerCircle.Fill.ForeColor.RGB = hexToRgb('#ffffff');
+        innerCircle.Line.Visible = false;
+
+        // 数值显示
+        var valueText = slide.Shapes.AddTextbox(1, centerX - 40, centerY - 20, 80, 40);
+        valueText.TextFrame.TextRange.Text = Math.round(value * 100) + '%';
+        valueText.TextFrame.TextRange.Font.Size = 24;
+        valueText.TextFrame.TextRange.Font.Bold = true;
+        valueText.TextFrame.TextRange.ParagraphFormat.Alignment = 2;
+
+        // 标题
+        if (title) {
+            var titleBox = slide.Shapes.AddTextbox(1, centerX - 60, centerY + radius + 10, 120, 25);
+            titleBox.TextFrame.TextRange.Text = title;
+            titleBox.TextFrame.TextRange.Font.Size = 14;
+            titleBox.TextFrame.TextRange.ParagraphFormat.Alignment = 2;
+        }
+
+        return { success: true, data: { gauge: outerCircle.Name, value: value } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 创建迷你图组（多个小指标）
+function handleCreateMiniCharts(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var slide = ppt.Slides.Item(params.slideIndex || 1);
+
+        var items = params.items || [];
+        var startX = params.startX || 50;
+        var startY = params.startY || 400;
+        var itemWidth = params.itemWidth || 100;
+        var gap = params.gap || 30;
+
+        function hexToRgb(hex) {
+            var c = (hex || '#1a365d').replace('#', '');
+            return parseInt(c.substr(0, 2), 16) + parseInt(c.substr(2, 2), 16) * 256 + parseInt(c.substr(4, 2), 16) * 65536;
+        }
+
+        var colors = ['#28a745', '#17a2b8', '#ffc107', '#dc3545', '#6f42c1'];
+        var created = [];
+
+        for (var i = 0; i < items.length; i++) {
+            var item = items[i];
+            var x = startX + i * (itemWidth + gap);
+            var color = item.color || colors[i % colors.length];
+
+            // 数值
+            var valueBox = slide.Shapes.AddTextbox(1, x, startY, itemWidth, 30);
+            valueBox.TextFrame.TextRange.Text = item.value || '0';
+            valueBox.TextFrame.TextRange.Font.Size = 20;
+            valueBox.TextFrame.TextRange.Font.Bold = true;
+            valueBox.TextFrame.TextRange.Font.Color.RGB = hexToRgb(color);
+
+            // 标签
+            var labelBox = slide.Shapes.AddTextbox(1, x, startY + 30, itemWidth, 20);
+            labelBox.TextFrame.TextRange.Text = item.label || '';
+            labelBox.TextFrame.TextRange.Font.Size = 11;
+            labelBox.TextFrame.TextRange.Font.Color.RGB = hexToRgb('#666666');
+
+            // 趋势箭头
+            if (item.trend) {
+                var trendBox = slide.Shapes.AddTextbox(1, x + itemWidth - 30, startY, 30, 20);
+                trendBox.TextFrame.TextRange.Text = item.trend === 'up' ? '↑' : '↓';
+                trendBox.TextFrame.TextRange.Font.Size = 14;
+                trendBox.TextFrame.TextRange.Font.Color.RGB = hexToRgb(item.trend === 'up' ? '#28a745' : '#dc3545');
+            }
+
+            created.push({ label: item.label, value: item.value });
+        }
+
+        return { success: true, data: { count: created.length, items: created } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 创建环形图（模拟）
+function handleCreateDonutChart(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var slide = ppt.Slides.Item(params.slideIndex || 1);
+
+        var centerX = params.centerX || 360;
+        var centerY = params.centerY || 280;
+        var radius = params.radius || 80;
+        var value = Math.min(Math.max(params.value || 0.75, 0), 1);
+        var title = params.title || '';
+        var centerText = params.centerText || Math.round(value * 100) + '%';
+
+        function hexToRgb(hex) {
+            var c = (hex || '#1a365d').replace('#', '');
+            return parseInt(c.substr(0, 2), 16) + parseInt(c.substr(2, 2), 16) * 256 + parseInt(c.substr(4, 2), 16) * 65536;
+        }
+
+        // 外环
+        var outerCircle = slide.Shapes.AddShape(9, centerX - radius, centerY - radius, radius * 2, radius * 2);
+        outerCircle.Fill.Solid();
+        outerCircle.Fill.ForeColor.RGB = hexToRgb(params.color || '#0d47a1');
+        outerCircle.Line.Visible = false;
+
+        // 内环（创建空心效果）
+        var innerRadius = radius * 0.6;
+        var innerCircle = slide.Shapes.AddShape(9, centerX - innerRadius, centerY - innerRadius, innerRadius * 2, innerRadius * 2);
+        innerCircle.Fill.Solid();
+        innerCircle.Fill.ForeColor.RGB = hexToRgb('#ffffff');
+        innerCircle.Line.Visible = false;
+
+        // 中心文本
+        var textBox = slide.Shapes.AddTextbox(1, centerX - 40, centerY - 15, 80, 30);
+        textBox.TextFrame.TextRange.Text = centerText;
+        textBox.TextFrame.TextRange.Font.Size = 18;
+        textBox.TextFrame.TextRange.Font.Bold = true;
+        textBox.TextFrame.TextRange.ParagraphFormat.Alignment = 2;
+
+        // 标题
+        if (title) {
+            var titleBox = slide.Shapes.AddTextbox(1, centerX - 60, centerY + radius + 15, 120, 25);
+            titleBox.TextFrame.TextRange.Text = title;
+            titleBox.TextFrame.TextRange.Font.Size = 12;
+            titleBox.TextFrame.TextRange.ParagraphFormat.Alignment = 2;
+        }
+
+        return { success: true, data: { donut: outerCircle.Name, value: value } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// ========== 2. 智能布局工具 ==========
+
+// 自动排版（将形状整齐排列）
+function handleAutoLayout(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var slide = ppt.Slides.Item(params.slideIndex || 1);
+
+        var layout = params.layout || 'grid'; // grid, horizontal, vertical
+        var margin = params.margin || 50;
+        var gap = params.gap || 20;
+        var slideWidth = 720;
+        var slideHeight = 540;
+
+        var shapes = [];
+        for (var i = 1; i <= slide.Shapes.Count; i++) {
+            var s = slide.Shapes.Item(i);
+            if (s.Type === 1 || s.Type === 6 || s.Type === 17) { // AutoShape, FreeForm, TextBox
+                shapes.push(s);
+            }
+        }
+
+        if (shapes.length === 0) {
+            return { success: true, data: { message: '没有可排列的形状', count: 0 } };
+        }
+
+        if (layout === 'horizontal') {
+            var totalWidth = 0;
+            for (var j = 0; j < shapes.length; j++) {
+                totalWidth += shapes[j].Width;
+            }
+            var availWidth = slideWidth - 2 * margin;
+            var spacing = (availWidth - totalWidth) / (shapes.length + 1);
+            var currentX = margin + spacing;
+            for (var k = 0; k < shapes.length; k++) {
+                shapes[k].Left = currentX;
+                shapes[k].Top = (slideHeight - shapes[k].Height) / 2;
+                currentX += shapes[k].Width + spacing;
+            }
+        } else if (layout === 'vertical') {
+            var currentY = margin;
+            for (var m = 0; m < shapes.length; m++) {
+                shapes[m].Left = (slideWidth - shapes[m].Width) / 2;
+                shapes[m].Top = currentY;
+                currentY += shapes[m].Height + gap;
+            }
+        } else { // grid
+            var cols = params.cols || Math.ceil(Math.sqrt(shapes.length));
+            var rows = Math.ceil(shapes.length / cols);
+            var cellWidth = (slideWidth - 2 * margin) / cols;
+            var cellHeight = (slideHeight - 2 * margin) / rows;
+
+            for (var n = 0; n < shapes.length; n++) {
+                var col = n % cols;
+                var row = Math.floor(n / cols);
+                shapes[n].Left = margin + col * cellWidth + (cellWidth - shapes[n].Width) / 2;
+                shapes[n].Top = margin + row * cellHeight + (cellHeight - shapes[n].Height) / 2;
+            }
+        }
+
+        return { success: true, data: { layout: layout, count: shapes.length } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 智能等距分布
+function handleSmartDistribute(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var slide = ppt.Slides.Item(params.slideIndex || 1);
+
+        var direction = params.direction || 'horizontal';
+        var shapeNames = params.shapes || [];
+
+        var shapes = [];
+        if (shapeNames.length > 0) {
+            for (var i = 0; i < shapeNames.length; i++) {
+                try {
+                    shapes.push(slide.Shapes.Item(shapeNames[i]));
+                } catch (e) {}
+            }
+        } else {
+            for (var j = 1; j <= slide.Shapes.Count; j++) {
+                var s = slide.Shapes.Item(j);
+                if (s.Type === 1 || s.Type === 6 || s.Type === 17) {
+                    shapes.push(s);
+                }
+            }
+        }
+
+        if (shapes.length < 2) {
+            return { success: true, data: { message: '需要至少2个形状', count: shapes.length } };
+        }
+
+        // 按位置排序
+        shapes.sort(function(a, b) {
+            return direction === 'horizontal' ? a.Left - b.Left : a.Top - b.Top;
+        });
+
+        if (direction === 'horizontal') {
+            var minX = shapes[0].Left;
+            var maxX = shapes[shapes.length - 1].Left + shapes[shapes.length - 1].Width;
+            var totalShapeWidth = 0;
+            for (var k = 0; k < shapes.length; k++) {
+                totalShapeWidth += shapes[k].Width;
+            }
+            var spacing = (maxX - minX - totalShapeWidth) / (shapes.length - 1);
+            var currentX = minX;
+            for (var m = 0; m < shapes.length; m++) {
+                shapes[m].Left = currentX;
+                currentX += shapes[m].Width + spacing;
+            }
+        } else {
+            var minY = shapes[0].Top;
+            var maxY = shapes[shapes.length - 1].Top + shapes[shapes.length - 1].Height;
+            var totalShapeHeight = 0;
+            for (var n = 0; n < shapes.length; n++) {
+                totalShapeHeight += shapes[n].Height;
+            }
+            var spacingV = (maxY - minY - totalShapeHeight) / (shapes.length - 1);
+            var currentY = minY;
+            for (var p = 0; p < shapes.length; p++) {
+                shapes[p].Top = currentY;
+                currentY += shapes[p].Height + spacingV;
+            }
+        }
+
+        return { success: true, data: { direction: direction, count: shapes.length } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 创建网格布局
+function handleCreateGrid(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var slide = ppt.Slides.Item(params.slideIndex || 1);
+
+        var rows = params.rows || 2;
+        var cols = params.cols || 3;
+        var margin = params.margin || 50;
+        var gap = params.gap || 15;
+        var slideWidth = 720;
+        var slideHeight = 540;
+
+        function hexToRgb(hex) {
+            var c = (hex || '#f0f0f0').replace('#', '');
+            return parseInt(c.substr(0, 2), 16) + parseInt(c.substr(2, 2), 16) * 256 + parseInt(c.substr(4, 2), 16) * 65536;
+        }
+
+        var cellWidth = (slideWidth - 2 * margin - (cols - 1) * gap) / cols;
+        var cellHeight = (slideHeight - 2 * margin - (rows - 1) * gap) / rows;
+
+        var cells = [];
+        for (var r = 0; r < rows; r++) {
+            for (var c = 0; c < cols; c++) {
+                var left = margin + c * (cellWidth + gap);
+                var top = margin + r * (cellHeight + gap);
+                var cell = slide.Shapes.AddShape(5, left, top, cellWidth, cellHeight);
+                cell.Fill.Solid();
+                cell.Fill.ForeColor.RGB = hexToRgb(params.cellColor || '#f8f9fa');
+                cell.Line.ForeColor.RGB = hexToRgb(params.borderColor || '#dee2e6');
+                cell.Line.Weight = 1;
+                cells.push(cell.Name);
+            }
+        }
+
+        return { success: true, data: { rows: rows, cols: cols, cells: cells } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// ========== 3. 高级动画组合 ==========
+
+// 添加预设动画组（一键添加专业动画效果）
+function handleAddAnimationPreset(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var slide = ppt.Slides.Item(params.slideIndex || 1);
+
+        var preset = params.preset || 'fadeIn'; // fadeIn, flyIn, zoomIn, wipeIn, bounceIn
+        var timeline = slide.TimeLine;
+        var delay = 0;
+        var delayIncrement = params.delayIncrement || 0.3;
+
+        var presets = {
+            'fadeIn': { effect: 10, duration: 0.5 },      // msoAnimEffectFade
+            'flyIn': { effect: 2, duration: 0.5 },        // msoAnimEffectFly
+            'zoomIn': { effect: 53, duration: 0.4 },      // msoAnimEffectGrowShrink
+            'wipeIn': { effect: 22, duration: 0.5 },      // msoAnimEffectWipe
+            'appear': { effect: 1, duration: 0 }          // msoAnimEffectAppear
+        };
+
+        var config = presets[preset] || presets['fadeIn'];
+        var animatedCount = 0;
+
+        for (var i = 1; i <= slide.Shapes.Count; i++) {
+            var shape = slide.Shapes.Item(i);
+            try {
+                var effect = timeline.MainSequence.AddEffect(shape, config.effect, 0, 1);
+                effect.Timing.Duration = config.duration;
+                effect.Timing.TriggerDelayTime = delay;
+                delay += delayIncrement;
+                animatedCount++;
+            } catch (e) { /* 跳过不支持动画的形状 */ }
+        }
+
+        return { success: true, data: { preset: preset, animatedShapes: animatedCount } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 添加强调动画
+function handleAddEmphasisAnimation(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var slide = ppt.Slides.Item(params.slideIndex || 1);
+        var shape = slide.Shapes.Item(params.shapeName || params.shapeIndex || 1);
+
+        var effectType = params.effect || 'pulse'; // pulse, spin, grow, teeter
+        var effectMap = {
+            'pulse': 63,    // msoAnimEffectFlashBulb
+            'spin': 15,     // msoAnimEffectSpin
+            'grow': 53,     // msoAnimEffectGrowShrink
+            'teeter': 28    // msoAnimEffectTeeter
+        };
+
+        var timeline = slide.TimeLine;
+        var effect = timeline.MainSequence.AddEffect(shape, effectMap[effectType] || 63, 0, 2); // 2 = 点击时
+        effect.Timing.Duration = params.duration || 0.5;
+
+        return { success: true, data: { shape: shape.Name, effect: effectType } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// ========== 4. 流程图/组织架构图 ==========
+
+// 创建流程图
+function handleCreateFlowChart(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var slide = ppt.Slides.Item(params.slideIndex || 1);
+
+        var steps = params.steps || ['开始', '步骤1', '步骤2', '结束'];
+        var direction = params.direction || 'horizontal';
+        var startX = params.startX || 80;
+        var startY = params.startY || 250;
+        var boxWidth = params.boxWidth || 100;
+        var boxHeight = params.boxHeight || 50;
+        var gap = params.gap || 60;
+
+        function hexToRgb(hex) {
+            var c = (hex || '#1a365d').replace('#', '');
+            return parseInt(c.substr(0, 2), 16) + parseInt(c.substr(2, 2), 16) * 256 + parseInt(c.substr(4, 2), 16) * 65536;
+        }
+
+        var colors = {
+            start: '#28a745',
+            process: '#0d47a1',
+            end: '#dc3545'
+        };
+
+        var shapes = [];
+        for (var i = 0; i < steps.length; i++) {
+            var x, y;
+            if (direction === 'horizontal') {
+                x = startX + i * (boxWidth + gap);
+                y = startY;
+            } else {
+                x = startX;
+                y = startY + i * (boxHeight + gap);
+            }
+
+            // 确定形状类型和颜色
+            var shapeType = 5; // 圆角矩形
+            var color = colors.process;
+            if (i === 0) {
+                shapeType = 9; // 椭圆
+                color = colors.start;
+            } else if (i === steps.length - 1) {
+                shapeType = 9;
+                color = colors.end;
+            }
+
+            var shape = slide.Shapes.AddShape(shapeType, x, y, boxWidth, boxHeight);
+            shape.Fill.Solid();
+            shape.Fill.ForeColor.RGB = hexToRgb(color);
+            shape.Line.Visible = false;
+            shape.TextFrame.TextRange.Text = steps[i];
+            shape.TextFrame.TextRange.Font.Color.RGB = 16777215;
+            shape.TextFrame.TextRange.Font.Size = 12;
+            shape.TextFrame.TextRange.Font.Bold = true;
+            shape.TextFrame.TextRange.ParagraphFormat.Alignment = 2;
+
+            shapes.push(shape.Name);
+
+            // 添加箭头连接（除了最后一个）
+            if (i < steps.length - 1) {
+                var arrowX1, arrowY1, arrowX2, arrowY2;
+                if (direction === 'horizontal') {
+                    arrowX1 = x + boxWidth;
+                    arrowY1 = y + boxHeight / 2;
+                    arrowX2 = x + boxWidth + gap;
+                    arrowY2 = arrowY1;
+                } else {
+                    arrowX1 = x + boxWidth / 2;
+                    arrowY1 = y + boxHeight;
+                    arrowX2 = arrowX1;
+                    arrowY2 = y + boxHeight + gap;
+                }
+                var arrow = slide.Shapes.AddLine(arrowX1, arrowY1, arrowX2, arrowY2);
+                arrow.Line.EndArrowheadStyle = 2;
+                arrow.Line.Weight = 2;
+                arrow.Line.ForeColor.RGB = hexToRgb('#666666');
+            }
+        }
+
+        return { success: true, data: { steps: steps.length, shapes: shapes } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 创建组织架构图
+function handleCreateOrgChart(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var slide = ppt.Slides.Item(params.slideIndex || 1);
+
+        var nodes = params.nodes || [
+            { name: 'CEO', level: 0 },
+            { name: '技术总监', level: 1 },
+            { name: '市场总监', level: 1 },
+            { name: '财务总监', level: 1 }
+        ];
+
+        var centerX = 360;
+        var startY = params.startY || 80;
+        var boxWidth = params.boxWidth || 100;
+        var boxHeight = params.boxHeight || 40;
+        var levelGap = params.levelGap || 80;
+
+        function hexToRgb(hex) {
+            var c = (hex || '#1a365d').replace('#', '');
+            return parseInt(c.substr(0, 2), 16) + parseInt(c.substr(2, 2), 16) * 256 + parseInt(c.substr(4, 2), 16) * 65536;
+        }
+
+        var levelColors = ['#1a365d', '#2d5a87', '#4a7ab0', '#6b9bd1'];
+
+        // 按层级分组
+        var levels = {};
+        for (var i = 0; i < nodes.length; i++) {
+            var level = nodes[i].level || 0;
+            if (!levels[level]) levels[level] = [];
+            levels[level].push(nodes[i]);
+        }
+
+        var shapes = [];
+        var levelKeys = Object.keys(levels).sort();
+
+        for (var l = 0; l < levelKeys.length; l++) {
+            var levelNodes = levels[levelKeys[l]];
+            var levelY = startY + l * levelGap;
+            var totalWidth = levelNodes.length * boxWidth + (levelNodes.length - 1) * 30;
+            var startX = centerX - totalWidth / 2;
+
+            for (var n = 0; n < levelNodes.length; n++) {
+                var x = startX + n * (boxWidth + 30);
+                var shape = slide.Shapes.AddShape(5, x, levelY, boxWidth, boxHeight);
+                shape.Fill.Solid();
+                shape.Fill.ForeColor.RGB = hexToRgb(levelColors[l % levelColors.length]);
+                shape.Line.Visible = false;
+                shape.TextFrame.TextRange.Text = levelNodes[n].name;
+                shape.TextFrame.TextRange.Font.Color.RGB = 16777215;
+                shape.TextFrame.TextRange.Font.Size = 11;
+                shape.TextFrame.TextRange.Font.Bold = true;
+                shape.TextFrame.TextRange.ParagraphFormat.Alignment = 2;
+
+                // 添加阴影
+                shape.Shadow.Visible = true;
+                shape.Shadow.Blur = 5;
+                shape.Shadow.OffsetX = 2;
+                shape.Shadow.OffsetY = 2;
+                shape.Shadow.Transparency = 0.7;
+
+                shapes.push(shape.Name);
+            }
+        }
+
+        return { success: true, data: { levels: levelKeys.length, totalNodes: nodes.length, shapes: shapes } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 创建时间轴
+function handleCreateTimeline(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var slide = ppt.Slides.Item(params.slideIndex || 1);
+
+        var events = params.events || [
+            { date: '2020', title: '成立' },
+            { date: '2021', title: '融资' },
+            { date: '2022', title: '扩张' },
+            { date: '2023', title: '上市' }
+        ];
+
+        var startX = params.startX || 80;
+        var startY = params.startY || 280;
+        var lineLength = params.lineLength || 560;
+
+        function hexToRgb(hex) {
+            var c = (hex || '#1a365d').replace('#', '');
+            return parseInt(c.substr(0, 2), 16) + parseInt(c.substr(2, 2), 16) * 256 + parseInt(c.substr(4, 2), 16) * 65536;
+        }
+
+        // 主轴线
+        var mainLine = slide.Shapes.AddLine(startX, startY, startX + lineLength, startY);
+        mainLine.Line.Weight = 3;
+        mainLine.Line.ForeColor.RGB = hexToRgb(params.lineColor || '#1a365d');
+
+        var gap = lineLength / (events.length - 1 || 1);
+        var shapes = [];
+
+        for (var i = 0; i < events.length; i++) {
+            var x = startX + i * gap;
+            var above = i % 2 === 0;
+
+            // 节点圆点
+            var dot = slide.Shapes.AddShape(9, x - 8, startY - 8, 16, 16);
+            dot.Fill.Solid();
+            dot.Fill.ForeColor.RGB = hexToRgb(params.dotColor || '#0d47a1');
+            dot.Line.Visible = false;
+
+            // 连接线
+            var lineY = above ? startY - 50 : startY + 50;
+            var connector = slide.Shapes.AddLine(x, startY, x, lineY);
+            connector.Line.Weight = 2;
+            connector.Line.ForeColor.RGB = hexToRgb('#cccccc');
+
+            // 日期标签
+            var dateBox = slide.Shapes.AddTextbox(1, x - 30, above ? lineY - 45 : lineY + 5, 60, 20);
+            dateBox.TextFrame.TextRange.Text = events[i].date;
+            dateBox.TextFrame.TextRange.Font.Size = 12;
+            dateBox.TextFrame.TextRange.Font.Bold = true;
+            dateBox.TextFrame.TextRange.ParagraphFormat.Alignment = 2;
+
+            // 标题
+            var titleBox = slide.Shapes.AddTextbox(1, x - 40, above ? lineY - 25 : lineY + 25, 80, 20);
+            titleBox.TextFrame.TextRange.Text = events[i].title;
+            titleBox.TextFrame.TextRange.Font.Size = 10;
+            titleBox.TextFrame.TextRange.Font.Color.RGB = hexToRgb('#666666');
+            titleBox.TextFrame.TextRange.ParagraphFormat.Alignment = 2;
+
+            shapes.push(dot.Name);
+        }
+
+        return { success: true, data: { events: events.length, shapes: shapes } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// ========== 5. 母版操作 ==========
+
+// 获取母版信息
+function handleGetSlideMaster(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+
+        var masters = [];
+        for (var i = 1; i <= ppt.SlideMaster.Shapes.Count; i++) {
+            var shape = ppt.SlideMaster.Shapes.Item(i);
+            masters.push({
+                name: shape.Name,
+                type: shape.Type,
+                left: shape.Left,
+                top: shape.Top,
+                width: shape.Width,
+                height: shape.Height
+            });
+        }
+
+        return { success: true, data: { shapeCount: masters.length, shapes: masters } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 设置母版背景
+function handleSetMasterBackground(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+
+        function hexToRgb(hex) {
+            var c = (hex || '#ffffff').replace('#', '');
+            return parseInt(c.substr(0, 2), 16) + parseInt(c.substr(2, 2), 16) * 256 + parseInt(c.substr(4, 2), 16) * 65536;
+        }
+
+        var master = ppt.SlideMaster;
+
+        if (params.gradient) {
+            master.Background.Fill.TwoColorGradient(1, 1);
+            master.Background.Fill.GradientStops.Item(1).Color.RGB = hexToRgb(params.color1 || '#1a365d');
+            master.Background.Fill.GradientStops.Item(2).Color.RGB = hexToRgb(params.color2 || '#2d5a87');
+        } else {
+            master.Background.Fill.Solid();
+            master.Background.Fill.ForeColor.RGB = hexToRgb(params.color || '#ffffff');
+        }
+
+        return { success: true, data: { message: '母版背景已更新' } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 添加母版元素（如Logo占位）
+function handleAddMasterElement(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+
+        var master = ppt.SlideMaster;
+        var type = params.type || 'textbox'; // textbox, shape, logo
+        var left = params.left || 600;
+        var top = params.top || 20;
+        var width = params.width || 100;
+        var height = params.height || 40;
+
+        function hexToRgb(hex) {
+            var c = (hex || '#1a365d').replace('#', '');
+            return parseInt(c.substr(0, 2), 16) + parseInt(c.substr(2, 2), 16) * 256 + parseInt(c.substr(4, 2), 16) * 65536;
+        }
+
+        var shape;
+        if (type === 'textbox') {
+            shape = master.Shapes.AddTextbox(1, left, top, width, height);
+            shape.TextFrame.TextRange.Text = params.text || 'Logo';
+            shape.TextFrame.TextRange.Font.Size = params.fontSize || 14;
+            shape.TextFrame.TextRange.Font.Bold = true;
+        } else if (type === 'shape') {
+            shape = master.Shapes.AddShape(params.shapeType || 5, left, top, width, height);
+            shape.Fill.Solid();
+            shape.Fill.ForeColor.RGB = hexToRgb(params.color || '#1a365d');
+            shape.Line.Visible = false;
+        }
+
+        return { success: true, data: { name: shape.Name, type: type } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// ========== 6. 3D效果 ==========
+
+// 设置3D旋转效果
+function handleSet3DRotation(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var slide = ppt.Slides.Item(params.slideIndex || 1);
+        var shape = slide.Shapes.Item(params.shapeName || params.shapeIndex || 1);
+
+        var rotX = params.rotationX || 0;
+        var rotY = params.rotationY || 0;
+        var rotZ = params.rotationZ || 0;
+
+        shape.ThreeD.RotationX = rotX;
+        shape.ThreeD.RotationY = rotY;
+        shape.ThreeD.RotationZ = rotZ;
+
+        // 预设效果
+        if (params.preset) {
+            var presets = {
+                'isometric': { x: 45, y: 45, z: 0 },
+                'perspective': { x: 30, y: 30, z: 0 },
+                'oblique': { x: 20, y: 60, z: 0 },
+                'tiltLeft': { x: 0, y: -30, z: 0 },
+                'tiltRight': { x: 0, y: 30, z: 0 }
+            };
+            var p = presets[params.preset];
+            if (p) {
+                shape.ThreeD.RotationX = p.x;
+                shape.ThreeD.RotationY = p.y;
+                shape.ThreeD.RotationZ = p.z;
+            }
+        }
+
+        return { success: true, data: { shape: shape.Name, rotationX: shape.ThreeD.RotationX, rotationY: shape.ThreeD.RotationY } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 设置3D深度效果
+function handleSet3DDepth(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var slide = ppt.Slides.Item(params.slideIndex || 1);
+        var shape = slide.Shapes.Item(params.shapeName || params.shapeIndex || 1);
+
+        var depth = params.depth || 20;
+
+        function hexToRgb(hex) {
+            var c = (hex || '#1a365d').replace('#', '');
+            return parseInt(c.substr(0, 2), 16) + parseInt(c.substr(2, 2), 16) * 256 + parseInt(c.substr(4, 2), 16) * 65536;
+        }
+
+        shape.ThreeD.Depth = depth;
+        if (params.depthColor) {
+            shape.ThreeD.ExtrusionColor.RGB = hexToRgb(params.depthColor);
+        }
+
+        // 设置光照
+        if (params.lighting) {
+            var lightingMap = {
+                'bright': 1,
+                'normal': 2,
+                'dim': 3,
+                'flat': 4
+            };
+            shape.ThreeD.PresetLighting = lightingMap[params.lighting] || 2;
+        }
+
+        return { success: true, data: { shape: shape.Name, depth: depth } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 设置3D材质效果
+function handleSet3DMaterial(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var slide = ppt.Slides.Item(params.slideIndex || 1);
+        var shape = slide.Shapes.Item(params.shapeName || params.shapeIndex || 1);
+
+        var material = params.material || 'plastic'; // plastic, metal, glass, matte
+
+        var materialMap = {
+            'matte': 1,
+            'plastic': 2,
+            'metal': 3,
+            'wireFrame': 4,
+            'glass': 5
+        };
+
+        shape.ThreeD.PresetMaterial = materialMap[material] || 2;
+
+        return { success: true, data: { shape: shape.Name, material: material } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 创建3D文字效果
+function handleCreate3DText(params) {
+    try {
+        var ppt = Application.ActivePresentation;
+        if (!ppt) return { success: false, error: '没有打开的演示文稿' };
+        var slide = ppt.Slides.Item(params.slideIndex || 1);
+
+        var text = params.text || '3D文字';
+        var left = params.left || 200;
+        var top = params.top || 200;
+        var width = params.width || 300;
+        var height = params.height || 100;
+
+        function hexToRgb(hex) {
+            var c = (hex || '#1a365d').replace('#', '');
+            return parseInt(c.substr(0, 2), 16) + parseInt(c.substr(2, 2), 16) * 256 + parseInt(c.substr(4, 2), 16) * 65536;
+        }
+
+        // 创建文本框
+        var textBox = slide.Shapes.AddTextbox(1, left, top, width, height);
+        textBox.TextFrame.TextRange.Text = text;
+        textBox.TextFrame.TextRange.Font.Size = params.fontSize || 48;
+        textBox.TextFrame.TextRange.Font.Bold = true;
+        textBox.TextFrame.TextRange.Font.Color.RGB = hexToRgb(params.color || '#1a365d');
+        textBox.TextFrame.TextRange.ParagraphFormat.Alignment = 2;
+
+        // 应用3D效果
+        textBox.ThreeD.RotationX = params.rotationX || 15;
+        textBox.ThreeD.RotationY = params.rotationY || 30;
+        textBox.ThreeD.Depth = params.depth || 10;
+
+        // 添加阴影
+        textBox.Shadow.Visible = true;
+        textBox.Shadow.Blur = 8;
+        textBox.Shadow.OffsetX = 5;
+        textBox.Shadow.OffsetY = 5;
+        textBox.Shadow.Transparency = 0.5;
+
+        return { success: true, data: { name: textBox.Name, text: text } };
     } catch (e) {
         return { success: false, error: e.message };
     }

@@ -52,6 +52,9 @@ export class WpsMcpServer {
   private readonly registry: ToolRegistry;
   private isRunning: boolean = false;
 
+  // 跨应用数据缓存 - 解决macOS WPS无法跨应用操作的P0问题
+  private static dataCache: Map<string, { data: unknown; timestamp: number; appType: string }> = new Map();
+
   constructor(config?: Partial<McpServerConfig>) {
     this.config = { ...DEFAULT_CONFIG, ...config };
     this.registry = toolRegistry;
@@ -451,6 +454,220 @@ export class WpsMcpServer {
             },
           ],
         };
+      }
+    );
+
+    // ==================== 跨应用数据缓存工具 ====================
+    // 解决macOS WPS加载项无法跨应用操作的P0问题
+    // Excel读取数据 → 缓存到MCP Server → PPT获取缓存 → 创建演示文稿
+
+    // 缓存数据
+    this.registry.register(
+      {
+        name: 'wps_cache_data',
+        description: '缓存数据到MCP Server，用于跨应用数据传递。例如：从Excel读取数据后缓存，然后在PPT中使用。',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            key: {
+              type: 'string',
+              description: '缓存键名，用于后续获取数据',
+            },
+            data: {
+              type: 'object',
+              description: '要缓存的数据（任意JSON对象）',
+            },
+            appType: {
+              type: 'string',
+              description: '数据来源应用类型：et（表格）、wps（文字）、wpp（演示）',
+              enum: ['et', 'wps', 'wpp'],
+            },
+          },
+          required: ['key', 'data'],
+        },
+        category: ToolCategory.COMMON,
+      },
+      async (args) => {
+        const key = args.key as string;
+        const data = args.data;
+        const appType = (args.appType as string) || 'unknown';
+
+        WpsMcpServer.dataCache.set(key, {
+          data,
+          timestamp: Date.now(),
+          appType,
+        });
+
+        logger.info(`Data cached: key=${key}, appType=${appType}`);
+
+        return {
+          id: '',
+          success: true,
+          content: [
+            {
+              type: 'text',
+              text: JSON.stringify({
+                success: true,
+                key,
+                message: `数据已缓存，可在其他应用中通过 wps_get_cached_data 获取`,
+                cacheSize: WpsMcpServer.dataCache.size,
+              }),
+            },
+          ],
+        };
+      }
+    );
+
+    // 获取缓存数据
+    this.registry.register(
+      {
+        name: 'wps_get_cached_data',
+        description: '从MCP Server获取缓存的数据，用于跨应用数据传递。',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            key: {
+              type: 'string',
+              description: '缓存键名',
+            },
+          },
+          required: ['key'],
+        },
+        category: ToolCategory.COMMON,
+      },
+      async (args) => {
+        const key = args.key as string;
+        const cached = WpsMcpServer.dataCache.get(key);
+
+        if (!cached) {
+          return {
+            id: '',
+            success: false,
+            content: [
+              {
+                type: 'text',
+                text: JSON.stringify({
+                  success: false,
+                  error: `缓存键 "${key}" 不存在`,
+                  availableKeys: Array.from(WpsMcpServer.dataCache.keys()),
+                }),
+              },
+            ],
+          };
+        }
+
+        logger.info(`Cache hit: key=${key}, age=${Date.now() - cached.timestamp}ms`);
+
+        return {
+          id: '',
+          success: true,
+          content: [
+            {
+              type: 'text',
+              text: JSON.stringify({
+                success: true,
+                key,
+                data: cached.data,
+                appType: cached.appType,
+                cachedAt: new Date(cached.timestamp).toISOString(),
+              }),
+            },
+          ],
+        };
+      }
+    );
+
+    // 列出所有缓存
+    this.registry.register(
+      {
+        name: 'wps_list_cache',
+        description: '列出MCP Server中所有缓存的数据键名',
+        inputSchema: {
+          type: 'object',
+          properties: {},
+        },
+        category: ToolCategory.COMMON,
+      },
+      async () => {
+        const cacheList = Array.from(WpsMcpServer.dataCache.entries()).map(([key, value]) => ({
+          key,
+          appType: value.appType,
+          cachedAt: new Date(value.timestamp).toISOString(),
+          ageMs: Date.now() - value.timestamp,
+        }));
+
+        return {
+          id: '',
+          success: true,
+          content: [
+            {
+              type: 'text',
+              text: JSON.stringify({
+                success: true,
+                count: cacheList.length,
+                caches: cacheList,
+              }),
+            },
+          ],
+        };
+      }
+    );
+
+    // 清除缓存
+    this.registry.register(
+      {
+        name: 'wps_clear_cache',
+        description: '清除MCP Server中的缓存数据',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            key: {
+              type: 'string',
+              description: '要清除的缓存键名，不指定则清除所有缓存',
+            },
+          },
+        },
+        category: ToolCategory.COMMON,
+      },
+      async (args) => {
+        const key = args.key as string | undefined;
+
+        if (key) {
+          const deleted = WpsMcpServer.dataCache.delete(key);
+          logger.info(`Cache cleared: key=${key}, deleted=${deleted}`);
+
+          return {
+            id: '',
+            success: true,
+            content: [
+              {
+                type: 'text',
+                text: JSON.stringify({
+                  success: true,
+                  message: deleted ? `缓存 "${key}" 已清除` : `缓存 "${key}" 不存在`,
+                }),
+              },
+            ],
+          };
+        } else {
+          const count = WpsMcpServer.dataCache.size;
+          WpsMcpServer.dataCache.clear();
+          logger.info(`All cache cleared: count=${count}`);
+
+          return {
+            id: '',
+            success: true,
+            content: [
+              {
+                type: 'text',
+                text: JSON.stringify({
+                  success: true,
+                  message: `已清除所有缓存，共 ${count} 条`,
+                }),
+              },
+            ],
+          };
+        }
       }
     );
 

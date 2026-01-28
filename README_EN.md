@@ -174,21 +174,30 @@ powershell -ExecutionPolicy Bypass -File scripts/auto-install.ps1
 | Save Document | Save current document | ✅ | ✅ |
 | Export PDF | Convert to PDF format | ✅ | ✅ |
 
-### PPT Features
+### PPT Features (85 implemented)
 
-| Feature | Description | Windows | macOS |
-|---------|-------------|---------|-------|
-| Get Presentation Info | Name, slide count, shapes | ✅ | 🔧 |
-| Add Slide | Multiple layouts | ✅ | 🔧 |
-| Set Title | Modify slide title | ✅ | 🔧 |
-| Add Text Box | Custom position and style | ✅ | 🔧 |
-| Unify Font | Consistent fonts | ✅ | 🔧 |
-| Beautify Slide | Business/Tech/Creative/Minimal | ✅ | 🔧 |
-| Add Shape | Insert shapes | 🚧 | 🚧 |
-| Add Animation | Enter/exit animations | 🚧 | 🚧 |
-| Set Theme | Apply PPT themes | 🚧 | 🚧 |
+| Category | Count | Features | Windows | macOS |
+|----------|-------|----------|---------|-------|
+| Presentation Operations | 5 | Create/Open/Close/Switch presentations | ✅ | ✅ |
+| Slide Operations | 9 | Add/Delete/Duplicate/Move/Switch slides | ✅ | ✅ |
+| Text Box Operations | 5 | Add/Delete/Set text boxes | ✅ | ✅ |
+| Title Operations | 4 | Set/Get title/subtitle/content | ✅ | ✅ |
+| Shape Operations | 14 | Add/Delete/Style/Shadow/Gradient/Border/Transparency | ✅ | ✅ |
+| Alignment & Distribution | 4 | Align/Distribute/Group/Auto-layout | ✅ | ✅ |
+| Image Operations | 3 | Insert/Delete/Style images | ✅ | ✅ |
+| Table Operations | 7 | Insert/Set cells/Style/Professional tables | ✅ | ✅ |
+| Chart Operations | 3 | Insert/Set data/Style | ✅ | ✅ |
+| Animations | 6 | Add/Remove/Preset groups/Emphasis | ✅ | ✅ |
+| Transitions | 3 | Set/Remove/Apply to all | ✅ | ✅ |
+| Themes & Backgrounds | 5 | Background color/image/gradient/color scheme | ✅ | ✅ |
+| Data Visualization | 4 | Progress bars/Gauges/Mini charts/Donut charts | ✅ | ✅ |
+| Flowcharts & Org Charts | 3 | Flowcharts/Org charts/Timelines | ✅ | ✅ |
+| Master Slide Operations | 3 | Get/Set background/Add elements | ✅ | ✅ |
+| 3D Effects | 4 | 3D rotation/depth/material/3D text | ✅ | ✅ |
+| Professional Beautification | 7 | One-click beautify/KPI cards/Decorations/Page indicators | ✅ | ✅ |
+| Other | 6 | Hyperlinks/Headers footers/Find replace/Slideshow | ✅ | ✅ |
 
-> Legend: ✅ Tested | 🔧 Pending test | 🚧 In development | ⚠️ Known issue
+> 📌 PPT features cover high-end presentation scenarios with 6 major advanced capabilities: Data Visualization, Smart Layout, Advanced Animations, Flowcharts/Org Charts, Master Operations, 3D Effects
 
 ### Common Features
 
@@ -210,10 +219,11 @@ macOS:
 Claude Code → MCP Server (Node.js) → HTTP → WPS Add-in (JS API) → WPS Office
 ```
 
-- **MCP Server**: 29 tools handling AI requests
+- **MCP Server**: 196 tools handling AI requests
 - **Windows COM Bridge**: PowerShell calls WPS COM interfaces (Ket/Kwps/Kwpp)
 - **macOS HTTP Bridge**: HTTP calls to WPS Add-in built-in service (port 58891)
 - **WPS Add-in**: Shows connection status, provides HTTP API on Mac
+- **Cross-app Data Cache**: MCP Server layer caching for Excel→PPT data transfer
 
 ---
 
@@ -278,8 +288,9 @@ WPS_Skills/
 - [x] **Excel Conditional Formatting** - Set format rules ✅ Completed
 - [x] **Word TOC Generation** - Auto generate table of contents ✅ Completed
 - [x] **Word Insert Image** - Insert and position images ✅ Completed
-- [ ] **PPT Animations** - Enter, exit, emphasis animations
-- [ ] **PPT Themes** - Apply built-in themes
+- [x] **PPT Animations** - Enter/exit/emphasis animations ✅ Completed
+- [x] **PPT Advanced Beautification** - 6 major advanced capabilities ✅ Completed
+- [x] **Cross-app Data Transfer** - Excel→PPT data caching mechanism ✅ Completed
 
 ### Mid-term (v1.2)
 

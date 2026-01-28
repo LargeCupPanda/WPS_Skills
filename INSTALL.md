@@ -73,9 +73,6 @@ Claude Code → MCP Server (HTTP服务端:58891) ← 轮询 ← WPS加载项 (HT
    - 如果不存在，提示用户先安装 WPS Office: https://www.wps.cn/product/wpsmac
 3. **检测 Node.js** - 运行 `node -v`，需要 >= 18.0.0
    - 如果未安装，提示用户安装: https://nodejs.org/
-4. **检测 Python3** - 运行 `python3 --version`
-5. **检测 python-pptx** - 用于 PPT 自动化功能
-   - 如果未安装：`pip3 install python-pptx`
 
 ### 第二步：克隆项目
 
@@ -146,12 +143,6 @@ cat ~/.claude/settings.json | grep wps-office
 1. MCP Server 已正确配置在 Claude Code 中
 2. 重启 Claude Code 使配置生效
 3. WPS 加载项已正确安装（目录名必须以 `_` 结尾）
-
-### Mac: 需要手动切换应用
-
-正常情况下系统会自动切换应用，如果自动切换失败：
-1. 检查 `python-pptx` 是否安装：`python3 -c "import pptx"`
-2. 检查 `wps-auto.sh` 脚本权限：`chmod +x wps-auto.sh`
 
 ### Mac: 加载项未加载
 
