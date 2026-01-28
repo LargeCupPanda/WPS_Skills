@@ -275,7 +275,7 @@ WPS_Skills/
 - [x] **macOS Support** - Cross-platform compatibility ✅ Completed
 - [x] **Excel Formula Diagnosis** - Analyze errors, suggest fixes ✅ Completed
 - [x] **Excel Pivot Tables** - Create and manipulate pivot tables ✅ Completed
-- [ ] **Excel Conditional Formatting** - Set format rules
+- [x] **Excel Conditional Formatting** - Set format rules ✅ Completed
 - [x] **Word TOC Generation** - Auto generate table of contents ✅ Completed
 - [x] **Word Insert Image** - Insert and position images ✅ Completed
 - [ ] **PPT Animations** - Enter, exit, emphasis animations
@@ -288,7 +288,7 @@ WPS_Skills/
 - [ ] **Batch Conversion** - Bulk file format conversion
 - [ ] **Batch Watermark** - Add text/image watermarks
 - [ ] **Mail Merge** - Word mail merge functionality
-- [ ] **Array Formulas** - Advanced formula support
+- [x] **Array Formulas** - Advanced formula support ✅ Completed
 
 ### Long-term (v2.0)
 
