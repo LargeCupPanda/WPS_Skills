@@ -294,6 +294,253 @@ function handleCommand(cmd) {
                 result = handleDiagnoseFormula(cmd.params);
                 break;
 
+            // Excel 工作表操作
+            case 'createSheet':
+                result = handleCreateSheet(cmd.params);
+                break;
+            case 'deleteSheet':
+                result = handleDeleteSheet(cmd.params);
+                break;
+            case 'renameSheet':
+                result = handleRenameSheet(cmd.params);
+                break;
+            case 'copySheet':
+                result = handleCopySheet(cmd.params);
+                break;
+            case 'getSheetList':
+                result = handleGetSheetList(cmd.params);
+                break;
+            case 'switchSheet':
+                result = handleSwitchSheet(cmd.params);
+                break;
+            case 'moveSheet':
+                result = handleMoveSheet(cmd.params);
+                break;
+
+            // Excel 单元格格式
+            case 'setCellFormat':
+                result = handleSetCellFormat(cmd.params);
+                break;
+            case 'setCellStyle':
+                result = handleSetCellStyle(cmd.params);
+                break;
+            case 'mergeCells':
+                result = handleMergeCells(cmd.params);
+                break;
+            case 'unmergeCells':
+                result = handleUnmergeCells(cmd.params);
+                break;
+            case 'setColumnWidth':
+                result = handleSetColumnWidth(cmd.params);
+                break;
+            case 'setRowHeight':
+                result = handleSetRowHeight(cmd.params);
+                break;
+            case 'autoFitColumn':
+                result = handleAutoFitColumn(cmd.params);
+                break;
+            case 'autoFitRow':
+                result = handleAutoFitRow(cmd.params);
+                break;
+            case 'freezePanes':
+                result = handleFreezePanes(cmd.params);
+                break;
+            case 'unfreezePanes':
+                result = handleUnfreezePanes(cmd.params);
+                break;
+
+            // Excel 美化增强
+            case 'autoFitAll':
+                result = handleAutoFitAll(cmd.params);
+                break;
+            case 'copyFormat':
+                result = handleCopyFormat(cmd.params);
+                break;
+            case 'clearFormats':
+                result = handleClearFormats(cmd.params);
+                break;
+            case 'setBorder':
+                result = handleSetBorder(cmd.params);
+                break;
+            case 'setNumberFormat':
+                result = handleSetNumberFormat(cmd.params);
+                break;
+
+            // Excel 行列操作
+            case 'insertRows':
+                result = handleInsertRows(cmd.params);
+                break;
+            case 'insertColumns':
+                result = handleInsertColumns(cmd.params);
+                break;
+            case 'deleteRows':
+                result = handleDeleteRows(cmd.params);
+                break;
+            case 'deleteColumns':
+                result = handleDeleteColumns(cmd.params);
+                break;
+            case 'hideRows':
+                result = handleHideRows(cmd.params);
+                break;
+            case 'hideColumns':
+                result = handleHideColumns(cmd.params);
+                break;
+            case 'showRows':
+                result = handleShowRows(cmd.params);
+                break;
+            case 'showColumns':
+                result = handleShowColumns(cmd.params);
+                break;
+
+            // Excel 条件格式
+            case 'addConditionalFormat':
+                result = handleAddConditionalFormat(cmd.params);
+                break;
+            case 'removeConditionalFormat':
+                result = handleRemoveConditionalFormat(cmd.params);
+                break;
+            case 'getConditionalFormats':
+                result = handleGetConditionalFormats(cmd.params);
+                break;
+
+            // Excel 数据验证
+            case 'addDataValidation':
+                result = handleAddDataValidation(cmd.params);
+                break;
+            case 'removeDataValidation':
+                result = handleRemoveDataValidation(cmd.params);
+                break;
+            case 'getDataValidations':
+                result = handleGetDataValidations(cmd.params);
+                break;
+
+            // Excel 查找替换
+            case 'findInSheet':
+                result = handleFindInSheet(cmd.params);
+                break;
+            case 'replaceInSheet':
+                result = handleReplaceInSheet(cmd.params);
+                break;
+
+            // Excel 高级数据处理
+            case 'copyRange':
+                result = handleCopyRange(cmd.params);
+                break;
+            case 'pasteRange':
+                result = handlePasteRange(cmd.params);
+                break;
+            case 'fillSeries':
+                result = handleFillSeries(cmd.params);
+                break;
+            case 'transpose':
+                result = handleTranspose(cmd.params);
+                break;
+            case 'textToColumns':
+                result = handleTextToColumns(cmd.params);
+                break;
+            case 'subtotal':
+                result = handleSubtotal(cmd.params);
+                break;
+
+            // Excel 命名区域
+            case 'createNamedRange':
+                result = handleCreateNamedRange(cmd.params);
+                break;
+            case 'deleteNamedRange':
+                result = handleDeleteNamedRange(cmd.params);
+                break;
+            case 'getNamedRanges':
+                result = handleGetNamedRanges(cmd.params);
+                break;
+
+            // Excel 批注功能
+            case 'addCellComment':
+                result = handleAddCellComment(cmd.params);
+                break;
+            case 'deleteCellComment':
+                result = handleDeleteCellComment(cmd.params);
+                break;
+            case 'getCellComments':
+                result = handleGetCellComments(cmd.params);
+                break;
+
+            // Excel 保护功能
+            case 'protectSheet':
+                result = handleProtectSheet(cmd.params);
+                break;
+            case 'unprotectSheet':
+                result = handleUnprotectSheet(cmd.params);
+                break;
+            case 'protectWorkbook':
+                result = handleProtectWorkbook(cmd.params);
+                break;
+
+            // P0 - 财务/金融核心功能
+            case 'openWorkbook':
+                result = handleOpenWorkbook(cmd.params);
+                break;
+            case 'getOpenWorkbooks':
+                result = handleGetOpenWorkbooks(cmd.params);
+                break;
+            case 'switchWorkbook':
+                result = handleSwitchWorkbook(cmd.params);
+                break;
+            case 'closeWorkbook':
+                result = handleCloseWorkbook(cmd.params);
+                break;
+            case 'createWorkbook':
+                result = handleCreateWorkbook(cmd.params);
+                break;
+            case 'getFormula':
+                result = handleGetFormula(cmd.params);
+                break;
+            case 'getCellInfo':
+                result = handleGetCellInfo(cmd.params);
+                break;
+            case 'clearRange':
+                result = handleClearRange(cmd.params);
+                break;
+
+            // P1 - 财务/金融重要补充
+            case 'refreshLinks':
+                result = handleRefreshLinks(cmd.params);
+                break;
+            case 'consolidate':
+                result = handleConsolidate(cmd.params);
+                break;
+            case 'setArrayFormula':
+                result = handleSetArrayFormula(cmd.params);
+                break;
+            case 'calculateSheet':
+                result = handleCalculateSheet(cmd.params);
+                break;
+            case 'insertExcelImage':
+                result = handleInsertExcelImage(cmd.params);
+                break;
+            case 'setHyperlink':
+                result = handleSetHyperlink(cmd.params);
+                break;
+            case 'wrapText':
+                result = handleWrapText(cmd.params);
+                break;
+
+            // P2 - 扩展功能
+            case 'setPrintArea':
+                result = handleSetPrintArea(cmd.params);
+                break;
+            case 'getSelection':
+                result = handleGetSelection(cmd.params);
+                break;
+            case 'groupRows':
+                result = handleGroupRows(cmd.params);
+                break;
+            case 'groupColumns':
+                result = handleGroupColumns(cmd.params);
+                break;
+            case 'lockCells':
+                result = handleLockCells(cmd.params);
+                break;
+
             // 通用高级功能
             case 'convertToPDF':
                 result = handleConvertToPDF(cmd.params);
@@ -1515,6 +1762,1295 @@ function handleDiagnoseFormula(params) {
                 precedents: precedents
             }
         };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// ==================== Excel 工作表操作 Handlers ====================
+
+// 新建工作表
+function handleCreateSheet(params) {
+    try {
+        var wb = Application.ActiveWorkbook;
+        if (!wb) return { success: false, error: '没有打开的工作簿' };
+        var newSheet = wb.Sheets.Add();
+        if (params.name) {
+            newSheet.Name = params.name;
+        }
+        return { success: true, data: { sheetName: newSheet.Name, sheetIndex: newSheet.Index } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 删除工作表
+function handleDeleteSheet(params) {
+    try {
+        var wb = Application.ActiveWorkbook;
+        if (!wb) return { success: false, error: '没有打开的工作簿' };
+        var sheet = params.sheet ? wb.Sheets.Item(params.sheet) : Application.ActiveSheet;
+        var name = sheet.Name;
+        Application.DisplayAlerts = false;
+        sheet.Delete();
+        Application.DisplayAlerts = true;
+        return { success: true, data: { deletedSheet: name } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 重命名工作表
+function handleRenameSheet(params) {
+    try {
+        var wb = Application.ActiveWorkbook;
+        if (!wb) return { success: false, error: '没有打开的工作簿' };
+        var sheet = params.sheet ? wb.Sheets.Item(params.sheet) : Application.ActiveSheet;
+        var oldName = sheet.Name;
+        sheet.Name = params.newName;
+        return { success: true, data: { oldName: oldName, newName: params.newName } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 复制工作表
+function handleCopySheet(params) {
+    try {
+        var wb = Application.ActiveWorkbook;
+        if (!wb) return { success: false, error: '没有打开的工作簿' };
+        var sheet = params.sheet ? wb.Sheets.Item(params.sheet) : Application.ActiveSheet;
+        if (params.before) {
+            sheet.Copy(wb.Sheets.Item(params.before));
+        } else if (params.after) {
+            sheet.Copy(null, wb.Sheets.Item(params.after));
+        } else {
+            sheet.Copy(null, wb.Sheets.Item(wb.Sheets.Count));
+        }
+        return { success: true, data: { copiedFrom: sheet.Name } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 获取工作表列表
+function handleGetSheetList(params) {
+    try {
+        var wb = Application.ActiveWorkbook;
+        if (!wb) return { success: false, error: '没有打开的工作簿' };
+        var sheets = [];
+        for (var i = 1; i <= wb.Sheets.Count; i++) {
+            var s = wb.Sheets.Item(i);
+            sheets.push({ name: s.Name, index: i, visible: s.Visible });
+        }
+        return { success: true, data: { sheets: sheets, count: sheets.length, activeSheet: Application.ActiveSheet.Name } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 切换活动工作表
+function handleSwitchSheet(params) {
+    try {
+        var wb = Application.ActiveWorkbook;
+        if (!wb) return { success: false, error: '没有打开的工作簿' };
+        var sheet = wb.Sheets.Item(params.sheet);
+        sheet.Activate();
+        return { success: true, data: { activeSheet: sheet.Name } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 移动工作表
+function handleMoveSheet(params) {
+    try {
+        var wb = Application.ActiveWorkbook;
+        if (!wb) return { success: false, error: '没有打开的工作簿' };
+        var sheet = params.sheet ? wb.Sheets.Item(params.sheet) : Application.ActiveSheet;
+        if (params.before) {
+            sheet.Move(wb.Sheets.Item(params.before));
+        } else if (params.after) {
+            sheet.Move(null, wb.Sheets.Item(params.after));
+        }
+        return { success: true, data: { movedSheet: sheet.Name } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// ==================== Excel 单元格格式 Handlers ====================
+
+// 设置单元格数字格式
+function handleSetCellFormat(params) {
+    try {
+        var sheet = Application.ActiveSheet;
+        var range = sheet.Range(params.range);
+        if (params.numberFormat) {
+            range.NumberFormat = params.numberFormat;
+        }
+        return { success: true, data: { range: params.range, format: params.numberFormat } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 设置单元格样式（背景色、边框、对齐、字体）
+function handleSetCellStyle(params) {
+    try {
+        var sheet = Application.ActiveSheet;
+        var range = sheet.Range(params.range);
+
+        // 字号
+        if (params.fontSize) {
+            range.Font.Size = params.fontSize;
+        }
+
+        // 加粗
+        if (params.bold !== undefined) {
+            range.Font.Bold = params.bold;
+        }
+
+        // 斜体
+        if (params.italic !== undefined) {
+            range.Font.Italic = params.italic;
+        }
+
+        // 字体名称
+        if (params.fontName) {
+            range.Font.Name = params.fontName;
+        }
+
+        // 背景色
+        if (params.backgroundColor) {
+            var color = params.backgroundColor.replace('#', '');
+            var r = parseInt(color.substr(0, 2), 16);
+            var g = parseInt(color.substr(2, 2), 16);
+            var b = parseInt(color.substr(4, 2), 16);
+            range.Interior.Color = r + g * 256 + b * 65536;
+        }
+
+        // 字体颜色
+        if (params.fontColor) {
+            var fc = params.fontColor.replace('#', '');
+            var fr = parseInt(fc.substr(0, 2), 16);
+            var fg = parseInt(fc.substr(2, 2), 16);
+            var fb = parseInt(fc.substr(4, 2), 16);
+            range.Font.Color = fr + fg * 256 + fb * 65536;
+        }
+
+        // 对齐
+        if (params.horizontalAlignment) {
+            var hAlignMap = { left: -4131, center: -4108, right: -4152 };
+            range.HorizontalAlignment = hAlignMap[params.horizontalAlignment] || -4108;
+        }
+        if (params.verticalAlignment) {
+            var vAlignMap = { top: -4160, center: -4108, bottom: -4107 };
+            range.VerticalAlignment = vAlignMap[params.verticalAlignment] || -4108;
+        }
+
+        // 边框
+        if (params.border) {
+            range.Borders.LineStyle = 1; // xlContinuous
+            if (params.borderColor) {
+                var bc = params.borderColor.replace('#', '');
+                var br = parseInt(bc.substr(0, 2), 16);
+                var bg = parseInt(bc.substr(2, 2), 16);
+                var bb = parseInt(bc.substr(4, 2), 16);
+                range.Borders.Color = br + bg * 256 + bb * 65536;
+            }
+        }
+
+        return { success: true, data: { range: params.range } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 合并单元格
+function handleMergeCells(params) {
+    try {
+        var sheet = Application.ActiveSheet;
+        var range = sheet.Range(params.range);
+        range.Merge(params.across || false);
+        return { success: true, data: { range: params.range } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 取消合并单元格
+function handleUnmergeCells(params) {
+    try {
+        var sheet = Application.ActiveSheet;
+        var range = sheet.Range(params.range);
+        range.UnMerge();
+        return { success: true, data: { range: params.range } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 设置列宽
+function handleSetColumnWidth(params) {
+    try {
+        var sheet = Application.ActiveSheet;
+        var col = params.column;
+        if (typeof col === 'number') {
+            col = colToLetter(col);
+        }
+        // 使用Range("A:A")格式选择整列
+        sheet.Range(col + ':' + col).ColumnWidth = params.width;
+        return { success: true, data: { column: col, width: params.width } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 设置行高
+function handleSetRowHeight(params) {
+    try {
+        var sheet = Application.ActiveSheet;
+        // 使用Range("1:1")格式选择整行
+        sheet.Range(params.row + ':' + params.row).RowHeight = params.height;
+        return { success: true, data: { row: params.row, height: params.height } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 自动调整列宽 - 使用Range格式
+function handleAutoFitColumn(params) {
+    try {
+        var sheet = Application.ActiveSheet;
+        if (params.range) {
+            sheet.Range(params.range).Columns.AutoFit();
+        } else if (params.column) {
+            var col = params.column;
+            if (typeof col === 'number') col = colToLetter(col);
+            sheet.Range(col + ':' + col).AutoFit();
+        } else {
+            sheet.UsedRange.Columns.AutoFit();
+        }
+        return { success: true, data: { message: '列宽已自动调整' } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 自动调整行高 - 使用Range格式
+function handleAutoFitRow(params) {
+    try {
+        var sheet = Application.ActiveSheet;
+        if (params.range) {
+            sheet.Range(params.range).Rows.AutoFit();
+        } else if (params.row) {
+            sheet.Range(params.row + ':' + params.row).AutoFit();
+        } else {
+            sheet.UsedRange.Rows.AutoFit();
+        }
+        return { success: true, data: { message: '行高已自动调整' } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// ==================== Excel 美化增强 Handlers ====================
+
+// 一键自动调整所有列宽行高
+function handleAutoFitAll(params) {
+    try {
+        var sheet = Application.ActiveSheet;
+        var range = params.range ? sheet.Range(params.range) : sheet.UsedRange;
+        range.Columns.AutoFit();
+        range.Rows.AutoFit();
+        return { success: true, data: { message: '列宽行高已自动调整' } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 复制格式（格式刷）
+function handleCopyFormat(params) {
+    try {
+        var sheet = Application.ActiveSheet;
+        var sourceRange = sheet.Range(params.source);
+        var targetRange = sheet.Range(params.target);
+        sourceRange.Copy();
+        targetRange.PasteSpecial(-4122); // xlPasteFormats
+        Application.CutCopyMode = false;
+        return { success: true, data: { source: params.source, target: params.target } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 清除格式保留内容
+function handleClearFormats(params) {
+    try {
+        var sheet = Application.ActiveSheet;
+        var range = sheet.Range(params.range);
+        range.ClearFormats();
+        return { success: true, data: { range: params.range } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 设置边框样式
+function handleSetBorder(params) {
+    try {
+        var sheet = Application.ActiveSheet;
+        var range = sheet.Range(params.range);
+        var styleMap = { 'thin': 1, 'medium': 2, 'thick': 4, 'double': 6, 'none': 0 };
+        var style = styleMap[params.style] || 1;
+
+        // 边框位置: all, left, right, top, bottom, inside, outside
+        var position = params.position || 'all';
+        var borders = [];
+
+        if (position === 'all' || position === 'outside') {
+            borders.push(7, 8, 9, 10); // xlEdgeLeft, xlEdgeTop, xlEdgeBottom, xlEdgeRight
+        }
+        if (position === 'all' || position === 'inside') {
+            borders.push(11, 12); // xlInsideVertical, xlInsideHorizontal
+        }
+        if (position === 'left') borders.push(7);
+        if (position === 'top') borders.push(8);
+        if (position === 'bottom') borders.push(9);
+        if (position === 'right') borders.push(10);
+
+        for (var i = 0; i < borders.length; i++) {
+            var border = range.Borders.Item(borders[i]);
+            if (style === 0) {
+                border.LineStyle = -4142; // xlNone
+            } else {
+                border.LineStyle = 1; // xlContinuous
+                border.Weight = style;
+            }
+            if (params.color) {
+                var c = params.color.replace('#', '');
+                border.Color = parseInt(c.substr(0, 2), 16) + parseInt(c.substr(2, 2), 16) * 256 + parseInt(c.substr(4, 2), 16) * 65536;
+            }
+        }
+        return { success: true, data: { range: params.range, style: params.style, position: position } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 设置数字格式
+function handleSetNumberFormat(params) {
+    try {
+        var sheet = Application.ActiveSheet;
+        var range = sheet.Range(params.range);
+        var formatMap = {
+            'number': '0.00',
+            'integer': '0',
+            'percent': '0.00%',
+            'currency': '¥#,##0.00',
+            'currencyUSD': '$#,##0.00',
+            'date': 'yyyy-mm-dd',
+            'datetime': 'yyyy-mm-dd hh:mm:ss',
+            'time': 'hh:mm:ss',
+            'text': '@',
+            'scientific': '0.00E+00',
+            'fraction': '# ?/?',
+            'accounting': '_ ¥* #,##0.00_ ;_ ¥* -#,##0.00_ '
+        };
+        var format = formatMap[params.format] || params.format || '0.00';
+        range.NumberFormat = format;
+        return { success: true, data: { range: params.range, format: format } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 冻结窗格
+function handleFreezePanes(params) {
+    try {
+        var sheet = Application.ActiveSheet;
+        if (params.cell) {
+            sheet.Range(params.cell).Select();
+        } else if (params.row && params.column) {
+            var cellAddr = colToLetter(params.column) + params.row;
+            sheet.Range(cellAddr).Select();
+        }
+        Application.ActiveWindow.FreezePanes = true;
+        return { success: true, data: { message: '窗格已冻结' } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 取消冻结窗格
+function handleUnfreezePanes(params) {
+    try {
+        Application.ActiveWindow.FreezePanes = false;
+        return { success: true, data: { message: '窗格冻结已取消' } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// ==================== Excel 行列操作 Handlers ====================
+
+// 插入行
+function handleInsertRows(params) {
+    try {
+        var sheet = Application.ActiveSheet;
+        var startRow = params.row || params.startRow;
+        var count = params.count || 1;
+        for (var i = 0; i < count; i++) {
+            // 使用Range("1:1")格式
+            sheet.Range(startRow + ':' + startRow).Insert();
+        }
+        return { success: true, data: { insertedAt: startRow, count: count } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 插入列
+function handleInsertColumns(params) {
+    try {
+        var sheet = Application.ActiveSheet;
+        var col = params.column || params.startColumn;
+        if (typeof col === 'number') col = colToLetter(col);
+        var count = params.count || 1;
+        for (var i = 0; i < count; i++) {
+            // 使用Range("A:A")格式
+            sheet.Range(col + ':' + col).Insert();
+        }
+        return { success: true, data: { insertedAt: col, count: count } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 删除行
+function handleDeleteRows(params) {
+    try {
+        var sheet = Application.ActiveSheet;
+        var startRow = params.row || params.startRow;
+        var count = params.count || 1;
+        var endRow = startRow + count - 1;
+        // 使用Range("1:3")格式
+        sheet.Range(startRow + ':' + endRow).Delete();
+        return { success: true, data: { deletedFrom: startRow, count: count } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 删除列
+function handleDeleteColumns(params) {
+    try {
+        var sheet = Application.ActiveSheet;
+        var col = params.column || params.startColumn;
+        if (typeof col === 'number') col = colToLetter(col);
+        var count = params.count || 1;
+        for (var i = 0; i < count; i++) {
+            // 使用Range("A:A")格式
+            sheet.Range(col + ':' + col).Delete();
+        }
+        return { success: true, data: { deletedFrom: col, count: count } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 隐藏行 - 使用Range("1:1")格式
+function handleHideRows(params) {
+    try {
+        var sheet = Application.ActiveSheet;
+        var rows = params.rows || [params.row];
+        for (var i = 0; i < rows.length; i++) {
+            sheet.Range(rows[i] + ':' + rows[i]).Hidden = true;
+        }
+        return { success: true, data: { hiddenRows: rows } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 隐藏列 - 使用Range("A:A")格式
+function handleHideColumns(params) {
+    try {
+        var sheet = Application.ActiveSheet;
+        var cols = params.columns || [params.column];
+        for (var i = 0; i < cols.length; i++) {
+            var c = cols[i];
+            if (typeof c === 'number') c = colToLetter(c);
+            sheet.Range(c + ':' + c).Hidden = true;
+        }
+        return { success: true, data: { hiddenColumns: cols } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 显示行 - 使用Range("1:1")格式
+function handleShowRows(params) {
+    try {
+        var sheet = Application.ActiveSheet;
+        var rows = params.rows || [params.row];
+        for (var i = 0; i < rows.length; i++) {
+            sheet.Range(rows[i] + ':' + rows[i]).Hidden = false;
+        }
+        return { success: true, data: { shownRows: rows } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 显示列 - 使用Range("A:A")格式
+function handleShowColumns(params) {
+    try {
+        var sheet = Application.ActiveSheet;
+        var cols = params.columns || [params.column];
+        for (var i = 0; i < cols.length; i++) {
+            var c = cols[i];
+            if (typeof c === 'number') c = colToLetter(c);
+            sheet.Range(c + ':' + c).Hidden = false;
+        }
+        return { success: true, data: { shownColumns: cols } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// ==================== Excel 条件格式 Handlers ====================
+
+// 添加条件格式
+function handleAddConditionalFormat(params) {
+    try {
+        var sheet = Application.ActiveSheet;
+        var range = sheet.Range(params.range);
+        var formatType = params.type || 'cellValue';
+
+        if (formatType === 'cellValue') {
+            // 单元格值条件格式
+            var operatorMap = {
+                'greater': 5, 'greaterThan': 5, 'less': 6, 'lessThan': 6,
+                'equal': 3, 'notEqual': 4, 'greaterEqual': 7, 'greaterThanOrEqual': 7,
+                'lessEqual': 8, 'lessThanOrEqual': 8, 'between': 1
+            };
+            var op = operatorMap[params.operator] || 3;
+            var val1 = params.value1 || params.value;
+            var val2 = params.value2;
+            var cf = range.FormatConditions.Add(1, op, val1, val2);
+
+            if (cf && params.backgroundColor) {
+                var color = params.backgroundColor.replace('#', '');
+                var r = parseInt(color.substr(0, 2), 16);
+                var g = parseInt(color.substr(2, 2), 16);
+                var b = parseInt(color.substr(4, 2), 16);
+                cf.Interior.Color = r + g * 256 + b * 65536;
+            }
+            if (cf && params.fontColor) {
+                var fc = params.fontColor.replace('#', '');
+                cf.Font.Color = parseInt(fc.substr(0, 2), 16) + parseInt(fc.substr(2, 2), 16) * 256 + parseInt(fc.substr(4, 2), 16) * 65536;
+            }
+        } else if (formatType === 'colorScale') {
+            // 色阶
+            range.FormatConditions.AddColorScale(params.colorScaleType || 3);
+        } else if (formatType === 'dataBar') {
+            // 数据条
+            range.FormatConditions.AddDatabar();
+        }
+
+        return { success: true, data: { range: params.range, type: formatType } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 移除条件格式
+function handleRemoveConditionalFormat(params) {
+    try {
+        var sheet = Application.ActiveSheet;
+        var range = sheet.Range(params.range);
+        if (params.index) {
+            range.FormatConditions.Item(params.index).Delete();
+        } else {
+            range.FormatConditions.Delete();
+        }
+        return { success: true, data: { range: params.range } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 获取条件格式列表
+function handleGetConditionalFormats(params) {
+    try {
+        var sheet = Application.ActiveSheet;
+        var range = sheet.Range(params.range);
+        var formats = [];
+        var count = range.FormatConditions.Count;
+        for (var i = 1; i <= count; i++) {
+            var cf = range.FormatConditions.Item(i);
+            formats.push({ index: i, type: cf.Type });
+        }
+        return { success: true, data: { range: params.range, formats: formats, count: count } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// ==================== Excel 数据验证 Handlers ====================
+
+// 添加数据验证
+function handleAddDataValidation(params) {
+    try {
+        var sheet = Application.ActiveSheet;
+        var range = sheet.Range(params.range);
+
+        // 验证类型映射
+        var typeMap = {
+            'list': 3, 'whole': 1, 'decimal': 2, 'date': 4, 'time': 5, 'textLength': 6, 'custom': 7
+        };
+        var validationType = typeMap[params.validationType] || 3;
+
+        range.Validation.Delete(); // 先删除已有验证
+
+        if (params.validationType === 'list') {
+            range.Validation.Add(validationType, 1, 1, params.formula1 || params.list.join(','));
+            if (params.showDropdown !== false) {
+                range.Validation.InCellDropdown = true;
+            }
+        } else {
+            var operatorMap = { 'between': 1, 'notBetween': 2, 'equal': 3, 'notEqual': 4, 'greater': 5, 'less': 6, 'greaterEqual': 7, 'lessEqual': 8 };
+            var op = operatorMap[params.operator] || 1;
+            range.Validation.Add(validationType, 1, op, params.formula1, params.formula2);
+        }
+
+        if (params.inputTitle || params.inputMessage) {
+            range.Validation.InputTitle = params.inputTitle || '';
+            range.Validation.InputMessage = params.inputMessage || '';
+        }
+        if (params.errorTitle || params.errorMessage) {
+            range.Validation.ErrorTitle = params.errorTitle || '';
+            range.Validation.ErrorMessage = params.errorMessage || '';
+        }
+
+        return { success: true, data: { range: params.range, type: params.validationType } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 移除数据验证
+function handleRemoveDataValidation(params) {
+    try {
+        var sheet = Application.ActiveSheet;
+        var range = sheet.Range(params.range);
+        range.Validation.Delete();
+        return { success: true, data: { range: params.range } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 获取数据验证
+function handleGetDataValidations(params) {
+    try {
+        var sheet = Application.ActiveSheet;
+        var range = sheet.Range(params.range);
+        var validation = range.Validation;
+        return {
+            success: true,
+            data: {
+                range: params.range,
+                type: validation.Type,
+                formula1: validation.Formula1,
+                formula2: validation.Formula2,
+                inputTitle: validation.InputTitle,
+                inputMessage: validation.InputMessage
+            }
+        };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// ==================== Excel 查找替换 Handlers ====================
+
+// 在工作表中查找
+function handleFindInSheet(params) {
+    try {
+        var sheet = Application.ActiveSheet;
+        var searchRange = params.range ? sheet.Range(params.range) : sheet.UsedRange;
+        var results = [];
+        var found = searchRange.Find(params.searchText, null, -4163, params.matchCase ? 1 : 2);
+
+        if (found) {
+            var firstAddr = typeof found.Address === 'function' ? found.Address() : found.Address;
+            do {
+                var addr = typeof found.Address === 'function' ? found.Address() : found.Address;
+                results.push({ address: addr.replace(/\$/g, ''), value: found.Value2 });
+                found = searchRange.FindNext(found);
+                var currAddr = typeof found.Address === 'function' ? found.Address() : found.Address;
+            } while (found && currAddr !== firstAddr);
+        }
+
+        return { success: true, data: { searchText: params.searchText, results: results, count: results.length } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 在工作表中替换
+function handleReplaceInSheet(params) {
+    try {
+        var sheet = Application.ActiveSheet;
+        var searchRange = params.range ? sheet.Range(params.range) : sheet.UsedRange;
+        var replaced = searchRange.Replace(params.searchText, params.replaceText, params.matchCase ? 1 : 2);
+        return { success: true, data: { searchText: params.searchText, replaceText: params.replaceText, success: replaced } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// ==================== Excel 高级数据处理 Handlers ====================
+
+// 复制范围
+function handleCopyRange(params) {
+    try {
+        var sheet = Application.ActiveSheet;
+        var range = sheet.Range(params.range);
+        range.Copy();
+        return { success: true, data: { range: params.range, message: '已复制到剪贴板' } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 粘贴范围
+function handlePasteRange(params) {
+    try {
+        var sheet = Application.ActiveSheet;
+        var destRange = sheet.Range(params.destination);
+
+        if (params.pasteType === 'values') {
+            destRange.PasteSpecial(-4163); // xlPasteValues
+        } else if (params.pasteType === 'formats') {
+            destRange.PasteSpecial(-4122); // xlPasteFormats
+        } else if (params.pasteType === 'formulas') {
+            destRange.PasteSpecial(-4123); // xlPasteFormulas
+        } else {
+            sheet.Paste(destRange);
+        }
+
+        return { success: true, data: { destination: params.destination } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 填充序列
+function handleFillSeries(params) {
+    try {
+        var sheet = Application.ActiveSheet;
+        var range = sheet.Range(params.range);
+
+        // 设置起始值
+        var startCell = range.Cells.Item(1, 1);
+        startCell.Value2 = params.startValue || 1;
+
+        // 填充类型
+        var typeMap = { 'linear': 0, 'growth': 1, 'date': 2, 'autoFill': 3 };
+        var fillType = typeMap[params.type] || 0;
+
+        var step = params.step || 1;
+        range.DataSeries(null, -4132, fillType, step);
+
+        return { success: true, data: { range: params.range, type: params.type } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 转置数据
+function handleTranspose(params) {
+    try {
+        var sheet = Application.ActiveSheet;
+        var sourceRange = sheet.Range(params.sourceRange);
+        var destCell = params.destinationCell || params.targetCell;
+        var destRange = sheet.Range(destCell);
+
+        sourceRange.Copy();
+        destRange.PasteSpecial(-4163, -4142, false, true); // xlPasteValues, transpose=true
+        Application.CutCopyMode = false;
+
+        return { success: true, data: { source: params.sourceRange, destination: destCell } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 分列
+function handleTextToColumns(params) {
+    try {
+        var sheet = Application.ActiveSheet;
+        var range = sheet.Range(params.range);
+        var delimiter = params.delimiter || ',';
+
+        var delimiterMap = { ',': 1, '\t': 2, ';': 3, ' ': 4 };
+        var delimType = delimiterMap[delimiter] || 1;
+
+        range.TextToColumns(null, 1, 1, false, true);
+        return { success: true, data: { range: params.range, delimiter: delimiter } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 分类汇总
+function handleSubtotal(params) {
+    try {
+        var sheet = Application.ActiveSheet;
+        var range = sheet.Range(params.range);
+
+        var funcMap = { 'sum': 9, 'count': 2, 'average': 1, 'max': 4, 'min': 5 };
+        var func = funcMap[params.function] || 9;
+
+        // totalColumn需要是数组格式
+        var totalCol = params.totalColumn;
+        if (!Array.isArray(totalCol)) {
+            totalCol = [totalCol];
+        }
+
+        range.Subtotal(params.groupBy, func, totalCol, params.replace !== false, false, true);
+        return { success: true, data: { range: params.range } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// ==================== Excel 命名区域 Handlers ====================
+
+// 创建命名区域
+function handleCreateNamedRange(params) {
+    try {
+        var wb = Application.ActiveWorkbook;
+        if (!wb) return { success: false, error: '没有打开的工作簿' };
+        var sheet = Application.ActiveSheet;
+        var range = sheet.Range(params.range);
+        var addr = typeof range.Address === 'function' ? range.Address() : range.Address;
+        wb.Names.Add(params.name, '=' + sheet.Name + '!' + addr);
+        return { success: true, data: { name: params.name, range: params.range } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 删除命名区域
+function handleDeleteNamedRange(params) {
+    try {
+        var wb = Application.ActiveWorkbook;
+        if (!wb) return { success: false, error: '没有打开的工作簿' };
+        wb.Names.Item(params.name).Delete();
+        return { success: true, data: { deletedName: params.name } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 获取命名区域列表
+function handleGetNamedRanges(params) {
+    try {
+        var wb = Application.ActiveWorkbook;
+        if (!wb) return { success: false, error: '没有打开的工作簿' };
+        var names = [];
+        for (var i = 1; i <= wb.Names.Count; i++) {
+            var n = wb.Names.Item(i);
+            names.push({ name: n.Name, refersTo: n.RefersTo, visible: n.Visible });
+        }
+        return { success: true, data: { names: names, count: names.length } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// ==================== Excel 批注功能 Handlers ====================
+
+// 添加单元格批注
+function handleAddCellComment(params) {
+    try {
+        var sheet = Application.ActiveSheet;
+        var cell = sheet.Range(params.cell);
+        if (cell.Comment) {
+            cell.Comment.Delete();
+        }
+        cell.AddComment(params.text);
+        if (params.visible) {
+            cell.Comment.Visible = true;
+        }
+        return { success: true, data: { cell: params.cell, text: params.text } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 删除单元格批注
+function handleDeleteCellComment(params) {
+    try {
+        var sheet = Application.ActiveSheet;
+        var cell = sheet.Range(params.cell);
+        if (cell.Comment) {
+            cell.Comment.Delete();
+        }
+        return { success: true, data: { cell: params.cell } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 获取批注列表
+function handleGetCellComments(params) {
+    try {
+        var sheet = Application.ActiveSheet;
+        var range = params.range ? sheet.Range(params.range) : sheet.UsedRange;
+        var comments = [];
+
+        for (var i = 1; i <= sheet.Comments.Count; i++) {
+            var c = sheet.Comments.Item(i);
+            var addr = typeof c.Parent.Address === 'function' ? c.Parent.Address() : c.Parent.Address;
+            comments.push({
+                cell: addr.replace(/\$/g, ''),
+                text: c.Text(),
+                author: c.Author || ''
+            });
+        }
+
+        return { success: true, data: { comments: comments, count: comments.length } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// ==================== Excel 保护功能 Handlers ====================
+
+// 保护工作表
+function handleProtectSheet(params) {
+    try {
+        var sheet = params.sheet ? Application.ActiveWorkbook.Sheets.Item(params.sheet) : Application.ActiveSheet;
+        var password = params.password || '';
+        sheet.Protect(password, params.drawingObjects, params.contents, params.scenarios);
+        return { success: true, data: { sheet: sheet.Name, protected: true } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 取消保护工作表
+function handleUnprotectSheet(params) {
+    try {
+        var sheet = params.sheet ? Application.ActiveWorkbook.Sheets.Item(params.sheet) : Application.ActiveSheet;
+        var password = params.password || '';
+        sheet.Unprotect(password);
+        return { success: true, data: { sheet: sheet.Name, protected: false } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 保护工作簿
+function handleProtectWorkbook(params) {
+    try {
+        var wb = Application.ActiveWorkbook;
+        if (!wb) return { success: false, error: '没有打开的工作簿' };
+        var password = params.password || '';
+        wb.Protect(password, params.structure !== false, params.windows);
+        return { success: true, data: { workbook: wb.Name, protected: true } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// ==================== P0 财务/金融核心功能 Handlers ====================
+
+// 打开工作簿
+function handleOpenWorkbook(params) {
+    try {
+        var wb = Application.Workbooks.Open(params.path, params.updateLinks, params.readOnly);
+        return { success: true, data: { name: wb.Name, path: wb.FullName, sheets: wb.Sheets.Count } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 获取所有打开的工作簿
+function handleGetOpenWorkbooks(params) {
+    try {
+        var workbooks = [];
+        for (var i = 1; i <= Application.Workbooks.Count; i++) {
+            var wb = Application.Workbooks.Item(i);
+            workbooks.push({ name: wb.Name, path: wb.FullName, sheets: wb.Sheets.Count, active: wb.Name === Application.ActiveWorkbook.Name });
+        }
+        return { success: true, data: { workbooks: workbooks, count: workbooks.length } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 切换活动工作簿
+function handleSwitchWorkbook(params) {
+    try {
+        var wb = Application.Workbooks.Item(params.name || params.index);
+        wb.Activate();
+        return { success: true, data: { name: wb.Name, path: wb.FullName } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 关闭工作簿
+function handleCloseWorkbook(params) {
+    try {
+        var wb = params.name ? Application.Workbooks.Item(params.name) : Application.ActiveWorkbook;
+        if (!wb) return { success: false, error: '没有找到工作簿' };
+        var name = wb.Name;
+        wb.Close(params.saveChanges !== false);
+        return { success: true, data: { closed: name } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 创建新工作簿
+function handleCreateWorkbook(params) {
+    try {
+        var wb = Application.Workbooks.Add();
+        if (params.name) {
+            // 如果指定了名称，另存为
+            wb.SaveAs(params.name);
+        }
+        return { success: true, data: { name: wb.Name, path: wb.FullName, sheets: wb.Sheets.Count } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 获取单元格公式
+function handleGetFormula(params) {
+    try {
+        var sheet = Application.ActiveSheet;
+        var cell = sheet.Range(params.cell);
+        var formula = cell.Formula || '';
+        var formulaLocal = cell.FormulaLocal || '';
+        return { success: true, data: { cell: params.cell, formula: formula, formulaLocal: formulaLocal, hasFormula: formula.indexOf('=') === 0 } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 获取单元格完整信息
+function handleGetCellInfo(params) {
+    try {
+        var sheet = Application.ActiveSheet;
+        var cell = sheet.Range(params.cell);
+        var value = cell.Value2;
+        var formula = cell.Formula || '';
+        var numberFormat = cell.NumberFormat || '';
+        var fontName = cell.Font.Name || '';
+        var fontSize = cell.Font.Size || 0;
+        var bold = cell.Font.Bold || false;
+        var bgColor = cell.Interior.Color || 0;
+        return { success: true, data: { cell: params.cell, value: value, formula: formula, numberFormat: numberFormat, font: { name: fontName, size: fontSize, bold: bold }, backgroundColor: bgColor } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 清除范围
+function handleClearRange(params) {
+    try {
+        var sheet = Application.ActiveSheet;
+        var range = sheet.Range(params.range);
+        var clearType = params.type || 'all';
+        if (clearType === 'contents') {
+            range.ClearContents();
+        } else if (clearType === 'formats') {
+            range.ClearFormats();
+        } else if (clearType === 'comments') {
+            range.ClearComments();
+        } else {
+            range.Clear();
+        }
+        return { success: true, data: { range: params.range, clearType: clearType } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// ==================== P1 财务/金融重要补充 Handlers ====================
+
+// 刷新外部链接
+function handleRefreshLinks(params) {
+    try {
+        var wb = Application.ActiveWorkbook;
+        if (!wb) return { success: false, error: '没有打开的工作簿' };
+        var links = wb.LinkSources(1); // xlExcelLinks
+        if (links) {
+            for (var i = 1; i <= links.length; i++) {
+                wb.UpdateLink(links[i - 1], 1);
+            }
+            return { success: true, data: { refreshed: links.length } };
+        }
+        return { success: true, data: { refreshed: 0, message: '没有外部链接' } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 合并计算
+function handleConsolidate(params) {
+    try {
+        var sheet = Application.ActiveSheet;
+        var destRange = sheet.Range(params.destination);
+        var funcMap = { 'sum': 9, 'count': 2, 'average': 1, 'max': 4, 'min': 5 };
+        var func = funcMap[params.function] || 9;
+        destRange.Consolidate(params.sources, func, params.topRow, params.leftColumn, params.createLinks);
+        return { success: true, data: { destination: params.destination, sources: params.sources } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 设置数组公式
+function handleSetArrayFormula(params) {
+    try {
+        var sheet = Application.ActiveSheet;
+        var range = sheet.Range(params.range);
+        range.FormulaArray = params.formula;
+        return { success: true, data: { range: params.range, formula: params.formula } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 强制重算工作表
+function handleCalculateSheet(params) {
+    try {
+        if (params.all) {
+            Application.Calculate();
+            return { success: true, data: { calculated: 'all' } };
+        } else {
+            var sheet = Application.ActiveSheet;
+            sheet.Calculate();
+            return { success: true, data: { calculated: sheet.Name } };
+        }
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 插入图片(Excel)
+function handleInsertExcelImage(params) {
+    try {
+        var sheet = Application.ActiveSheet;
+        var left = params.left || 100;
+        var top = params.top || 100;
+        var width = params.width || -1;
+        var height = params.height || -1;
+        var pic = sheet.Shapes.AddPicture(params.path, false, true, left, top, width, height);
+        return { success: true, data: { name: pic.Name, path: params.path } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 设置超链接
+function handleSetHyperlink(params) {
+    try {
+        var sheet = Application.ActiveSheet;
+        var range = sheet.Range(params.cell);
+        sheet.Hyperlinks.Add(range, params.address || '', params.subAddress || '', params.screenTip || '', params.textToDisplay || '');
+        return { success: true, data: { cell: params.cell, address: params.address } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 自动换行
+function handleWrapText(params) {
+    try {
+        var sheet = Application.ActiveSheet;
+        var range = sheet.Range(params.range);
+        range.WrapText = params.wrap !== false;
+        return { success: true, data: { range: params.range, wrapText: params.wrap !== false } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// ==================== P2 扩展功能 Handlers ====================
+
+// 设置打印区域
+function handleSetPrintArea(params) {
+    try {
+        var sheet = Application.ActiveSheet;
+        if (params.range) {
+            sheet.PageSetup.PrintArea = params.range;
+        } else {
+            sheet.PageSetup.PrintArea = '';
+        }
+        return { success: true, data: { printArea: params.range || 'cleared' } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 获取当前选中区域
+function handleGetSelection(params) {
+    try {
+        var sel = Application.Selection;
+        if (!sel) return { success: false, error: '没有选中区域' };
+        var addr = typeof sel.Address === 'function' ? sel.Address() : sel.Address;
+        var rowCount = sel.Rows.Count;
+        var colCount = sel.Columns.Count;
+        return { success: true, data: { address: addr, rows: rowCount, columns: colCount } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 行分组
+function handleGroupRows(params) {
+    try {
+        var sheet = Application.ActiveSheet;
+        var startRow = params.startRow;
+        var endRow = params.endRow;
+        sheet.Range(startRow + ':' + endRow).Group();
+        return { success: true, data: { grouped: startRow + ':' + endRow } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 列分组
+function handleGroupColumns(params) {
+    try {
+        var sheet = Application.ActiveSheet;
+        var startCol = params.startColumn;
+        var endCol = params.endColumn;
+        sheet.Range(startCol + ':' + endCol).Group();
+        return { success: true, data: { grouped: startCol + ':' + endCol } };
+    } catch (e) {
+        return { success: false, error: e.message };
+    }
+}
+
+// 锁定单元格
+function handleLockCells(params) {
+    try {
+        var sheet = Application.ActiveSheet;
+        var range = sheet.Range(params.range);
+        range.Locked = params.locked !== false;
+        return { success: true, data: { range: params.range, locked: params.locked !== false } };
     } catch (e) {
         return { success: false, error: e.message };
     }

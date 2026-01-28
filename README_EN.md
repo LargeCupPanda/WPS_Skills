@@ -123,27 +123,29 @@ powershell -ExecutionPolicy Bypass -File scripts/auto-install.ps1
 
 ## Features
 
-### Excel Features (13 implemented, target 50+)
+### Excel Features (86 implemented)
 
-| Feature | Description | Windows | macOS |
-|---------|-------------|---------|-------|
-| Get Workbook Info | Name, path, sheet list | ✅ | ✅ |
-| Get Context | Headers, selection, used range | ✅ | ✅ |
-| Read Cells | Single or range | ✅ | ✅ |
-| Write Cells | Single or range | ✅ | ✅ |
-| Set Formula | Write Excel formulas | ✅ | ✅ |
-| Formula Diagnosis | Analyze formula errors | ✅ | ✅ |
-| Sort | Sort by column | ✅ | 🔧 |
-| Filter | Auto filter | ✅ | 🔧 |
-| Remove Duplicates | Delete duplicate rows | ✅ | ⚠️ Mac API issue |
-| Data Cleaning | Trim spaces, etc. | ✅ | ✅ |
-| Create Chart | Bar, line, pie, etc. | ✅ | ✅ |
-| Update Chart | Modify title, type, etc. | ✅ | ✅ |
-| Create Pivot Table | Create pivot tables | ✅ | ✅ |
-| Update Pivot Table | Refresh, add fields | ✅ | ✅ |
-| Conditional Formatting | Set format rules | 🚧 | 🚧 |
+| Category | Count | Features | Windows | macOS |
+|----------|-------|----------|---------|-------|
+| Workbook Operations | 5 | Open/Create/Switch/Close workbooks | ✅ | ✅ |
+| Worksheet Operations | 7 | Create/Delete/Rename/Copy/Move sheets | ✅ | ✅ |
+| Cell Read/Write | 7 | Read/Write cells/ranges/formulas/info | ✅ | ✅ |
+| Formatting | 15 | Style/Border/Number format/Merge/AutoFit | ✅ | ✅ |
+| Row/Column Operations | 8 | Insert/Delete/Hide/Show rows/columns | ✅ | ✅ |
+| Conditional Formatting | 3 | Add/Remove/Get conditional formats | ✅ | ✅ |
+| Data Validation | 3 | Add/Remove/Get data validation | ✅ | ✅ |
+| Find & Replace | 2 | Find/Replace in worksheet | ✅ | ✅ |
+| Data Processing | 10 | Sort/Filter/Dedupe/Clean/Copy/Transpose | ✅ | ✅ |
+| Named Ranges | 3 | Create/Delete/Get named ranges | ✅ | ✅ |
+| Comments | 3 | Add/Delete/Get comments | ✅ | ✅ |
+| Protection | 3 | Protect sheet/workbook | ✅ | ✅ |
+| Formula Functions | 5 | Set formula/Array formula/Diagnose/Calculate | ✅ | ✅ |
+| Charts | 2 | Create/Update charts | ✅ | ✅ |
+| Pivot Tables | 2 | Create/Update pivot tables | ✅ | ✅ |
+| Financial Features | 5 | Cross-workbook refs/Hyperlinks/Images/Wrap | ✅ | ✅ |
+| Extended Features | 5 | Print area/Grouping/Lock cells | ✅ | ✅ |
 
-> 📌 Excel features expanding, targeting 95% daily scenarios (50+ tools)
+> 📌 Excel features cover 95%+ daily scenarios, including financial/business use cases
 
 ### Word Features (22 implemented)
 
