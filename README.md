@@ -4,6 +4,7 @@
   <img src="https://img.shields.io/badge/WPS-Office-blue?style=flat-square" alt="WPS Office">
   <img src="https://img.shields.io/badge/Claude-AI-orange?style=flat-square" alt="Claude AI">
   <img src="https://img.shields.io/badge/MCP-Protocol-green?style=flat-square" alt="MCP Protocol">
+  <img src="https://img.shields.io/badge/Skills-Framework-purple?style=flat-square" alt="Skills Framework">
   <img src="https://img.shields.io/badge/Platform-Windows%20%7C%20macOS-lightgrey?style=flat-square" alt="Windows | macOS">
   <img src="https://img.shields.io/badge/License-MIT-yellow?style=flat-square" alt="MIT License">
 </p>
@@ -19,7 +20,7 @@
 **只需告诉 Claude Code：**
 
 ```
-帮我安装 WPS Skills，安装指南在这里：https://github.com/LargeCupPanda/WPS_Skills/blob/main/INSTALL.md
+帮我安装 WPS Skills，安装指南在这里：https://github.com/lc2panda/wps-mcp/blob/main/INSTALL.md
 ```
 
 Claude Code 会自动读取安装指南并完成所有步骤！
@@ -30,7 +31,7 @@ Claude Code 会自动读取安装指南并完成所有步骤！
 
 ## 📖 项目简介
 
-WPS Office 智能助手是一个基于 Claude AI 的自然语言办公自动化工具。通过 MCP (Model Context Protocol) 协议，让您可以用自然语言直接操控 WPS Office，告别繁琐的菜单操作和公式记忆。
+WPS Office 智能助手是一个基于 Claude AI 的自然语言办公自动化工具。采用 **Anthropic 官方标准的 MCP + Skills 双层架构**，让您可以用自然语言直接操控 WPS Office，告别繁琐的菜单操作和公式记忆。
 
 ### ✨ 核心特性
 
@@ -38,29 +39,26 @@ WPS Office 智能助手是一个基于 Claude AI 的自然语言办公自动化�
 - 📊 **全套办公支持** - Excel、Word、PPT 三大组件全覆盖
 - 🔢 **公式智能生成** - 描述计算需求，自动生成公式
 - 🎨 **一键美化** - PPT配色、字体统一，专业设计
-- 🔗 **稳定 COM 桥接** - 通过 PowerShell COM 接口，稳定可靠
+- 🧠 **Skills 智能指导** - 4个专业Skills教会AI如何完成任务
+- 🔧 **196个MCP工具** - 完整的底层工具能力
 
 ### 🎯 使用示例
 
 ```bash
 # Excel 操作
-用户: 帮我读取当前Excel的A1到C5的数据
-用户: 把B3单元格的值改成4.8
-用户: 创建一个柱状图展示销售数据
-用户: 按B列降序排序
-用户: 计算B列的平均值、最大值、最小值
+用户: 帮我写个公式查产品价格
+用户: 创建一个销售数据透视表
+用户: 把B列大于100的单元格标红
 
 # Word 操作
-用户: 在文档末尾插入一段文字
-用户: 把所有的"旧公司"替换成"新公司"
-用户: 插入一个3行4列的表格
+用户: 帮我生成文档目录
 用户: 把全文字体改成宋体12号
+用户: 插入一个3行4列的表格
 
 # PPT 操作
-用户: 新增一页幻灯片，标题是"项目总结"
-用户: 统一全文字体为微软雅黑
-用户: 用商务风格美化当前页面
-用户: 在第一页添加一个文本框
+用户: 用商务风格美化这页PPT
+用户: 帮我画个项目流程图
+用户: 创建一组KPI数据卡片
 ```
 
 ---
@@ -73,6 +71,9 @@ WPS Office 智能助手是一个基于 Claude AI 的自然语言办公自动化�
 | WPS Office | 2019 或更高版本 | Mac 版最新版 |
 | Node.js | 18.0.0 或更高版本 | 18.0.0 或更高版本 |
 | Claude Code | 最新版本 | 最新版本 |
+| **功能支持** | ⚠️ 基础功能（~25个方法） | ✅ 完整功能（196个方法） |
+
+> ⚠️ **Windows 适配说明**：Windows 版本目前通过 PowerShell COM 桥接实现，已支持 Excel/Word/PPT 的基础操作。高级功能（透视表、条件格式、流程图、3D效果等）正在适配中。macOS 版本功能完整。
 
 ---
 
@@ -81,10 +82,15 @@ WPS Office 智能助手是一个基于 Claude AI 的自然语言办公自动化�
 
 ### 方式一：一键脚本
 
-```powershell
-git clone https://github.com/LargeCupPanda/WPS_Skills.git
-cd WPS_Skills
+```bash
+git clone https://github.com/lc2panda/wps-mcp.git
+cd wps-mcp
+
+# Windows
 powershell -ExecutionPolicy Bypass -File scripts/auto-install.ps1
+
+# macOS
+./scripts/auto-install-mac.sh
 ```
 
 ### 方式二：手动步骤
@@ -96,162 +102,141 @@ powershell -ExecutionPolicy Bypass -File scripts/auto-install.ps1
    npm run build
    ```
 
-2. **配置 Claude Code** - 编辑 `~/.claude/settings.json`：
-   ```json
-   {
-     "mcpServers": {
-       "wps-office": {
-         "command": "node",
-         "args": ["C:\\path\\to\\WPS_Skills\\wps-office-mcp\\dist\\index.js"]
-       }
-     }
-   }
+2. **配置 MCP Server**
+   ```bash
+   claude mcp add wps-office node /path/to/wps-mcp/wps-office-mcp/dist/index.js
    ```
 
-3. **安装 WPS 加载项**
-   - 复制 `wps-claude-addon` 到 `%APPDATA%\kingsoft\wps\jsaddons\wps-claude-addon_\`
-   - 在 `publish.xml` 中添加：
-     ```xml
-     <jsplugin type="wps,et,wpp" enable="enable_dev" name="wps-claude-addon" url="wps-claude-addon_/"/>
-     ```
+3. **注册 Skills（创建软链接到全局目录）**
+   ```bash
+   mkdir -p ~/.claude/skills
+   ln -sf /path/to/wps-mcp/skills/wps-excel ~/.claude/skills/wps-excel
+   ln -sf /path/to/wps-mcp/skills/wps-word ~/.claude/skills/wps-word
+   ln -sf /path/to/wps-mcp/skills/wps-ppt ~/.claude/skills/wps-ppt
+   ln -sf /path/to/wps-mcp/skills/wps-office ~/.claude/skills/wps-office
+   ```
 
-4. **重启 Claude Code 和 WPS Office**
+4. **安装 WPS 加载项** - 参考 INSTALL.md
+
+5. **重启 Claude Code 和 WPS Office**
 
 </details>
 
 ---
 
-## 📖 功能列表
-
-### Excel 功能 (86个已实现)
-
-| 分类 | 数量 | 功能 | Windows | macOS |
-|------|------|------|---------|-------|
-| 工作簿操作 | 5 | 打开/创建/切换/关闭工作簿 | ✅ | ✅ |
-| 工作表操作 | 7 | 创建/删除/重命名/复制/移动工作表 | ✅ | ✅ |
-| 单元格读写 | 7 | 读写单元格/范围/公式/完整信息 | ✅ | ✅ |
-| 格式美化 | 15 | 样式/边框/数字格式/合并/自动调整 | ✅ | ✅ |
-| 行列操作 | 8 | 插入/删除/隐藏/显示行列 | ✅ | ✅ |
-| 条件格式 | 3 | 添加/删除/获取条件格式 | ✅ | ✅ |
-| 数据验证 | 3 | 添加/删除/获取数据验证 | ✅ | ✅ |
-| 查找替换 | 2 | 工作表内查找替换 | ✅ | ✅ |
-| 数据处理 | 10 | 排序/筛选/去重/清洗/复制/转置 | ✅ | ✅ |
-| 命名区域 | 3 | 创建/删除/获取命名区域 | ✅ | ✅ |
-| 批注功能 | 3 | 添加/删除/获取批注 | ✅ | ✅ |
-| 保护功能 | 3 | 保护工作表/工作簿 | ✅ | ✅ |
-| 公式功能 | 5 | 设置公式/数组公式/诊断/重算 | ✅ | ✅ |
-| 图表功能 | 2 | 创建/更新图表 | ✅ | ✅ |
-| 透视表 | 2 | 创建/更新透视表 | ✅ | ✅ |
-| 财务增强 | 5 | 跨簿引用/超链接/图片/换行 | ✅ | ✅ |
-| 扩展功能 | 5 | 打印区域/分组/锁定单元格 | ✅ | ✅ |
-
-> 📌 Excel功能已覆盖95%+日常场景，包括财务/金融专业场景
-
-### Word 功能 (22个已实现)
-
-| 功能 | 说明 | Windows | macOS |
-|------|------|---------|-------|
-| 获取文档信息 | 名称、段落数、字数 | ✅ | ✅ |
-| 获取文档统计 | 页数、字符数、行数 | ✅ | ✅ |
-| 读取文本 | 获取文档内容 | ✅ | ✅ |
-| 插入文本 | 开头/末尾/光标处插入 | ✅ | ✅ |
-| 设置字体 | 字体、字号、粗体等 | ✅ | ✅ |
-| 查找替换 | 批量替换文本 | ✅ | ✅ |
-| 插入表格 | 创建表格并填充数据 | ✅ | ✅ |
-| 应用样式 | 应用Word样式 | ✅ | ✅ |
-| 段落格式 | 对齐、缩进、行间距 | ✅ | ✅ |
-| 页面设置 | 页边距、纸张、方向 | ✅ | ✅ |
-| 生成目录 | 自动生成目录 | ✅ | ✅ |
-| 插入图片 | 插入并调整图片 | ✅ | ✅ |
-| 插入页眉 | 添加页眉文本 | ✅ | ✅ |
-| 插入页脚 | 添加页脚和页码 | ✅ | ✅ |
-| 插入分页符 | 分页/分节符 | ✅ | ✅ |
-| 插入超链接 | 添加超链接 | ✅ | ✅ |
-| 插入书签 | 添加书签 | ✅ | ✅ |
-| 获取书签 | 获取书签列表 | ✅ | ✅ |
-| 添加批注 | 添加文档批注 | ✅ | ✅ |
-| 获取批注 | 获取批注列表 | ✅ | ✅ |
-| 保存文档 | 保存当前文档 | ✅ | ✅ |
-| 导出PDF | 转换为PDF格式 | ✅ | ✅ |
-
-### PPT 功能 (85个已实现)
-
-| 分类 | 数量 | 功能 | Windows | macOS |
-|------|------|------|---------|-------|
-| 演示文稿操作 | 5 | 创建/打开/关闭/切换演示文稿 | ✅ | ✅ |
-| 幻灯片操作 | 9 | 添加/删除/复制/移动/切换幻灯片 | ✅ | ✅ |
-| 文本框操作 | 5 | 添加/删除/设置文本框 | ✅ | ✅ |
-| 标题操作 | 4 | 设置/获取标题/副标题/内容 | ✅ | ✅ |
-| 形状操作 | 14 | 添加/删除/样式/阴影/渐变/边框/透明度 | ✅ | ✅ |
-| 对齐分布 | 4 | 对齐/分布/组合/自动布局 | ✅ | ✅ |
-| 图片操作 | 3 | 插入/删除/设置图片样式 | ✅ | ✅ |
-| 表格操作 | 7 | 插入/设置单元格/样式/专业表格 | ✅ | ✅ |
-| 图表操作 | 3 | 插入/设置数据/样式 | ✅ | ✅ |
-| 动画效果 | 6 | 添加/删除/预设动画组/强调动画 | ✅ | ✅ |
-| 切换效果 | 3 | 设置/删除/应用到全部 | ✅ | ✅ |
-| 主题/背景 | 5 | 背景色/图片/渐变/配色方案 | ✅ | ✅ |
-| 数据可视化 | 4 | 进度条/仪表盘/迷你图/环形图 | ✅ | ✅ |
-| 流程图/架构图 | 3 | 流程图/组织架构图/时间轴 | ✅ | ✅ |
-| 母版操作 | 3 | 获取/设置背景/添加元素 | ✅ | ✅ |
-| 3D效果 | 4 | 3D旋转/深度/材质/3D文字 | ✅ | ✅ |
-| 专业美化 | 7 | 一键美化/KPI卡片/装饰条/页码 | ✅ | ✅ |
-| 其他 | 6 | 超链接/页眉页脚/查找替换/放映 | ✅ | ✅ |
-
-> 📌 PPT功能覆盖高端汇报场景，包括6大类高端能力：数据可视化、智能布局、高级动画、流程图/架构图、母版操作、3D效果
-
-### 通用功能
-
-| 功能 | 说明 | 状态 |
-|------|------|------|
-| 保存文件 | 保存当前文档 | ✅ |
-| 格式转换 | Word/Excel/PPT互转 | 🚧 |
-
-> ✅ 已完成 | 🚧 开发中
-
----
-
 ## 🔧 技术架构
 
-```
-Windows:
-Claude Code → MCP Server (Node.js) → PowerShell COM → WPS Office
+采用 **Anthropic 官方标准的 MCP + Skills 双层架构**：
 
-macOS:
-Claude Code → MCP Server (Node.js) → HTTP → WPS 加载项 (JS API) → WPS Office
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    用户自然语言请求                           │
+│                "帮我写个VLOOKUP公式查价格"                     │
+└─────────────────────────────────────────────────────────────┘
+                              ↓
+┌─────────────────────────────────────────────────────────────┐
+│                    Skills 层（指令包）                        │
+│  skills/wps-excel/SKILL.md  - 教Claude怎么处理Excel任务       │
+│  skills/wps-word/SKILL.md   - 教Claude怎么处理Word任务        │
+│  skills/wps-ppt/SKILL.md    - 教Claude怎么处理PPT任务         │
+│  skills/wps-office/SKILL.md - 教Claude怎么协调跨应用任务       │
+└─────────────────────────────────────────────────────────────┘
+                              ↓
+┌─────────────────────────────────────────────────────────────┐
+│                    MCP 层（工具能力）                         │
+│  wps-office-mcp/            - 196个MCP工具                   │
+│  wps_get_active_workbook    - 获取当前工作簿                  │
+│  wps_execute_method         - 执行具体操作                    │
+│  ...                                                        │
+└─────────────────────────────────────────────────────────────┘
+                              ↓
+┌─────────────────────────────────────────────────────────────┐
+│                    WPS 加载项层（执行器）                      │
+│  Windows: PowerShell COM → WPS Office                       │
+│  macOS: HTTP轮询 → WPS 加载项 (JS API) → WPS Office          │
+└─────────────────────────────────────────────────────────────┘
 ```
 
-- **MCP Server**: 196 个工具，处理 AI 请求
-- **Windows COM 桥接**: 通过 PowerShell 调用 WPS COM 接口（Ket/Kwps/Kwpp）
-- **macOS HTTP 桥接**: 通过 HTTP 调用 WPS 加载项内置服务（端口 58891）
-- **WPS 加载项**: 显示连接状态，Mac 上提供 HTTP API
-- **跨应用数据缓存**: MCP Server层缓存机制，支持Excel→PPT数据传递
+### MCP vs Skills
+
+| 层级 | 作用 | 内容 |
+|------|------|------|
+| **Skills** | 教Claude"怎么做" | 4个SKILL.md文件，包含工作流程和最佳实践 |
+| **MCP** | 告诉Claude"能做什么" | 196个工具，提供底层操作能力 |
 
 ---
 
 ## 📁 项目结构
 
 ```
-WPS_Skills/
+wps-mcp/
 ├── wps-office-mcp/          # MCP Server (核心服务)
 │   ├── src/                 # TypeScript 源码
 │   ├── dist/                # 编译输出
-│   ├── scripts/             # PowerShell COM 桥接脚本 (Windows)
-│   │   └── wps-com.ps1      # COM操作脚本
 │   └── package.json
-├── wps-claude-addon/        # WPS 加载项 (Windows)
-│   ├── ribbon.xml           # 功能区配置
-│   └── js/main.js           # 加载项逻辑
 ├── wps-claude-assistant/    # WPS 加载项 (macOS)
 │   ├── main.js              # HTTP 轮询 + 所有 Handler
 │   ├── manifest.xml         # 加载项清单
 │   └── ribbon.xml           # 功能区配置
+├── wps-claude-addon/        # WPS 加载项 (Windows)
+│   ├── ribbon.xml           # 功能区配置
+│   └── js/main.js           # 加载项逻辑
+├── skills/                  # Claude Skills 定义
+│   ├── wps-excel/SKILL.md   # Excel 技能（60+方法）
+│   ├── wps-word/SKILL.md    # Word 技能（25+方法）
+│   ├── wps-ppt/SKILL.md     # PPT 技能（85+方法）
+│   └── wps-office/SKILL.md  # 跨应用技能
 ├── scripts/
 │   ├── auto-install.ps1     # Windows 一键安装
 │   └── auto-install-mac.sh  # macOS 一键安装
-├── skills/                  # Claude Skills 定义
-├── docs/                    # 设计文档（私有）
+├── INSTALL.md               # Claude Code 安装指南
 └── README.md
 ```
+
+---
+
+## 📖 功能列表
+
+### Excel 功能 (86个)
+
+| 分类 | 数量 | 功能 |
+|------|------|------|
+| 工作簿/工作表操作 | 12 | 打开/创建/切换/重命名/复制/移动 |
+| 单元格读写 | 7 | 读写单元格/范围/公式/完整信息 |
+| 格式美化 | 15 | 样式/边框/数字格式/合并/自动调整 |
+| 行列操作 | 8 | 插入/删除/隐藏/显示行列 |
+| 条件格式 | 3 | 添加/删除/获取条件格式 |
+| 数据验证 | 3 | 添加/删除/获取数据验证 |
+| 数据处理 | 10 | 排序/筛选/去重/清洗/复制/转置 |
+| 图表/透视表 | 4 | 创建/更新图表和透视表 |
+| 公式功能 | 5 | 设置公式/数组公式/诊断/重算 |
+| 其他 | 19 | 批注/保护/命名区域/查找替换等 |
+
+### Word 功能 (25个)
+
+| 分类 | 功能 |
+|------|------|
+| 文档管理 | 获取信息/打开/切换/获取全文 |
+| 文本操作 | 插入文本/查找替换 |
+| 格式设置 | 字体/样式/段落 |
+| 文档结构 | 目录/分页符/页眉/页脚 |
+| 插入内容 | 表格/图片/超链接/书签 |
+| 其他 | 批注/文档统计 |
+
+### PPT 功能 (85个)
+
+| 分类 | 数量 | 功能 |
+|------|------|------|
+| 演示文稿管理 | 5 | 创建/打开/关闭/切换 |
+| 幻灯片操作 | 10 | 添加/删除/复制/移动/备注 |
+| 文本框/形状 | 21 | 添加/删除/样式/阴影/渐变/边框 |
+| 智能布局 | 10 | 对齐/分布/组合/连接线/箭头 |
+| 图片/表格/图表 | 12 | 插入/设置样式 |
+| 数据可视化 | 6 | KPI卡片/进度条/仪表盘/环形图 |
+| 流程图/架构图 | 3 | 流程图/组织架构图/时间轴 |
+| 动画/切换 | 9 | 动画/强调/切换效果 |
+| 母版/3D效果 | 7 | 母版操作/3D旋转/深度/材质 |
+| 其他 | 2 | 演示放映 |
 
 ---
 
@@ -264,53 +249,57 @@ WPS_Skills/
 2. 确认 `publish.xml` 已正确配置
 3. 重启 WPS Office
 
+### Q: Skills 没有加载？
+
+**A:** 检查软链接是否存在：
+```bash
+ls ~/.claude/skills/
+```
+
+如果为空，手动创建：
+```bash
+mkdir -p ~/.claude/skills
+ln -sf /path/to/wps-mcp/skills/wps-excel ~/.claude/skills/wps-excel
+ln -sf /path/to/wps-mcp/skills/wps-word ~/.claude/skills/wps-word
+ln -sf /path/to/wps-mcp/skills/wps-ppt ~/.claude/skills/wps-ppt
+ln -sf /path/to/wps-mcp/skills/wps-office ~/.claude/skills/wps-office
+```
+
+然后重启 Claude Code。
+
 ### Q: MCP Server 连接失败？
 
 **A:** 排查步骤：
-1. 确认 `settings.json` 路径配置正确
-2. 确认已执行 `npm run build`
+1. 确认已执行 `npm run build`
+2. 运行 `claude mcp list` 检查配置
 3. 重启 Claude Code
-
-### Q: 操作 WPS 时提示连接错误？
-
-**A:** 确保：
-1. WPS Office 已启动并打开了文档
-2. 对应的应用已打开（操作Excel需打开Excel，操作Word需打开Word）
 
 ---
 
 ## 📋 TODO
 
-### 近期计划 (v1.1)
+### 近期计划 (v1.1) ✅ 已完成
 
-- [x] **macOS 兼容** - 支持 macOS 平台 ✅ 已完成
-- [x] **Excel 公式诊断** - 分析公式错误，提供修复建议 ✅ 已完成
-- [x] **Excel 数据透视表** - 创建和操作透视表 ✅ 已完成
-- [x] **Excel 条件格式** - 设置条件格式规则 ✅ 已完成
-- [x] **Word 生成目录** - 自动生成文档目录 ✅ 已完成
-- [x] **Word 插入图片** - 插入并调整图片位置 ✅ 已完成
-- [x] **PPT 添加动画** - 进入/退出/强调动画 ✅ 已完成
-- [x] **PPT 高端美化** - 6大类高端能力 ✅ 已完成
-- [x] **跨应用数据传递** - Excel→PPT数据缓存机制 ✅ 已完成
+- [x] macOS 兼容
+- [x] Excel 公式诊断、透视表、条件格式
+- [x] Word 目录生成、插入图片
+- [x] PPT 动画、高端美化、6大类高级能力
+- [x] 跨应用数据传递
+- [x] **Skills 框架** - Anthropic 官方标准
 
 ### 中期计划 (v1.2)
 
-- [ ] **跨应用格式转换** - Word/Excel/PPT 互转
-- [ ] **Word 转 PPT** - 根据Word大纲生成PPT
-- [ ] **批量格式转换** - 批量转换文件格式
-- [ ] **批量添加水印** - 批量添加文字/图片水印
-- [ ] **邮件合并** - Word邮件合并功能
-- [x] **高级公式** - 数组公式支持 ✅ 已完成
+- [ ] 跨应用格式转换
+- [ ] Word 转 PPT
+- [ ] 批量格式转换
+- [ ] 邮件合并
 
 ### 长期计划 (v2.0)
 
-- [ ] **PDF 支持** - 支持 WPS PDF 操作
-- [ ] **脑图支持** - 支持 WPS 脑图
-- [ ] **AI 内容生成** - 智能生成文档内容
-- [ ] **多文档协同** - 跨文档操作
-- [ ] **自动化工作流** - 定义和执行工作流
-- [ ] **云端协作** - 支持 WPS 云文档
-- [ ] **企业级部署** - 企业部署方案
+- [ ] PDF 支持
+- [ ] AI 内容生成
+- [ ] 自动化工作流
+- [ ] 企业级部署
 
 ---
 
@@ -320,7 +309,7 @@ MIT License
 
 ## 👨‍💻 开发者
 
-**熊猫大侠** - [GitHub](https://github.com/LargeCupPanda)
+**lc2panda** - [GitHub](https://github.com/lc2panda)
 
 ---
 

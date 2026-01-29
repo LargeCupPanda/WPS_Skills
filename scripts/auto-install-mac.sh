@@ -196,11 +196,39 @@ configure_claude_code() {
     echo ""
 }
 
+# ========== 注册 Skills (全局) ==========
+install_skills() {
+    echo "========== [+] 注册 WPS Skills (全局) =========="
+
+    SKILLS_DIR="$HOME/.claude/skills"
+
+    # 创建全局skills目录
+    mkdir -p "$SKILLS_DIR"
+
+    # 创建软链接（-sf 强制覆盖已存在的链接）
+    ln -sf "$PROJECT_DIR/skills/wps-excel" "$SKILLS_DIR/wps-excel"
+    ln -sf "$PROJECT_DIR/skills/wps-word" "$SKILLS_DIR/wps-word"
+    ln -sf "$PROJECT_DIR/skills/wps-ppt" "$SKILLS_DIR/wps-ppt"
+    ln -sf "$PROJECT_DIR/skills/wps-office" "$SKILLS_DIR/wps-office"
+
+    echo -e "${GREEN}✓ Skills 已注册到: $SKILLS_DIR${NC}"
+    echo "  - wps-excel"
+    echo "  - wps-word"
+    echo "  - wps-ppt"
+    echo "  - wps-office"
+    echo ""
+}
+
 # ========== 显示完成信息 ==========
 show_complete() {
     echo "================================================"
     echo -e "${GREEN}   ✅ 安装完成！${NC}"
     echo "================================================"
+    echo ""
+    echo "已自动完成："
+    echo "  ✓ WPS 加载项安装"
+    echo "  ✓ MCP Server 构建和注册"
+    echo "  ✓ Skills 全局注册"
     echo ""
     echo "下一步操作:"
     echo "  1. 重启 Claude Code"
@@ -208,15 +236,16 @@ show_complete() {
     echo "  3. 打开 Excel/Word/PPT 文档"
     echo "  4. 查看 'Claude助手' 选项卡，确认状态为 '轮询中'"
     echo ""
-    echo "技术架构 (反向轮询模式):"
+    echo "技术架构 (MCP + Skills 双层架构):"
     echo "  ┌─────────────┐      ┌─────────────┐      ┌─────────────┐"
-    echo "  │ Claude Code │ ──── │ MCP Server  │ ←─── │ WPS 加载项  │"
-    echo "  └─────────────┘      │ (HTTP:58891)│      │ (轮询客户端)│"
-    echo "                       └─────────────┘      └─────────────┘"
+    echo "  │   Skills    │ ──── │ MCP Server  │ ←─── │ WPS 加载项  │"
+    echo "  │ (指令层)    │      │ (HTTP:58891)│      │ (轮询客户端)│"
+    echo "  └─────────────┘      └─────────────┘      └─────────────┘"
     echo ""
     echo "验证安装:"
     echo "  ls $ADDON_TARGET"
-    echo "  cat ~/.claude/settings.json | grep wps-office"
+    echo "  claude mcp list"
+    echo "  ls ~/.claude/skills/"
     echo ""
     echo "================================================"
 }
@@ -229,6 +258,7 @@ main() {
     update_publish_xml
     build_mcp_server
     configure_claude_code
+    install_skills
     show_complete
 }
 

@@ -298,4 +298,4 @@ ELSE:
 
 ---
 
-*Skill by WPS-Claude-Skills Team*
+*Skill by lc2panda - WPS MCP Project*

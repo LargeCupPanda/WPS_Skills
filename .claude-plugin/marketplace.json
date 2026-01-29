@@ -1,0 +1,25 @@
+{
+  "name": "wps-mcp-skills",
+  "owner": {
+    "name": "lc2panda",
+    "email": "lc2panda@github.com"
+  },
+  "metadata": {
+    "description": "WPS Office AI Assistant Skills - Control WPS Office with natural language",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "wps-office-skills",
+      "description": "Complete WPS Office automation skills including Excel formula generation, Word formatting, PPT beautification, and cross-app operations",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/wps-excel",
+        "./skills/wps-word",
+        "./skills/wps-ppt",
+        "./skills/wps-office"
+      ]
+    }
+  ]
+}
