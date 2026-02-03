@@ -193,3 +193,8 @@ __pycache__/
 .Python
 venv/
 .venv/
+
+# 其他 Claude 相关文件
+CLAUDE.md
+.claude
+.spec-workflow
