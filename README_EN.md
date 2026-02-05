@@ -40,7 +40,7 @@ WPS Office AI Assistant is a natural language office automation tool powered by 
 - 🔢 **Smart Formula Generation** - Describe calculations, get formulas
 - 🎨 **One-Click Beautification** - Professional PPT styling
 - 🧠 **Skills Guidance** - 4 professional Skills teach AI how to complete tasks
-- 🔧 **196 MCP Tools** - Complete underlying tool capabilities
+- 🔧 **224 MCP Tools** - Complete underlying tool capabilities
 
 ### Usage Examples
 
@@ -71,9 +71,9 @@ User: Create a set of KPI data cards
 | WPS Office | 2019 or later | Mac version latest |
 | Node.js | 18.0.0 or later | 18.0.0 or later |
 | Claude Code | Latest version | Latest version |
-| **Feature Support** | ⚠️ Basic features (~25 methods) | ✅ Full features (196 methods) |
+| **Feature Support** | ✅ Parity with macOS actions (224 actions) | ✅ Full features (224 actions) |
 
-> ⚠️ **Windows Compatibility Note**: Windows version currently uses PowerShell COM bridge, supporting basic Excel/Word/PPT operations. Advanced features (pivot tables, conditional formatting, flowcharts, 3D effects, etc.) are being adapted. macOS version has full functionality.
+> ✅ **Windows Compatibility Note**: Windows version uses the PowerShell COM bridge and has reached parity with macOS actions (224 actions). A small set of Windows-only actions remains: closeDocument/convertFormat/createDocument/getExcelContext/openFile/slide.add/slide.beautify/slide.unifyFont.
 
 ---
 
@@ -144,7 +144,7 @@ Built on **Anthropic's official MCP + Skills dual-layer architecture**:
                               ↓
 ┌─────────────────────────────────────────────────────────────┐
 │                    MCP Layer (Tool Capabilities)            │
-│  wps-office-mcp/            - 196 MCP Tools                 │
+│  wps-office-mcp/            - 224 MCP Tools                 │
 │  wps_get_active_workbook    - Get current workbook          │
 │  wps_execute_method         - Execute operations            │
 │  ...                                                        │
@@ -162,7 +162,7 @@ Built on **Anthropic's official MCP + Skills dual-layer architecture**:
 | Layer | Purpose | Content |
 |-------|---------|---------|
 | **Skills** | Teaches Claude "how to do it" | 4 SKILL.md files with workflows and best practices |
-| **MCP** | Tells Claude "what can be done" | 196 tools providing underlying capabilities |
+| **MCP** | Tells Claude "what can be done" | 224 tools providing underlying capabilities |
 
 ---
 
