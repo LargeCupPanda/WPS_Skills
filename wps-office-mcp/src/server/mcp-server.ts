@@ -1,4 +1,7 @@
 /**
+ * Input: MCP 协议请求
+ * Output: Tool 调用响应
+ * Pos: MCP Server 核心实现。一旦我被修改，请更新我的头部注释，以及所属文件夹的md。
  * MCP Server实现 - 老王的MCP协议实现
  * 这是整个系统的核心，处理MCP协议通信
  * 基于stdio传输，Claude Desktop就是这么连的

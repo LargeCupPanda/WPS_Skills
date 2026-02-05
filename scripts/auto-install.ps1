@@ -1,3 +1,6 @@
+# Input: 用户环境与安装参数
+# Output: 安装与配置结果
+# Pos: Windows 一键安装脚本。一旦我被修改，请更新我的头部注释，以及所属文件夹的md。
 # WPS Skills One-Click Installer (Windows)
 # Usage: powershell -ExecutionPolicy Bypass -File scripts/auto-install.ps1
 # Author: Laowang

@@ -1,4 +1,7 @@
 /**
+ * Input: Word 工具定义
+ * Output: Word 工具注册数组
+ * Pos: Word Tools 汇总入口。一旦我被修改，请更新我的头部注释，以及所属文件夹的md。
  * Word Tools入口 - 老王的文档工具箱
  * 把格式化和内容操作的Tools都整合到这里
  *

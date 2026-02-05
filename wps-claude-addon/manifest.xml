@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Input: 加载项清单配置 -->
+<!-- Output: WPS 加载项注册元数据 -->
+<!-- Pos: Windows 加载项清单入口。一旦我被修改，请更新我的头部注释，以及所属文件夹的md。 -->
 <!--
     WPS Claude 智能助手 - 加载项清单配置 (COM桥接版)
     MCP Server通过PowerShell COM接口直接操作WPS，无需HTTP服务

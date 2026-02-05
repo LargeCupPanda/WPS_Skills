@@ -1,4 +1,7 @@
 /**
+ * Input: Tool 定义与调用请求
+ * Output: Tool 执行结果
+ * Pos: MCP Tool 注册与调度中心。一旦我被修改，请更新我的头部注释，以及所属文件夹的md。
  * Tool注册管理 - 老王的Tool管理系统
  * 所有Tool都得在这儿注册，不注册的Tool就是野鸡Tool
  * 这个设计遵循OCP原则：扩展开放，修改关闭

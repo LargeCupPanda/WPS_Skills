@@ -1,3 +1,6 @@
+# Input: 启动参数与本地环境配置
+# Output: 开发服务启动日志与状态
+# Pos: Windows 开发环境启动脚本。一旦我被修改，请更新我的头部注释，以及所属文件夹的md。
 # WPS-Claude-Skills 开发环境启动脚本 (Windows PowerShell)
 # 作者：老王
 # 说明：这个脚本会同时启动 MCP Server 和 WPS 加载项开发服务

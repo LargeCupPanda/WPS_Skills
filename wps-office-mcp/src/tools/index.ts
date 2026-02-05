@@ -1,4 +1,7 @@
 /**
+ * Input: Tool 定义集合
+ * Output: Tool 注册数组
+ * Pos: MCP Tools 总入口。一旦我被修改，请更新我的头部注释，以及所属文件夹的md。
  * Tools总入口 - 老王的工具大集合
  * 把Excel、Word、PPT、Common的所有Tools都整合到这里
  *

@@ -1,4 +1,7 @@
 /**
+ * Input: 通用工具定义
+ * Output: 通用工具注册数组
+ * Pos: Common Tools 汇总入口。一旦我被修改，请更新我的头部注释，以及所属文件夹的md。
  * Common Tools入口 - 二狗的通用工具箱
  * 把跨应用的通用Tools都整合到这里
  *

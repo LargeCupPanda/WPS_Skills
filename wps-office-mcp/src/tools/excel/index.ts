@@ -1,4 +1,7 @@
 /**
+ * Input: Excel 工具定义
+ * Output: Excel 工具注册数组
+ * Pos: Excel Tools 汇总入口。一旦我被修改，请更新我的头部注释，以及所属文件夹的md。
  * Excel Tools入口 - 老王的表格工具箱
  * 把公式、数据处理、透视表、图表的Tools都整合到这里
  *

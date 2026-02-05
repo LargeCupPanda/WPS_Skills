@@ -1,4 +1,7 @@
 /**
+ * Input: 平台信息与WPS调用参数
+ * Output: WPS API 调用结果
+ * Pos: 跨平台 WPS 客户端。一旦我被修改，请更新我的头部注释，以及所属文件夹的md。
  * WPS通信客户端 - 老王的跨平台版
  * Windows: 通过PowerShell调用WPS COM接口
  * Mac: 通过反向轮询服务器（MCP Server当服务端，WPS加载项来轮询）

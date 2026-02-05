@@ -1,4 +1,7 @@
 /**
+ * Input: WPS 加载项回调与用户交互请求
+ * Output: 状态展示与日志输出
+ * Pos: Windows WPS 加载项脚本入口。一旦我被修改，请更新我的头部注释，以及所属文件夹的md。
  * WPS Claude 智能助手 - COM桥接版
  * MCP Server通过PowerShell COM接口直接操作WPS
  * @author 老王

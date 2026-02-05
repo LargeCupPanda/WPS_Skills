@@ -1,4 +1,7 @@
 /**
+ * Input: PPT 工具定义
+ * Output: PPT 工具注册数组
+ * Pos: PPT Tools 汇总入口。一旦我被修改，请更新我的头部注释，以及所属文件夹的md。
  * PPT Tools入口 - 老王的演示工具箱
  * 目前主要是幻灯片操作相关的Tools
  *
